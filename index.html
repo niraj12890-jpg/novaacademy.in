@@ -4,191 +4,235 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NOVA ACADEMY</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- ================= ORIGINAL INLINE CSS (UNCHANGED) ================= -->
-  <style>
-    :root {
-      --bg: #020b33;
-      --card-bg: #061046;
-      --neon: #3a86ff;
-      --accent: #0d6efd;
-    }
-    body {
-      background-color: var(--bg);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding-top: 70px;
-    }
-    .neon-text {
-      text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon);
-      font-weight: 600;
-    }
-    .btn-neon {
-      background: var(--accent);
-      border: none;
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
-      color: #fff;
-    }
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,70,0.6)),
-      url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: center;
-      padding: 120px 0;
-      text-align: center;
-    }
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      color: #fff;
-    }
-    .popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,40,0.92);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999999;
-    }
-    .popup-box {
-      background: var(--card-bg);
-      padding: 22px;
-      max-width: 1000px;
-      width: 100%;
-      border-radius: 12px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand neon-text" href="#">NOVA ACADEMY</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#workshops">Workshops</a></li>
-        <li class="nav-item"><a class="nav-link" href="#past-workshops">Past</a></li>
-        <li class="nav-item"><a class="nav-link" href="#training">Trainers</a></li>
-        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold neon-text fs-4" href="#">NOVA ACADEMY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<!-- ================= HERO ================= -->
-<div id="home" class="hero">
-  <div class="container">
-    <h1 class="neon-text">Welcome to Nova Academy</h1>
-    <p>Empowering Students with AI, Python & Advanced Research Tools</p>
-    <a href="#workshops" class="btn btn-neon btn-lg">Join Workshops</a>
-  </div>
-</div>
-
-<!-- ================= UPCOMING WORKSHOPS ================= -->
-<section id="workshops" class="container py-5">
-  <h2 class="neon-text text-center mb-4">Upcoming Online Workshops</h2>
-
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h4>XPS Data Analysis</h4>
-        <p>Complete XPS fundamentals & hands-on.</p>
-        <button class="btn btn-neon w-100">Register</button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto fs-6 d-flex align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#workshops" role="button" data-bs-toggle="dropdown">
+              Workshops
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#workshops">All Upcoming Workshops</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openDetails('xps')">XPS Data Analysis</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openDetails('electro')">Electrochemical Analysis</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openDetails('origin')">OriginPro Training</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openDetails('xrd')">XRD Analysis</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openDetails('chemdraw')">ChemDraw</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openDetails('dwsim')">DWSIM Simulation</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#training">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+          <li class="nav-item ms-2">
+            <a class="nav-link btn btn-neon px-3 py-1" href="#contact">Enquire Now</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h4>Electrochemical Analysis</h4>
-        <p>EIS, CV, GCD & Nyquist plots.</p>
-        <button class="btn btn-neon w-100">Register</button>
+  </nav>
+
+  <!-- SEARCH BAR -->
+  <section class="container py-3" id="search">
+    <div class="input-group mx-auto" style="max-width:900px;">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search Workshops, Trainers, Past Events..." aria-label="Search">
+      <button class="btn btn-neon" type="button" id="searchBtn">Search</button>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <marquee behavior="scroll" direction="left" class="py-2" style="background:#001a66; color:#3a86ff; font-size:18px; font-weight:600;">
+    🔥 Latest Update: New trainers added! Upcoming Workshop Starts Soon — Register Now! 🔥
+  </marquee>
+
+  <!-- HERO -->
+  <div id="home" class="hero">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold neon-text">Welcome to Nova Academy</h1>
+      <p class="fs-5 mt-3">Empowering Students with AI, Python, and Future Technologies</p>
+      <a href="#workshops" class="btn btn-neon btn-lg mt-3">Join Our Workshops</a>
+    </div>
+  </div>
+
+  <!-- WORKSHOPS -->
+  <section class="container py-5" id="workshops">
+    <h2 class="text-center neon-text mb-5">Upcoming Online Workshops</h2>
+    <div class="row g-4">
+      <!-- XPS -->
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="XPSIMAGE.png" alt="XPS Workshop image">
+          <div class="card-body">
+            <h4 class="fw-bold">XPS Data Analysis Workshop</h4>
+            <p>Comprehensive XPS fundamentals, instrumentation & peak fitting.</p>
+            <ul>
+              <li>Duration: 1 Week</li>
+              <li>Mode: Online</li>
+              <li>Fees: ₹ 2999</li>
+            </ul>
+            <button class="btn btn-primary w-100 mb-2" onclick="openDetails('xps')">View More Info</button>
+            <div class="d-flex gap-2">
+              <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Electrochemical -->
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="images/w2.png" alt="Electrochemical Workshop">
+          <div class="card-body">
+            <h4 class="fw-bold">Electrochemical Data Analysis</h4>
+            <p>EIS, CV, LSV, GCD, Nyquist & case studies for batteries & catalysis.</p>
+            <ul>
+              <li>Duration: 1–2 Weeks</li>
+              <li>Mode: Online</li>
+              <li>Fees: ₹ 2499</li>
+            </ul>
+            <button class="btn btn-primary w-100 mb-2" onclick="openDetails('electro')">View More Info</button>
+            <div class="d-flex gap-2">
+              <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OriginPro -->
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="images/w3.png" alt="OriginPro Workshop">
+          <div class="card-body">
+            <h4 class="fw-bold">OriginPro Graphing & Data Analysis</h4>
+            <p>Peak analysis, curve fitting, batch processing & publication-ready graphs.</p>
+            <ul>
+              <li>Duration: 1 Week</li>
+              <li>Mode: Online</li>
+              <li>Fees: ₹ 2999</li>
+            </ul>
+            <button class="btn btn-primary w-100 mb-2" onclick="openDetails('origin')">View More Info</button>
+            <div class="d-flex gap-2">
+              <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- XRD -->
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="images/w4.png" alt="XRD Workshop">
+          <div class="card-body">
+            <h4 class="fw-bold">XRD Data Analysis Workshop</h4>
+            <p>Rietveld refinement, peak indexing & crystal structure analysis.</p>
+            <ul>
+              <li>Duration: 1 Week</li>
+              <li>Mode: Online</li>
+              <li>Fees: ₹ 2999</li>
+            </ul>
+            <button class="btn btn-primary w-100 mb-2" onclick="openDetails('xrd')">View More Info</button>
+            <div class="d-flex gap-2">
+              <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ChemDraw -->
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="images/w5.png" alt="ChemDraw Workshop">
+          <div class="card-body">
+            <h4 class="fw-bold">ChemDraw Hands-on Training</h4>
+            <p>Draw chemical structures, reactions, stereochemistry & export HD images.</p>
+            <ul>
+              <li>Duration: 1 Week</li>
+              <li>Mode: Online</li>
+              <li>Fees: ₹ 1999</li>
+            </ul>
+            <button class="btn btn-primary w-100 mb-2" onclick="openDetails('chemdraw')">View More Info</button>
+            <div class="d-flex gap-2">
+              <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DWSIM -->
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="images/w6.png" alt="DWSIM Workshop">
+          <div class="card-body">
+            <h4 class="fw-bold">DWSIM Chemical Simulation</h4>
+            <p>Process simulation: reactors, distillation, heat exchangers & flowsheets.</p>
+            <ul>
+              <li>Duration: 1 Week</li>
+              <li>Mode: Online</li>
+              <li>Fees: ₹ 2999</li>
+            </ul>
+            <button class="btn btn-primary w-100 mb-2" onclick="openDetails('dwsim')">View More Info</button>
+            <div class="d-flex gap-2">
+              <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRAINERS -->
+  <section id="training" class="py-5 bg-dark text-white">
+    <div class="container">
+      <h2 class="text-center neon-text mb-4">Meet Our Expert Trainers</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card trainer-card text-center p-3">
+            <img src="https://i.imgur.com/4ZQZ4Zy.png" class="trainer-img" alt="Trainer 1">
+            <h4 class="mt-3">Mr. Rahul Verma</h4>
+            <p>AI & Python Specialist with 8+ years experience in Machine Learning and Modeling.</p>
+            <button class="btn btn-outline-light w-100 mt-auto">View Profile</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card trainer-card text-center p-3">
+            <img src="https://i.imgur.com/y3WqkGx.png" class="trainer-img" alt="Trainer 2">
+            <h4 class="mt-3">Ms. Priya Sharma</h4>
+            <p>Data Scientist & Python Trainer, conducts 50+ workshops on AI Automation.</p>
+            <button class="btn btn-outline-light w-100 mt-auto">View Profile</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card trainer-card text-center p-3">
+            <img src="https://i.imgur.com/3G3Z0qP.png" class="trainer-img" alt="Trainer 3">
+            <h4 class="mt-3">Dr. Karan Malhotra</h4>
+            <p>Expert in Mathematical Modeling, Simulation & Predictive AI Systems.</p>
+            <button class="btn btn-outline-light w-100 mt-auto">View Profile</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h4>OriginPro Training</h4>
-        <p>Scientific graphing & data analysis.</p>
-        <button class="btn btn-neon w-100">Register</button>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= PAST WORKSHOPS ================= -->
-<section id="past-workshops" class="container py-5">
-  <h2 class="neon-text text-center mb-4">Past Workshops & Trainings</h2>
-  <div class="row g-4">
-    <div class="col-md-4"><div class="card p-3">AI Bootcamp 2024</div></div>
-    <div class="col-md-4"><div class="card p-3">ML Essentials</div></div>
-    <div class="col-md-4"><div class="card p-3">Python Automation</div></div>
-  </div>
-</section>
-
-<!-- ================= TRAINERS ================= -->
-<section id="training" class="container py-5">
-  <h2 class="neon-text text-center mb-4">Meet Our Expert Trainers</h2>
-  <div class="row g-4">
-    <div class="col-md-4"><div class="card p-3">Trainer 1</div></div>
-    <div class="col-md-4"><div class="card p-3">Trainer 2</div></div>
-    <div class="col-md-4"><div class="card p-3">Trainer 3</div></div>
-  </div>
-</section>
-
-<!-- ================= GALLERY ================= -->
-<section id="gallery" class="container py-5">
-  <h2 class="neon-text text-center mb-4">Image Gallery</h2>
-  <div class="row g-3">
-    <div class="col-md-4"><img class="img-fluid rounded" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"></div>
-    <div class="col-md-4"><img class="img-fluid rounded" src="https://images.unsplash.com/photo-1551434678-e076c223a692"></div>
-    <div class="col-md-4"><img class="img-fluid rounded" src="https://images.unsplash.com/photo-1581090700227-1e37b190418e"></div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="container py-5">
-  <h2 class="neon-text text-center mb-4">About Nova Academy</h2>
-  <p class="text-center">Nova Academy delivers future-ready technical education.</p>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="container py-5">
-  <h2 class="neon-text text-center mb-4">Contact Us</h2>
-  <div class="card p-4">
-    <p>Email: info@novaacademy.com</p>
-    <p>Phone: +91 9876543210</p>
-  </div>
-</section>
-
-<!-- ================= REVIEWS ================= -->
-<section class="container py-5">
-  <h2 class="neon-text text-center mb-4">Student Reviews</h2>
-  <div class="row g-4">
-    <div class="col-md-4"><div class="card p-3">Amazing Training!</div></div>
-    <div class="col-md-4"><div class="card p-3">Very Practical</div></div>
-    <div class="col-md-4"><div class="card p-3">Highly Recommended</div></div>
-  </div>
-</section>
-
-<!-- ================= COUNTERS ================= -->
-<section class="container py-5 text-center">
-  <div class="row">
-    <div class="col-md-3"><h1>1500</h1><p>Students Trained</p></div>
-    <div class="col-md-3"><h1>85</h1><p>Workshops Completed</p></div>
-    <div class="col-md-3"><h1>12</h1><p>Expert Trainers</p></div>
-    <div class="col-md-3"><h1>98%</h1><p>Success Rate</p></div>
-  </div>
-</section>
-
-<!-- ================= STICKY HELP ================= -->
-<div style="position:fixed;bottom:0;width:100%;background:#001a66;color:#3a
+</body>
+</html>
