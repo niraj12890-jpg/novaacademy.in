@@ -1,48 +1,25 @@
-// Initialize Animations
-AOS.init();
+AOS.init({ duration: 1000, once: true });
 
-// Workshop Data Store
-const workshopData = {
-    xps: {
-        title: "XPS Data Analysis Workshop",
-        img: "XPSIMAGE.png",
-        desc: "Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets."
-    }
-    // Add others here...
-};
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOq1-GYeeQoKHw4DJ3a1XEQIrq9ydS2FvUsXtqWLM3IKwCg9zEX_8Q9WOSDl7FrdE2HQ/exec";
 
-// Popup Management
-function openPopup(id) { document.getElementById(id).style.display = 'flex'; }
-function closePopup(id) { document.getElementById(id).style.display = 'none'; }
+function openPopup(id){ document.getElementById(id).style.display = 'flex'; }
+function closePopup(id){ document.getElementById(id).style.display = 'none'; }
 
-function openDetails(key) {
-    const data = workshopData[key];
-    if(!data) return;
-    // Set content and show (Logic remains same as your original)
-    openPopup('workshopInfo');
-}
-
-// Form Submission Logic
-const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL";
-
-function submitRegistration() {
-    const data = {
-        name: document.getElementById("regName").value,
-        mobile: document.getElementById("regMobile").value,
-        utr: document.getElementById("regUTR").value
-    };
-    
-    // Simple validation
-    if(!data.name || !data.utr) return alert("Please fill all fields");
-
-    alert("Registration Received! Verifying payment...");
-    closePopup('registerPopup');
+function openDetails(key){
+  const data = workshopData[key];
+  if(!data) return;
+  document.getElementById('workshopTitle').innerText = data.title;
+  document.getElementById('workshopImg').src = data.img;
+  document.getElementById('workshopDesc').innerText = data.desc;
+  openPopup('workshopInfo');
 }
 
 // Search Logic
-document.getElementById('searchBtn').addEventListener('click', () => {
-    let q = document.getElementById('searchInput').value.toLowerCase();
-    document.querySelectorAll('.modern-card').forEach(card => {
-        card.style.display = card.innerText.toLowerCase().includes(q) ? 'block' : 'none';
-    });
+document.getElementById('searchBtn').addEventListener('click', function(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(q) ? '' : 'none';
+  });
 });
+
+// [Sabh baki functions submitRegistration aur submitEnquiry yahan se chalenge]
