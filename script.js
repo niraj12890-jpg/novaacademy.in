@@ -11,7 +11,7 @@ window.addEventListener('scroll', () => {
 const workshopData = {
   xps: {
     title: "XPS Data Analysis Workshop",
-    img: "XPSIMAGE.png",
+    img: "images/w1.png",
     desc: "1. Fundamentals of XPS\n2. Peak Fitting using CasaXPS\n3. Deconvolution of spectra\n4. Report Preparation."
   },
   electro: {
