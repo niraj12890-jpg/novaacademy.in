@@ -9,39 +9,44 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold neon-text fs-4" href="#">NOVA ACADEMY</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top custom-nav">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="images/logona.jpeg" alt="Nova Academy Logo" height="50" class="d-inline-block align-top me-2 logo-img">
+      <span class="fw-bold neon-text fs-4 d-none d-sm-inline">NOVA ACADEMY</span>
+    </a>
+    
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto fs-6 d-flex align-items-center">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#workshops" role="button" data-bs-toggle="dropdown">Workshops</a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#workshops">All Upcoming Workshops</a></li>
-              <li><a class="dropdown-item" href="#" onclick="openDetails('xps')">XPS Data Analysis</a></li>
-              <li><a class="dropdown-item" href="#" onclick="openDetails('electro')">Electrochemical Analysis</a></li>
-              <li><a class="dropdown-item" href="#" onclick="openDetails('origin')">OriginPro Training</a></li>
-              <li><a class="dropdown-item" href="#" onclick="openDetails('xrd')">XRD Analysis</a></li>
-              <li><a class="dropdown-item" href="#" onclick="openDetails('chemdraw')">ChemDraw</a></li>
-              <li><a class="dropdown-item" href="#" onclick="openDetails('dwsim')">DWSIM Simulation</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#training">Trainers</a></li>
-          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
-          <li class="nav-item ms-2">
-            <a class="nav-link btn btn-neon px-3 py-1" href="#contact">Enquire Now</a>
-          </li>
-        </ul>
-      </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto fs-6 d-flex align-items-center">
+        <li class="nav-item"><a class="nav-link nav-hover" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="#about">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-hover" href="#workshops" role="button" data-bs-toggle="dropdown">Workshops</a>
+          <ul class="dropdown-menu dropdown-menu-dark animate slideIn">
+            <li><a class="dropdown-item" href="#workshops">All Upcoming Workshops</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('xps')">XPS Data Analysis</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('electro')">Electrochemical Analysis</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('origin')">OriginPro Training</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('xrd')">XRD Analysis</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('chemdraw')">ChemDraw</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('dwsim')">DWSIM Simulation</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="#training">Trainers</a></li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="#contact">Contact Us</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="nav-link btn btn-neon px-4 py-2 mt-2 mt-lg-0" href="#contact">Enquire Now</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <section class="container py-3" id="search">
     <div class="input-group mx-auto" style="max-width:900px;">
