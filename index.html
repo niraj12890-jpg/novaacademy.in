@@ -9,11 +9,15 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top custom-nav">
-  <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="images/logona.jpeg" alt="Nova Academy Logo" height="50" class="d-inline-block align-top me-2 logo-img">
-      <span class="fw-bold neon-text fs-4 d-none d-sm-inline">NOVA ACADEMY</span>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center animate__animated animate__fadeInLeft" href="#">
+      <div class="logo-container">
+        <img src="images/logona.jpeg" alt="Nova Academy" class="logo-img">
+      </div>
+      <span class="ms-3 fw-bold neon-text fs-4 logo-text">NOVA ACADEMY</span>
     </a>
     
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -21,27 +25,23 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto fs-6 d-flex align-items-center">
-        <li class="nav-item"><a class="nav-link nav-hover" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link nav-hover" href="#about">About Us</a></li>
+      <ul class="navbar-nav ms-auto align-items-center animate__animated animate__fadeInRight">
+        <li class="nav-item"><a class="nav-link modern-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link modern-link" href="#about">About Us</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle nav-hover" href="#workshops" role="button" data-bs-toggle="dropdown">Workshops</a>
-          <ul class="dropdown-menu dropdown-menu-dark animate slideIn">
-            <li><a class="dropdown-item" href="#workshops">All Upcoming Workshops</a></li>
-            <li><hr class="dropdown-divider"></li>
+          <a class="nav-link dropdown-toggle modern-link" href="#workshops" role="button" data-bs-toggle="dropdown">Workshops</a>
+          <ul class="dropdown-menu glass-dropdown animate__animated animate__flipInX">
+            <li><a class="dropdown-item" href="#workshops">All Workshops</a></li>
+            <li><hr class="dropdown-divider border-secondary"></li>
             <li><a class="dropdown-item" href="#" onclick="openDetails('xps')">XPS Data Analysis</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('electro')">Electrochemical Analysis</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('origin')">OriginPro Training</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('xrd')">XRD Analysis</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('chemdraw')">ChemDraw</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('dwsim')">DWSIM Simulation</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('electro')">Electro-Chem</a></li>
+            <li><a class="dropdown-item" href="#" onclick="openDetails('origin')">OriginPro</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link nav-hover" href="#training">Trainers</a></li>
-        <li class="nav-item"><a class="nav-link nav-hover" href="#gallery">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link nav-hover" href="#contact">Contact Us</a></li>
-        <li class="nav-item ms-lg-3">
-          <a class="nav-link btn btn-neon px-4 py-2 mt-2 mt-lg-0" href="#contact">Enquire Now</a>
+        <li class="nav-item"><a class="nav-link modern-link" href="#training">Trainers</a></li>
+        <li class="nav-item"><a class="nav-link modern-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item ms-lg-4">
+          <a class="nav-link btn-modern-neon px-4 py-2" href="#contact">Enquire Now</a>
         </li>
       </ul>
     </div>
