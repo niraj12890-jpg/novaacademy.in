@@ -1,185 +1,79 @@
-/* ---------- Base styles ---------- */
+/* ---------- Base & root ---------- */
 :root {
-  --bg: #020b33;
-  --card-bg: #061046;
+  --bg: #01061c;
+  --card-bg: rgba(6, 16, 70, 0.6);
   --neon: #3a86ff;
   --accent: #0d6efd;
-  --glass: rgba(255, 255, 255, 0.05);
 }
 
-/* Smooth Scrolling for entire site */
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg);
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding-top: 70px;
   overflow-x: hidden;
+  padding-top: 80px;
 }
 
-.neon-text {
-  text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon);
-  font-weight: 600;
-}
+.neon-text { text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon); font-weight: 600; }
 
-/* ---------- ULTRA MODERN NAVBAR ---------- */
+/* ---------- Modern Navbar ---------- */
 .glass-nav {
-  background: rgba(2, 11, 51, 0.6) !important; 
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  background: rgba(1, 6, 28, 0.7) !important;
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 15px 0;
+  transition: 0.4s;
 }
+.glass-nav.scrolled { background: rgba(1, 6, 28, 0.95) !important; padding: 10px 0; }
 
-.glass-nav.scrolled {
-  background: rgba(1, 6, 28, 0.9) !important;
-  padding: 8px 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
+.logo-container { background: #fff; padding: 4px; border-radius: 12px; display: inline-flex; }
+.logo-img { height: 45px; border-radius: 8px; }
 
-.logo-container {
-  background: #fff;
-  padding: 3px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(58, 134, 255, 0.3);
-  display: inline-flex;
-}
+.modern-link { color: #fff !important; font-weight: 500; margin: 0 10px; position: relative; }
+.modern-link:hover { color: var(--neon) !important; }
 
-.logo-img { height: 48px; border-radius: 9px; }
-
-.modern-link {
-  color: #ffffff !important;
-  font-weight: 500;
-  margin: 0 12px;
-  position: relative;
+.btn-modern-neon {
+  background: linear-gradient(45deg, var(--accent), var(--neon));
+  color: #fff !important; padding: 10px 25px; border-radius: 50px;
+  font-weight: 600; text-decoration: none; box-shadow: 0 0 20px rgba(58, 134, 255, 0.4);
   transition: 0.3s;
 }
 
-.modern-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background: var(--neon);
-  transition: width 0.3s ease;
-}
-
-.modern-link:hover::after { width: 100%; }
-
-.btn-modern-neon {
-  background: linear-gradient(45deg, #0d6efd, #3a86ff);
-  color: white !important;
-  padding: 10px 25px;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(58, 134, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0); }
-}
-
-/* ---------- MODERN HERO SECTION ---------- */
+/* ---------- Hero Section ---------- */
 .hero {
-  position: relative;
   min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(2,11,51,0.9) 0%, rgba(6,16,70,0.8) 100%), 
-              url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  overflow: hidden;
-  text-align: center;
+  background: linear-gradient(rgba(1, 6, 28, 0.8), rgba(1, 6, 28, 0.8)),
+              url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80');
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at center, transparent 0%, var(--bg) 90%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  padding: 20px;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  letter-spacing: -1px;
-  margin-bottom: 20px;
-  animation: fadeInUp 1s ease;
-}
-
-.hero p {
-  font-size: 1.25rem;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 35px;
-  animation: fadeInUp 1.2s ease;
-}
-
-/* ---------- SEARCH & CARDS ---------- */
-#search { margin-top: -30px; position: relative; z-index: 100; }
+/* ---------- Cards & UI ---------- */
 .search-container {
-  background: rgba(6, 16, 70, 0.8);
-  backdrop-filter: blur(20px);
-  padding: 15px;
-  border-radius: 15px;
-  border: 1px solid rgba(58, 134, 255, 0.2);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  background: var(--card-bg); backdrop-filter: blur(10px);
+  padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);
+  margin-top: -40px; position: relative; z-index: 100;
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid rgba(31,63,255,0.2);
-  border-radius: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--card-bg); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+  transition: 0.4s ease;
+}
+.card:hover { transform: translateY(-10px); border-color: var(--neon); }
+
+.counter-card {
+  background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(58, 134, 255, 0.2);
-  border-color: var(--neon);
+/* ---------- Popups ---------- */
+.popup-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px); display: none; z-index: 99999;
+  justify-content: center; align-items: center; padding: 20px;
 }
-
-.card .card-img-top { height: 180px; object-fit: cover; border-radius: 12px 12px 0 0; }
-
-/* ---------- POPUPS & FOOTER ---------- */
 .popup-box {
-  background: rgba(6, 16, 70, 0.95);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 2px solid var(--neon);
+  background: #061046; width: 100%; max-width: 600px;
+  border: 2px solid var(--neon); border-radius: 20px; padding: 30px;
 }
-
-footer {
-  background: #01061c;
-  padding: 40px 0;
-  border-top: 1px solid rgba(58, 134, 255, 0.1);
-}
-
-/* ---------- ANIMATIONS ---------- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2.2rem; }
-  .hero { min-height: 60vh; }
-}
+.popup-img { width: 100%; border-radius: 10px; max-height: 250px; object-fit: cover; }
