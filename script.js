@@ -62,3 +62,22 @@ counters.forEach(counter => {
   };
   update();
 });
+// Navbar Scroll Animation
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('mainNav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+// Close Mobile Menu on Link Click (Mobile UX Improvement)
+const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+const menuToggle = document.getElementById('navMenu');
+const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+navLinks.forEach((l) => {
+    l.addEventListener('click', () => { 
+        if(window.innerWidth < 992) { bsCollapse.hide(); }
+    });
+});
