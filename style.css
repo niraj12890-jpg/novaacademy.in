@@ -5,6 +5,12 @@
   --neon: #3a86ff;
   --accent: #0d6efd;
 }
+
+/* Smooth Scrolling for entire site */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg);
   color: #fff;
@@ -12,19 +18,113 @@ body {
   margin: 0;
   padding-top: 70px;
 }
+
 .neon-text {
   text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon);
   font-weight: 600;
 }
+
 .btn-neon {
   background: var(--accent);
   border: none;
   box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
   color: #fff;
 }
-.navbar-brand { letter-spacing: 0.6px; }
+
+/* ---------- ULTRA MODERN NAVBAR (Glassmorphism Logic) ---------- */
+.glass-nav {
+  background: rgba(2, 11, 51, 0.6) !important; 
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 15px 0;
+}
+
+/* Scroll hone par navbar chota aur dark ho jayega */
+.glass-nav.scrolled {
+  background: rgba(1, 6, 28, 0.9) !important;
+  padding: 8px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Floating Logo effect */
+.logo-container {
+  background: #fff;
+  padding: 3px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(58, 134, 255, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  height: 48px;
+  border-radius: 9px;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 30px var(--neon);
+}
+
+/* Link Styling with Underline Animation */
+.modern-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  margin: 0 12px;
+  position: relative;
+  transition: 0.3s;
+  opacity: 0.9;
+}
+
+.modern-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--neon);
+  transition: width 0.3s ease;
+}
+
+.modern-link:hover {
+  opacity: 1;
+  color: var(--neon) !important;
+}
+
+.modern-link:hover::after {
+  width: 100%;
+}
+
+/* Enquire Now Button Pulse Effect */
+.btn-modern-neon {
+  background: linear-gradient(45deg, #0d6efd, #3a86ff);
+  color: white !important;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
+  animation: pulse 2s infinite;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(58, 134, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0); }
+}
+
+/* ---------- Rest of the UI Components ---------- */
 #search { margin-top: 10px; z-index: 10; }
 #search .input-group { box-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+
 .hero {
   background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,70,0.6)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80');
   background-size: cover;
@@ -32,6 +132,7 @@ body {
   padding: 120px 0;
   text-align: center;
 }
+
 .card {
   background: var(--card-bg);
   border: 1px solid rgba(31,63,255,0.25);
@@ -42,16 +143,38 @@ body {
   flex-direction: column;
   height: 100%;
 }
+
 .card .card-img-top {
   width: 100%;
   height: 160px;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .card-body { display:flex; flex-direction:column; gap:10px; padding:16px; }
 .card .btn { margin-top: auto; }
-#workshops .col-md-4 { display: flex; }
-#workshops .col-md-4 > .card { flex: 1; }
+
+/* Glassmorphic Dropdown */
+.glass-dropdown {
+  background: rgba(6, 16, 70, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(58, 134, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 15px !important;
+}
+
+.dropdown-item {
+  color: white !important;
+  transition: 0.3s;
+}
+
+.dropdown-item:hover {
+  background: rgba(58, 134, 255, 0.2);
+  padding-left: 20px;
+}
+
+/* Popups */
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -65,6 +188,7 @@ body {
   z-index: 999999;
   padding: 20px;
 }
+
 .popup-box {
   background: var(--card-bg);
   width: 100%;
@@ -72,76 +196,23 @@ body {
   max-height: 92vh;
   overflow-y: auto;
   border: 2px solid var(--neon);
-  box-shadow: 0 0 30px rgba(58,134,255,0.18);
+  box-shadow: 0 0 30px rgba(58, 134, 255, 0.18);
   border-radius: 12px;
   padding: 22px;
   color: #fff;
 }
-.popup-img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 14px;
-  max-height: 360px;
-}
+
 @media (max-width: 767px) {
   .card .card-img-top { height: 140px; }
   .hero { padding: 80px 0; }
   #search { margin-top: 8px; padding-left: 8px; padding-right: 8px; }
 }
+
 marquee { margin-top: 8px; display:block; }
-footer { background:#000c2e; color:var(--neon); }
+footer { background:#000c2e; color:var(--neon); padding: 20px 0; text-align: center; }
+
+/* Animations */
 .popup-overlay { animation: fadeIn 0.3s ease; }
 .popup-box { animation: zoomIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes zoomIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-/* Modern Navbar Enhancements */
-.custom-nav {
-    background: rgba(0, 12, 46, 0.85) !important; /* Glass effect */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(58, 134, 255, 0.3);
-    transition: all 0.3s ease;
-}
-
-.logo-img {
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(58, 134, 255, 0.5);
-    transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-    transform: scale(1.1) rotate(-3deg);
-}
-
-/* Hover Animation for Links */
-.nav-hover {
-    position: relative;
-    margin: 0 5px;
-}
-
-.nav-hover::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--neon);
-    transition: width 0.3s ease;
-}
-
-.nav-hover:hover::after {
-    width: 100%;
-}
-
-/* Dropdown Animation */
-.animate.slideIn {
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-name: slideIn;
-}
-
-@keyframes slideIn {
-    0% { transform: translateY(1rem); opacity: 0; }
-    100% { transform: translateY(0rem); opacity: 1; }
-}
