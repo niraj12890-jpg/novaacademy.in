@@ -1,83 +1,70 @@
-// ---------- Search logic (fixed) ----------
-document.getElementById('searchBtn').addEventListener('click', function(){
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  if(!q) return;
-  const workshops = document.querySelectorAll('#workshops .card');
-  const trainers = document.querySelectorAll('#training .trainer-card');
-  const past = document.querySelectorAll('#past-workshops .card');
-  const all = [...workshops, ...trainers, ...past];
-  all.forEach(item => {
-    item.style.display = item.innerText.toLowerCase().includes(q) ? '' : 'none';
-  });
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOq1-GYeeQoKHw4DJ3a1XEQIrq9ydS2FvUsXtqWLM3IKwCg9zEX_8Q9WOSDl7FrdE2HQ/exec";
+
+// 1. Scroll Detection
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
 });
 
-// ---------- Popup helpers ----------
-function openPopup(id){ document.getElementById(id).style.display = 'flex'; }
-function closePopup(id){ document.getElementById(id).style.display = 'none'; }
-
-// ---------- Workshop Data ----------
+// 2. Workshop Data (Restored from index1)
 const workshopData = {
-  xps: { title: "XPS Data Analysis Workshop", img: "XPSIMAGE.png", desc: "Comprehensive XPS fundamentals..." },
-  electro: { title: "Electrochemical Data Analysis", img: "images/w2.png", desc: "EIS, CV, LSV, GCD..." },
-  origin: { title: "OriginPro Training", img: "images/w3.png", desc: "Peak analysis..." },
-  xrd: { title: "XRD Analysis", img: "images/w4.png", desc: "Rietveld refinement..." },
-  chemdraw: { title: "ChemDraw Workshop", img: "images/w5.png", desc: "Hands-on training..." },
-  dwsim: { title: "DWSIM Simulation", img: "images/w6.png", desc: "Process flowsheet..." }
+  xps: {
+    title: "XPS Data Analysis Workshop",
+    img: "XPSIMAGE.png",
+    desc: "1. Fundamentals of XPS\n2. Peak Fitting using CasaXPS\n3. Deconvolution of spectra\n4. Report Preparation."
+  },
+  electro: {
+    title: "Electrochemical Analysis",
+    img: "images/w2.png",
+    desc: "1. EIS Analysis\n2. CV/LSV Plotting\n3. GCD Calculations."
+  }
 };
 
-function openDetails(key){
+function openDetails(key) {
   const data = workshopData[key];
   if(!data) return;
   document.getElementById('workshopTitle').innerText = data.title;
   document.getElementById('workshopImg').src = data.img;
   document.getElementById('workshopDesc').innerText = data.desc;
   document.getElementById('workshopInfo').style.display = 'flex';
-  const msg = `Hello Nova Academy, I am interested in ${data.title}.`;
-  document.getElementById("popupWhatsappBtn").href = `https://wa.me/919598183089?text=${encodeURIComponent(msg)}`;
 }
 
-function closeDetails(){ document.getElementById('workshopInfo').style.display = 'none'; }
+function closeDetails() { document.getElementById('workshopInfo').style.display = 'none'; }
+function openPopup(id) { document.getElementById(id).style.display = 'flex'; }
+function closePopup(id) { document.getElementById(id).style.display = 'none'; }
 
-// ---------- API & Forms ----------
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOq1-GYeeQoKHw4DJ3a1XEQIrq9ydS2FvUsXtqWLM3IKwCg9zEX_8Q9WOSDl7FrdE2HQ/exec";
-
-function submitEnquiry(){
-  const data = { type: "enquiry", name: document.getElementById("enqName").value, mobile: document.getElementById("enqMobile").value, workshop: document.getElementById("enqWorkshop").value };
-  fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) }).then(() => { alert("Enquiry submitted!"); closePopup('enquirePopup'); });
-}
-
-function submitRegistration(){
-  const data = { type: "registration", name: document.getElementById("regName").value, utr: document.getElementById("regUTR").value };
-  fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) }).then(() => { alert("Registration successful!"); closePopup('registerPopup'); });
-}
-
-// ---------- Counters ----------
+// 3. Counter Animation
 const counters = document.querySelectorAll('.counter');
-counters.forEach(counter => {
-  const update = () => {
-    const target = +counter.getAttribute('data-target');
-    const current = +counter.innerText;
-    if(current < target){ counter.innerText = Math.ceil(current + (target/100)); setTimeout(update, 20); }
-    else counter.innerText = target;
-  };
-  update();
-});
-// Navbar Scroll Animation
-window.addEventListener('scroll', function() {
-    const nav = document.getElementById('mainNav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
+const startCounter = () => {
+  counters.forEach(c => {
+    const target = +c.getAttribute('data-target');
+    const update = () => {
+      const current = +c.innerText;
+      const inc = target / 100;
+      if(current < target) {
+        c.innerText = Math.ceil(current + inc);
+        setTimeout(update, 20);
+      } else c.innerText = target;
+    };
+    update();
+  });
+};
+// Start counter when visible
+window.addEventListener('scroll', () => { if(window.scrollY > 500) startCounter(); }, {once: true});
 
-// Close Mobile Menu on Link Click (Mobile UX Improvement)
-const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
-const menuToggle = document.getElementById('navMenu');
-const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
-navLinks.forEach((l) => {
-    l.addEventListener('click', () => { 
-        if(window.innerWidth < 992) { bsCollapse.hide(); }
-    });
-});
+// 4. Form Submissions (Your original Logic)
+function submitEnquiry() {
+  const data = {
+    type: "enquiry",
+    name: document.getElementById("enqName").value,
+    mobile: document.getElementById("enqMobile").value,
+    workshop: document.getElementById("enqWorkshop").value
+  };
+  fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) })
+  .then(() => {
+    alert("Enquiry Sent!");
+    closePopup('enquirePopup');
+    window.open(`https://wa.me/919598183089?text=Enquiry for ${data.workshop}`, "_blank");
+  });
+}
