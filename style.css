@@ -1,79 +1,119 @@
-/* ---------- Base & root ---------- */
+/* ---------- Modern Theme Variables ---------- */
 :root {
-  --bg: #01061c;
-  --card-bg: rgba(6, 16, 70, 0.6);
-  --neon: #3a86ff;
-  --accent: #0d6efd;
+  --bg-dark: #020512;
+  --glass: rgba(255, 255, 255, 0.05);
+  --neon-blue: #00d2ff;
+  --neon-purple: #9d50bb;
+  --accent: #3a86ff;
+  --text-light: #f8f9fa;
 }
 
-html { scroll-behavior: smooth; }
 body {
-  background-color: var(--bg);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  padding-top: 80px;
 }
 
-.neon-text { text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon); font-weight: 600; }
-
-/* ---------- Modern Navbar ---------- */
+/* ---------- Glassmorphism Navbar ---------- */
 .glass-nav {
-  background: rgba(1, 6, 28, 0.7) !important;
+  background: rgba(2, 5, 18, 0.8) !important;
   backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: 0.4s;
+  padding: 15px 0;
+  transition: all 0.3s ease;
 }
-.glass-nav.scrolled { background: rgba(1, 6, 28, 0.95) !important; padding: 10px 0; }
 
-.logo-container { background: #fff; padding: 4px; border-radius: 12px; display: inline-flex; }
-.logo-img { height: 45px; border-radius: 8px; }
+.modern-link {
+  color: #fff !important;
+  font-weight: 500;
+  margin: 0 10px;
+  position: relative;
+}
 
-.modern-link { color: #fff !important; font-weight: 500; margin: 0 10px; position: relative; }
-.modern-link:hover { color: var(--neon) !important; }
-
-.btn-modern-neon {
-  background: linear-gradient(45deg, var(--accent), var(--neon));
-  color: #fff !important; padding: 10px 25px; border-radius: 50px;
-  font-weight: 600; text-decoration: none; box-shadow: 0 0 20px rgba(58, 134, 255, 0.4);
+.modern-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--neon-blue);
   transition: 0.3s;
 }
 
-/* ---------- Hero Section ---------- */
-.hero {
-  min-height: 80vh;
-  background: linear-gradient(rgba(1, 6, 28, 0.8), rgba(1, 6, 28, 0.8)),
-              url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80');
-  background-size: cover; background-position: center;
-  display: flex; align-items: center; justify-content: center;
+.modern-link:hover::after {
+  width: 100%;
 }
 
-/* ---------- Cards & UI ---------- */
-.search-container {
-  background: var(--card-bg); backdrop-filter: blur(10px);
-  padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);
-  margin-top: -40px; position: relative; z-index: 100;
+/* ---------- Neon Buttons ---------- */
+.btn-modern-neon {
+  background: linear-gradient(45deg, var(--accent), var(--neon-blue));
+  color: white !important;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.card {
-  background: var(--card-bg); backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
-  transition: 0.4s ease;
-}
-.card:hover { transform: translateY(-10px); border-color: var(--neon); }
-
-.counter-card {
-  background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;
+.btn-modern-neon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(58, 134, 255, 0.6);
 }
 
-/* ---------- Popups ---------- */
-.popup-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px); display: none; z-index: 99999;
-  justify-content: center; align-items: center; padding: 20px;
+/* ---------- Premium Workshop Cards ---------- */
+#workshops .card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
 }
+
+#workshops .card:hover {
+  transform: translateY(-10px);
+  border-color: var(--neon-blue);
+  box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-text {
+  background: linear-gradient(to right, #fff, var(--neon-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+/* ---------- Popups (Glass Effect) ---------- */
 .popup-box {
-  background: #061046; width: 100%; max-width: 600px;
-  border: 2px solid var(--neon); border-radius: 20px; padding: 30px;
+  background: rgba(10, 15, 40, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--neon-blue) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
 }
-.popup-img { width: 100%; border-radius: 10px; max-height: 250px; object-fit: cover; }
+
+/* ---------- Form Controls ---------- */
+.form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.form-control:focus {
+  border-color: var(--neon-blue) !important;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
