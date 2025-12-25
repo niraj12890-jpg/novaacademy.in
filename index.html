@@ -4,32 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NOVA ACADEMY</title>
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold neon-text fs-4" href="#">NOVA ACADEMY</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto fs-6 align-items-center">
         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#workshops" role="button" data-bs-toggle="dropdown">
             Workshops
@@ -44,11 +33,9 @@
             <li><a class="dropdown-item" href="#" onclick="openDetails('dwsim')">DWSIM</a></li>
           </ul>
         </li>
-
         <li class="nav-item"><a class="nav-link" href="#training">Trainers</a></li>
         <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-
         <li class="nav-item ms-2">
           <a class="nav-link btn btn-neon px-3 py-1" href="#contact">Enquire Now</a>
         </li>
@@ -82,13 +69,11 @@
 <!-- ================= WORKSHOPS ================= -->
 <section class="container py-5" id="workshops">
   <h2 class="text-center neon-text mb-5">Upcoming Online Workshops</h2>
-
   <div class="row g-4">
-
     <!-- XPS -->
     <div class="col-md-4">
       <div class="card">
-        <img src="XPSIMAGE.png" class="card-img-top" alt="XPS">
+        <img src="images/xps.png" class="card-img-top" alt="XPS">
         <div class="card-body">
           <h4>XPS Data Analysis Workshop</h4>
           <p>Hands-on XPS fundamentals & peak fitting.</p>
@@ -105,17 +90,17 @@
         </div>
       </div>
     </div>
-
     <!-- Electro -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/w2.png" class="card-img-top">
+        <img src="images/electro.png" class="card-img-top" alt="Electrochemical">
         <div class="card-body">
           <h4>Electrochemical Data Analysis</h4>
           <p>EIS, CV, LSV, Nyquist, GCD & case studies.</p>
           <ul>
             <li>Duration: 1–2 Weeks</li>
             <li>Mode: Online</li>
+            <li>Fees: ₹3499</li>
           </ul>
           <button class="btn btn-primary w-100 mb-2" onclick="openDetails('electro')">View More Info</button>
           <div class="d-flex gap-2">
@@ -125,17 +110,17 @@
         </div>
       </div>
     </div>
-
     <!-- Origin -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/w3.png" class="card-img-top">
+        <img src="images/origin.png" class="card-img-top" alt="OriginPro">
         <div class="card-body">
           <h4>OriginPro Training</h4>
           <p>Graphing, curve fitting & batch analysis.</p>
           <ul>
             <li>Duration: 1 Week</li>
             <li>Mode: Online</li>
+            <li>Fees: ₹2999</li>
           </ul>
           <button class="btn btn-primary w-100 mb-2" onclick="openDetails('origin')">View More Info</button>
           <div class="d-flex gap-2">
@@ -145,77 +130,124 @@
         </div>
       </div>
     </div>
-
+    <!-- XRD -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/xrd.png" class="card-img-top" alt="XRD">
+        <div class="card-body">
+          <h4>XRD Analysis Workshop</h4>
+          <p>Learn crystal structure, diffraction & phase analysis.</p>
+          <ul>
+            <li>Duration: 1 Week</li>
+            <li>Mode: Online</li>
+            <li>Fees: ₹3199</li>
+          </ul>
+          <button class="btn btn-primary w-100 mb-2" onclick="openDetails('xrd')">View More Info</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ChemDraw -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/chemdraw.png" class="card-img-top" alt="ChemDraw">
+        <div class="card-body">
+          <h4>ChemDraw Workshop</h4>
+          <p>Learn chemical drawing & molecular visualization.</p>
+          <ul>
+            <li>Duration: 3 Days</li>
+            <li>Mode: Online</li>
+            <li>Fees: ₹1499</li>
+          </ul>
+          <button class="btn btn-primary w-100 mb-2" onclick="openDetails('chemdraw')">View More Info</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- DWSIM -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/dwsim.png" class="card-img-top" alt="DWSIM">
+        <div class="card-body">
+          <h4>DWSIM Workshop</h4>
+          <p>Process simulation & chemical engineering applications.</p>
+          <ul>
+            <li>Duration: 1 Week</li>
+            <li>Mode: Online</li>
+            <li>Fees: ₹2999</li>
+          </ul>
+          <button class="btn btn-primary w-100 mb-2" onclick="openDetails('dwsim')">View More Info</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ================= POPUPS ================= -->
-<div id="enquirePopup" class="popup-overlay">
-  <div class="popup-box">
-    <h2 class="neon-text">Enquiry Form</h2>
-    <input id="enqName" class="form-control mb-2" placeholder="Full Name">
-    <input id="enqMobile" class="form-control mb-2" placeholder="Mobile Number">
-    <select id="enqWorkshop" class="form-control mb-3">
-      <option>XPS Data Analysis</option>
-      <option>Electrochemical Data Analysis</option>
-      <option>OriginPro</option>
-    </select>
-    <button class="btn btn-neon w-100 mb-2" onclick="submitEnquiry()">Submit</button>
-    <button class="btn btn-danger w-100" onclick="closePopup('enquirePopup')">Back</button>
-  </div>
+<div id="enquirePopup">
+  <h2>Enquiry Form</h2>
+  <input id="enqName" placeholder="Full Name">
+  <input id="enqMobile" placeholder="Mobile Number">
+  <select id="enqWorkshop">
+    <option>XPS Data Analysis</option>
+    <option>Electrochemical Data Analysis</option>
+    <option>OriginPro</option>
+    <option>XRD Analysis</option>
+    <option>ChemDraw</option>
+    <option>DWSIM</option>
+  </select>
+  <button onclick="submitEnquiry()">Submit</button>
+  <button onclick="closePopup('enquirePopup')">Back</button>
 </div>
 
-<div id="registerPopup" class="popup-overlay">
-  <div class="popup-box">
-    <h2 class="neon-text">Register & Pay</h2>
-    <input id="regName" class="form-control mb-2" placeholder="Full Name">
-    <input id="regEmail" class="form-control mb-2" placeholder="Email">
-    <input id="regMobile" class="form-control mb-2" placeholder="Mobile">
-    <select id="regWorkshop" class="form-control mb-2">
-      <option>XPS Data Analysis</option>
-      <option>Electrochemical</option>
-      <option>OriginPro</option>
-    </select>
-    <input id="regUTR" class="form-control mb-3" placeholder="UTR / Transaction ID">
-    <button class="btn btn-success w-100 mb-2" onclick="submitRegistration()">Submit</button>
-    <button class="btn btn-danger w-100" onclick="closePopup('registerPopup')">Cancel</button>
-  </div>
+<div id="registerPopup">
+  <h2>Register & Pay</h2>
+  <input id="regName" placeholder="Full Name">
+  <input id="regEmail" placeholder="Email">
+  <input id="regMobile" placeholder="Mobile">
+  <select id="regWorkshop">
+    <option>XPS Data Analysis</option>
+    <option>Electrochemical</option>
+    <option>OriginPro</option>
+    <option>XRD Analysis</option>
+    <option>ChemDraw</option>
+    <option>DWSIM</option>
+  </select>
+  <input id="regUTR" placeholder="UTR / Transaction ID">
+  <button onclick="submitRegistration()">Submit</button>
+  <button onclick="closePopup('registerPopup')">Cancel</button>
 </div>
 
 <!-- ================= WORKSHOP DETAILS ================= -->
-<div id="workshopInfo" class="popup-overlay">
-  <div class="popup-box">
-    <h3 id="workshopTitle" class="neon-text"></h3>
-    <img id="workshopImg" class="popup-img">
-    <div id="workshopDesc"></div>
-
-    <a id="popupWhatsappBtn" target="_blank" class="btn btn-success w-100 mt-3">
-      📲 Enquire on WhatsApp
-    </a>
-
-    <div class="d-flex gap-2 mt-3">
-      <a id="syllabusBtn" class="btn btn-outline-light" download>Download Syllabus</a>
-      <button class="btn btn-neon flex-fill" onclick="openPopup('enquirePopup')">Enquire</button>
-      <button class="btn btn-success flex-fill" onclick="openPopup('registerPopup')">Register</button>
-    </div>
-
-    <button class="btn btn-danger w-100 mt-3" onclick="closeDetails()">Close</button>
-  </div>
+<div id="workshopInfo">
+  <h3 id="workshopTitle"></h3>
+  <img id="workshopImg">
+  <div id="workshopDesc"></div>
+  <a id="popupWhatsappBtn" target="_blank">Enquire on WhatsApp</a>
+  <button onclick="openPopup('enquirePopup')">Enquire</button>
+  <button onclick="openPopup('registerPopup')">Register</button>
+  <button onclick="closeDetails()">Close</button>
 </div>
 
 <!-- ================= FOOTER ================= -->
-<footer class="text-center py-4">
+<footer>
   <p>© 2025 Nova Academy. All Rights Reserved.</p>
 </footer>
 
 <!-- Floating WhatsApp -->
-<a id="whatsappLink" href="https://wa.me/919598183089" target="_blank" class="whatsapp-float">
-  <img src="images/whatsapp.png" width="55">
+<a id="whatsappLink" href="https://wa.me/919598183089" target="_blank">
+  WhatsApp
 </a>
-
-<!-- ================= SCRIPTS ================= -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
 
 </body>
 </html>
