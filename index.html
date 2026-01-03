@@ -8,45 +8,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top py-2">
-  <div class="container-fluid px-lg-5">
-    <a class="navbar-brand fw-bold neon-text fs-3" href="#">NOVA ACADEMY</a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand fw-bold neon-text fs-3" href="#">NOVA ACADEMY</a>
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto fs-6 d-flex align-items-center">
-        <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown">Workshops</a>
-          <ul class="dropdown-menu dropdown-menu-dark shadow-lg">
-            <li><a class="dropdown-item" href="#workshops">All Workshops</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('xps')">XPS Data Analysis</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('electro')">Electrochemical</a></li>
-            <li><a class="dropdown-item" href="#" onclick="openDetails('origin')">OriginPro Training</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link px-3" href="#training">Trainers</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
-        <li class="nav-item ms-lg-3">
-          <a class="btn btn-neon rounded-pill px-4" href="#contact">
-            <i class="bi bi-chat-dots me-1"></i> Enquire Now
-          </a>
-        </li>
-      </ul>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto fs-6 d-flex align-items-center">
+          <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown">Workshops</a>
+            <ul class="dropdown-menu dropdown-menu-dark shadow-lg border-primary">
+              <li><a class="dropdown-item" href="#workshops">All Workshops</a></li>
+              <li><hr class="dropdown-divider border-secondary"></li>
+              <li><a class="dropdown-item" href="javascript:void(0)" onclick="openDetails('xps')">XPS Data Analysis</a></li>
+              <li><a class="dropdown-item" href="javascript:void(0)" onclick="openDetails('electro')">Electrochemical</a></li>
+              <li><a class="dropdown-item" href="javascript:void(0)" onclick="openDetails('origin')">OriginPro Training</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav-item"><a class="nav-link px-3" href="#training">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-neon rounded-pill px-4 shadow-sm" href="#contact">
+              <i class="bi bi-chat-dots me-1"></i> Enquire Now
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <header id="home" class="hero d-flex align-items-center justify-content-center">
     <div class="container text-center">
+      
       <div class="animate-fade-up">
         <h1 class="display-2 fw-bold neon-text mb-3">Nova Academy</h1>
         <p class="lead fs-4 mb-5 opacity-75">Empowering Students with AI, Python, and Future Technologies</p>
@@ -55,11 +60,13 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="search-box-wrapper shadow-lg p-2 rounded-pill bg-dark border border-secondary d-flex align-items-center">
-            <i class="bi bi-search ms-3 text-secondary fs-5"></i>
+            <i class="bi bi-search ms-3 text-primary fs-5"></i>
             <input type="text" id="searchInput" class="form-control border-0 bg-transparent text-white shadow-none ps-3" placeholder="Search workshops, topics, or trainers...">
             <button class="btn btn-neon rounded-pill px-4 py-2 me-1" id="searchBtn">Search</button>
           </div>
-          <div id="search-feedback" class="small mt-2 text-secondary">Start typing to see magic (Real-time search enabled)</div>
+          <div id="search-feedback" class="small mt-3 text-info opacity-75">
+            <i class="bi bi-lightning-charge-fill me-1"></i> Start typing to see results instantly
+          </div>
         </div>
       </div>
 
@@ -67,15 +74,19 @@
         <a href="#workshops" class="btn btn-outline-light btn-lg px-5 rounded-pill me-2">Explore All</a>
         <a href="#contact" class="btn btn-neon btn-lg px-5 rounded-pill">Get Started</a>
       </div>
+      
     </div>
   </header>
   <!-- =================== WORKSHOPS SECTION (Option B banners) =================== -->
   <section class="container py-5" id="workshops">
-  <h2 class="text-center neon-text display-5 mb-5">Upcoming Online Workshops</h2>
+  <div class="text-center mb-5">
+    <h2 class="neon-text display-5 fw-bold">Upcoming Online Workshops</h2>
+    <p class="opacity-75">Advanced Research Tools & Technical Skills Training</p>
+  </div>
 
   <div class="row g-4" id="workshopGrid">
     
-    <div class="col-md-4 workshop-card-item">
+    <div class="col-md-4 workshop-card-item" id="workshop-xps">
       <div class="card h-100 border-0 shadow-sm glass-card">
         <div class="position-relative overflow-hidden">
           <img class="card-img-top transition-img" src="w1.png" alt="XPS Workshop" loading="lazy">
@@ -84,11 +95,13 @@
         <div class="card-body d-flex flex-column">
           <h4 class="fw-bold mb-2">XPS Data Analysis</h4>
           <p class="text-light-50 small mb-3">Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets.</p>
+          
           <div class="workshop-meta mb-3 mt-auto">
             <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
             <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Live Online</div>
-            <div class="fs-5 fw-bold text-success mt-2">₹ 2,999</div>
+            <div class="fs-5 fw-bold text-info mt-2">₹ 2,999</div>
           </div>
+
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xps')">View Details</button>
           <div class="d-flex gap-2">
             <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
@@ -97,8 +110,7 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 workshop-card-item">
+    <div class="col-md-4 workshop-card-item" id="workshop-electro">
       <div class="card h-100 border-0 shadow-sm glass-card">
         <div class="position-relative overflow-hidden">
           <img class="card-img-top transition-img" src="images/w2.png" alt="Electrochemical" loading="lazy">
@@ -106,11 +118,13 @@
         <div class="card-body d-flex flex-column">
           <h4 class="fw-bold mb-2">Electrochemical Analysis</h4>
           <p class="text-light-50 small mb-3">EIS, CV, LSV, GCD & Nyquist plots for batteries and catalysis research.</p>
+          
           <div class="workshop-meta mb-3 mt-auto">
             <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1-2 Weeks</div>
             <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online</div>
-            <div class="fs-5 fw-bold text-success mt-2">Live Sessions</div>
+            <div class="fs-5 fw-bold text-info mt-2">Live Sessions</div>
           </div>
+
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('electro')">View Details</button>
           <div class="d-flex gap-2">
             <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
@@ -119,8 +133,7 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 workshop-card-item">
+    <div class="col-md-4 workshop-card-item" id="workshop-origin">
       <div class="card h-100 border-0 shadow-sm glass-card">
         <div class="position-relative overflow-hidden">
           <img class="card-img-top transition-img" src="images/w3.png" alt="OriginPro" loading="lazy">
@@ -128,32 +141,35 @@
         </div>
         <div class="card-body d-flex flex-column">
           <h4 class="fw-bold mb-2">OriginPro Graphing</h4>
-          <p class="text-light-50 small mb-3">Peak analysis, curve fitting & publication-ready high-quality graphs for researchers.</p>
+          <p class="text-light-50 small mb-3">Peak analysis, curve fitting & publication-ready high-quality graphs.</p>
+          
           <div class="workshop-meta mb-3 mt-auto">
             <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
             <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Live Workshop</div>
           </div>
+
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('origin')">View Details</button>
           <div class="d-flex gap-2">
-            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
             <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register</button>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 workshop-card-item">
+    <div class="col-md-4 workshop-card-item" id="workshop-xrd">
       <div class="card h-100 border-0 shadow-sm glass-card">
         <div class="position-relative overflow-hidden">
           <img class="card-img-top transition-img" src="images/w4.png" alt="XRD Workshop" loading="lazy">
         </div>
         <div class="card-body d-flex flex-column">
           <h4 class="fw-bold mb-2">XRD Data Analysis</h4>
-          <p class="text-light-50 small mb-3">Rietveld refinement, peak indexing & crystal structure analysis using expert tools.</p>
+          <p class="text-light-50 small mb-3">Rietveld refinement, peak indexing & crystal structure analysis.</p>
+          
           <div class="workshop-meta mb-3 mt-auto">
             <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
             <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online Live</div>
           </div>
+
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xrd')">View Details</button>
           <div class="d-flex gap-2">
             <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
@@ -162,19 +178,20 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 workshop-card-item">
+    <div class="col-md-4 workshop-card-item" id="workshop-chemdraw">
       <div class="card h-100 border-0 shadow-sm glass-card">
         <div class="position-relative overflow-hidden">
           <img class="card-img-top transition-img" src="images/w5.png" alt="ChemDraw" loading="lazy">
         </div>
         <div class="card-body d-flex flex-column">
           <h4 class="fw-bold mb-2">ChemDraw Hands-on</h4>
-          <p class="text-light-50 small mb-3">Draw chemical structures, complex reactions, stereochemistry & HD export for papers.</p>
+          <p class="text-light-50 small mb-3">Draw chemical structures, complex reactions & HD export for papers.</p>
+          
           <div class="workshop-meta mb-3 mt-auto">
             <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
             <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online Live</div>
           </div>
+
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('chemdraw')">View Details</button>
           <div class="d-flex gap-2">
             <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
@@ -183,8 +200,7 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 workshop-card-item">
+    <div class="col-md-4 workshop-card-item" id="workshop-dwsim">
       <div class="card h-100 border-0 shadow-sm glass-card">
         <div class="position-relative overflow-hidden">
           <img class="card-img-top transition-img" src="images/w6.png" alt="DWSIM Simulation" loading="lazy">
@@ -192,11 +208,13 @@
         </div>
         <div class="card-body d-flex flex-column">
           <h4 class="fw-bold mb-2">DWSIM Chemical Simulation</h4>
-          <p class="text-light-50 small mb-3">Process simulation: reactors, distillation columns, heat exchangers & flowsheets.</p>
+          <p class="text-light-50 small mb-3">Process simulation: reactors, distillation & flowsheets.</p>
+          
           <div class="workshop-meta mb-3 mt-auto">
             <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
             <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online Live</div>
           </div>
+
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('dwsim')">View Details</button>
           <div class="d-flex gap-2">
             <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
@@ -205,10 +223,8 @@
         </div>
       </div>
     </div>
-
-  </div>
+    </div>
 </section>
-  <!-- PAST WORKSHOPS & TRAINING (kept same) -->
   <section class="container py-5" id="past-workshops">
   <div class="text-center mb-5">
     <h2 class="neon-text display-5 fw-bold">Our Legacy</h2>
@@ -216,7 +232,8 @@
   </div>
 
   <div class="accordion border-0" id="pastWorkshopAccordion">
-    <div class="accordion-item bg-transparent border-0 mb-4">
+    
+    <div class="accordion-item bg-transparent border-0 mb-4" id="legacy-2024">
       <h2 class="accordion-header">
         <button class="accordion-button bg-dark text-white rounded-3 shadow-sm border border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#year2024">
           <i class="bi bi-calendar3 me-3 text-primary"></i> Year 2024 - Excellence in AI & Data
@@ -224,163 +241,177 @@
       </h2>
       <div id="year2024" class="accordion-collapse collapse show" data-bs-parent="#pastWorkshopAccordion">
         <div class="accordion-body px-0 pt-4">
-          <div class="row g-4">
-             <div class="col-md-4">
-                <div class="card glass-card p-4 h-100 position-relative">
-                   <div class="badge bg-primary position-absolute top-0 end-0 m-3">Completed</div>
-                   <h5 class="fw-bold text-info mt-2">AI Bootcamp 2024</h5>
-                   <p class="small opacity-75">Hands-on training on AI fundamentals & Python automation.</p>
-                   <hr class="border-secondary opacity-25">
-                   <div class="d-flex justify-content-between align-items-center">
-                     <span class="small opacity-50"><i class="bi bi-clock me-1"></i> Dec 2024</span>
-                     <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Recap</button>
-                   </div>
+          <div class="row g-4" id="legacyGrid2024">
+            
+            <div class="col-md-4">
+              <div class="card glass-card p-4 h-100 position-relative">
+                <div class="badge bg-primary position-absolute top-0 end-0 m-3">Completed</div>
+                <h5 class="fw-bold text-info mt-2">AI Bootcamp 2024</h5>
+                <p class="small opacity-75">Hands-on training on AI fundamentals & Python automation.</p>
+                <hr class="border-secondary opacity-25">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="small opacity-50"><i class="bi bi-clock me-1"></i> Dec 2024</span>
+                  <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Recap</button>
                 </div>
-             </div>
-             </div>
+              </div>
+            </div>
+            </div>
         </div>
+      </div>
+    </div>
+    </div>
+</section>
+<section id="training" class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="neon-text display-5 fw-bold">Meet Our Expert Trainers</h2>
+      <p class="opacity-75">Industry leaders with years of hands-on experience in research and AI.</p>
+    </div>
+
+    <div class="row g-4" id="trainerGrid">
+      
+      <div class="col-md-4 trainer-card-item">
+        <div class="card glass-card h-100 border-0 text-center p-4">
+          <div class="trainer-img-wrapper mx-auto mb-3">
+            <img src="https://i.imgur.com/4ZQZ4Zy.png" class="trainer-img rounded-circle border border-primary p-1 shadow-lg" alt="Rahul Verma" style="width: 130px; height: 130px; object-fit: cover;">
+          </div>
+          <h4 class="fw-bold neon-text">Mr. Rahul Verma</h4>
+          <p class="text-info small fw-bold mb-2">AI & Python Specialist</p>
+          <p class="opacity-75 small mb-4">8+ years experience in Machine Learning and predictive modeling for research.</p>
+          <div class="mt-auto">
+            <button class="btn btn-outline-light rounded-pill w-100 shadow-sm" onclick="openTrainerProfile('rahul')">View Full Profile</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 trainer-card-item">
+        <div class="card glass-card h-100 border-0 text-center p-4">
+          <div class="trainer-img-wrapper mx-auto mb-3">
+            <img src="https://i.imgur.com/y3WqkGx.png" class="trainer-img rounded-circle border border-primary p-1 shadow-lg" alt="Priya Sharma" style="width: 130px; height: 130px; object-fit: cover;">
+          </div>
+          <h4 class="fw-bold neon-text">Ms. Priya Sharma</h4>
+          <p class="text-info small fw-bold mb-2">Data Scientist</p>
+          <p class="opacity-75 small mb-4">Conducted 50+ workshops on AI Automation and Python-based data analysis.</p>
+          <div class="mt-auto">
+            <button class="btn btn-outline-light rounded-pill w-100 shadow-sm" onclick="openTrainerProfile('priya')">View Full Profile</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 trainer-card-item">
+        <div class="card glass-card h-100 border-0 text-center p-4">
+          <div class="trainer-img-wrapper mx-auto mb-3">
+            <img src="https://i.imgur.com/3G3Z0qP.png" class="trainer-img rounded-circle border border-primary p-1 shadow-lg" alt="Dr. Karan Malhotra" style="width: 130px; height: 130px; object-fit: cover;">
+          </div>
+          <h4 class="fw-bold neon-text">Dr. Karan Malhotra</h4>
+          <p class="text-info small fw-bold mb-2">Simulation Expert</p>
+          <p class="opacity-75 small mb-4">PhD in Mathematical Modeling, specializing in Predictive AI Systems and DWSIM.</p>
+          <div class="mt-auto">
+            <button class="btn btn-outline-light rounded-pill w-100 shadow-sm" onclick="openTrainerProfile('karan')">View Full Profile</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <section class="container py-5" id="gallery">
+  <div class="text-center mb-5">
+    <h2 class="neon-text display-5 fw-bold">Life at Nova Academy</h2>
+    <p class="opacity-75">Glimpses of our interactive sessions and events.</p>
+  </div>
+  
+  <div class="row g-4">
+    <div class="col-md-4 col-sm-6">
+      <div class="gallery-item overflow-hidden rounded-4 shadow-lg border border-secondary border-opacity-25">
+        <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=600&q=60" 
+             class="img-fluid transition-img w-100" alt="Research" loading="lazy">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="gallery-item overflow-hidden rounded-4 shadow-lg border border-secondary border-opacity-25">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=60" 
+             class="img-fluid transition-img w-100" alt="Coding" loading="lazy">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="gallery-item overflow-hidden rounded-4 shadow-lg border border-secondary border-opacity-25">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=60" 
+             class="img-fluid transition-img w-100" alt="Collaboration" loading="lazy">
       </div>
     </div>
   </div>
 </section>
-  <!-- TRAINERS SECTION (unchanged) -->
-  <section id="training" class="py-5 bg-dark text-white">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="neon-text display-5 fw-bold">Meet Our Expert Trainers</h2>
-        <p class="opacity-75">Industry leaders with years of hands-on experience in research and AI.</p>
-      </div>
-
-      <div class="row g-4" id="trainerGrid">
-        
-        <div class="col-md-4 trainer-card-item">
-          <div class="card glass-card h-100 border-0 text-center p-4">
-            <div class="trainer-img-wrapper mx-auto mb-3">
-              <img src="https://i.imgur.com/4ZQZ4Zy.png" class="trainer-img rounded-circle border border-primary p-1 shadow-lg" alt="Rahul Verma" style="width: 130px; height: 130px; object-fit: cover;">
-            </div>
-            <h4 class="fw-bold neon-text-blue">Mr. Rahul Verma</h4>
-            <p class="text-info small fw-bold mb-2">AI & Python Specialist</p>
-            <p class="opacity-75 small mb-4">8+ years experience in Machine Learning and predictive modeling for research.</p>
-            <div class="mt-auto">
-              <button class="btn btn-outline-light rounded-pill w-100">View Full Profile</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 trainer-card-item">
-          <div class="card glass-card h-100 border-0 text-center p-4">
-            <div class="trainer-img-wrapper mx-auto mb-3">
-              <img src="https://i.imgur.com/y3WqkGx.png" class="trainer-img rounded-circle border border-primary p-1 shadow-lg" alt="Priya Sharma" style="width: 130px; height: 130px; object-fit: cover;">
-            </div>
-            <h4 class="fw-bold neon-text-blue">Ms. Priya Sharma</h4>
-            <p class="text-info small fw-bold mb-2">Data Scientist</p>
-            <p class="opacity-75 small mb-4">Conducted 50+ workshops on AI Automation and Python-based data analysis.</p>
-            <div class="mt-auto">
-              <button class="btn btn-outline-light rounded-pill w-100">View Full Profile</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 trainer-card-item">
-          <div class="card glass-card h-100 border-0 text-center p-4">
-            <div class="trainer-img-wrapper mx-auto mb-3">
-              <img src="https://i.imgur.com/3G3Z0qP.png" class="trainer-img rounded-circle border border-primary p-1 shadow-lg" alt="Dr. Karan Malhotra" style="width: 130px; height: 130px; object-fit: cover;">
-            </div>
-            <h4 class="fw-bold neon-text-blue">Dr. Karan Malhotra</h4>
-            <p class="text-info small fw-bold mb-2">Simulation Expert</p>
-            <p class="opacity-75 small mb-4">PhD in Mathematical Modeling, specializing in Predictive AI Systems and DWSIM.</p>
-            <div class="mt-auto">
-              <button class="btn btn-outline-light rounded-pill w-100">View Full Profile</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY, ABOUT, CONTACT, etc. (kept same as original) -->
-  <section class="container py-5" id="gallery">
-    <div class="text-center mb-5">
-      <h2 class="neon-text display-5 fw-bold">Life at Nova Academy</h2>
-      <p class="opacity-75">Glimpses of our interactive sessions and events.</p>
-    </div>
-    <div class="row g-3">
-      <div class="col-md-4 col-sm-6">
-        <div class="gallery-item overflow-hidden rounded-3 shadow">
-          <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=600&q=60" class="img-fluid transition-img" alt="Research">
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="gallery-item overflow-hidden rounded-3 shadow">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=60" class="img-fluid transition-img" alt="Coding">
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-12">
-        <div class="gallery-item overflow-hidden rounded-3 shadow">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=60" class="img-fluid transition-img" alt="Collaboration">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="pt-5 pb-3 bg-dark border-top border-secondary mt-5">
-    <div class="container">
-      <div class="row g-4 text-center text-md-start">
-        <div class="col-md-4">
-          <h3 class="neon-text fw-bold mb-3">NOVA ACADEMY</h3>
-          <p class="small opacity-75">Leading the way in AI, Python, and Research Data Analysis training. Empowering the next generation of researchers and engineers.</p>
-          <div class="fs-4 mt-3">
-            <a href="#" class="text-white me-3 hover-neon"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-white me-3 hover-neon"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-white me-3 hover-neon"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="text-white hover-neon"><i class="bi bi-youtube"></i></a>
-          </div>
-        </div>
-        
-        <div class="col-md-4 px-md-5">
-          <h5 class="fw-bold mb-3">Quick Links</h5>
-          <ul class="list-unstyled opacity-75 small">
-            <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Home</a></li>
-            <li class="mb-2"><a href="#workshops" class="text-white text-decoration-none">Workshops</a></li>
-            <li class="mb-2"><a href="#training" class="text-white text-decoration-none">Our Trainers</a></li>
-            <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="col-md-4" id="contact">
-          <h5 class="fw-bold mb-3">Get In Touch</h5>
-          <div class="small opacity-75">
-            <p class="mb-2"><i class="bi bi-envelope-fill me-2 text-primary"></i> info@novaacademy.com</p>
-            <p class="mb-2"><i class="bi bi-telephone-fill me-2 text-primary"></i> +91 9598183089</p>
-            <p class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-primary"></i> Online Learning Platform</p>
-          </div>
+<footer class="pt-5 pb-3 bg-dark border-top border-secondary mt-5" id="contact">
+  <div class="container">
+    <div class="row g-4 text-center text-md-start">
+      
+      <div class="col-md-4">
+        <h3 class="neon-text fw-bold mb-3">NOVA ACADEMY</h3>
+        <p class="small opacity-75 pe-md-4">
+          Leading the way in AI, Python, and Research Data Analysis training. 
+          Empowering the next generation of researchers and engineers.
+        </p>
+        <div class="fs-4 mt-4 social-links">
+          <a href="#" class="text-white me-3 hover-neon transition-img"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3 hover-neon transition-img"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white me-3 hover-neon transition-img"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white hover-neon transition-img"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
       
-      <hr class="border-secondary my-4">
-      
-      <div class="row align-items-center">
-        <div class="col-md-6 text-center text-md-start">
-          <p class="small mb-0 opacity-50">© 2026 Nova Academy. All Rights Reserved.</p>
-        </div>
-        <div class="col-md-6 text-center text-md-end">
-          <p class="small mb-0 opacity-50">Designed with <i class="bi bi-heart-fill text-danger"></i> for Future Leaders</p>
+      <div class="col-md-4 px-md-5">
+        <h5 class="fw-bold mb-3 text-info">Quick Links</h5>
+        <ul class="list-unstyled opacity-75 small footer-links">
+          <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Home</a></li>
+          <li class="mb-2"><a href="#workshops" class="text-white text-decoration-none">Workshops</a></li>
+          <li class="mb-2"><a href="#training" class="text-white text-decoration-none">Our Trainers</a></li>
+          <li class="mb-2"><a href="#past-workshops" class="text-white text-decoration-none">Past Events</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h5 class="fw-bold mb-3 text-info">Get In Touch</h5>
+        <div class="small opacity-75 contact-info">
+          <p class="mb-2">
+            <i class="bi bi-envelope-at-fill me-2 text-primary"></i> 
+            <a href="mailto:info@novaacademy.com" class="text-white text-decoration-none">info@novaacademy.com</a>
+          </p>
+          <p class="mb-2">
+            <i class="bi bi-whatsapp me-2 text-primary"></i> 
+            <a href="https://wa.me/919598183089" class="text-white text-decoration-none">+91 9598183089</a>
+          </p>
+          <p class="mb-2">
+            <i class="bi bi-geo-alt-fill me-2 text-primary"></i> 
+            Online Worldwide Platform
+          </p>
         </div>
       </div>
     </div>
-  </footer>
-  <div id="enquirePopup" class="popup-overlay">
+    
+    <hr class="border-secondary opacity-25 my-4">
+    
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="small mb-0 opacity-50">© 2026 Nova Academy. All Rights Reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <p class="small mb-0 opacity-50">Designed with <i class="bi bi-lightning-charge-fill text-info"></i> for Future Leaders</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="enquirePopup" class="popup-overlay">
     <div class="popup-box glass-card border-neon shadow-lg" style="max-width:500px;">
       <div class="text-center mb-4">
-        <i class="bi bi-chat-left-dots neon-text fs-1"></i>
+        <i class="bi bi-chat-left-dots-fill neon-text fs-1"></i>
         <h2 class="neon-text mt-2">Enquiry Form</h2>
         <p class="small text-secondary">Fill the details, and our team will contact you soon.</p>
       </div>
       
       <div class="mb-3">
         <label class="form-label small text-uppercase fw-bold opacity-75">Full Name</label>
-        <div class="input-group bg-dark rounded border border-secondary">
+        <div class="input-group bg-dark rounded border border-secondary transition-img">
           <span class="input-group-text bg-transparent border-0 text-primary"><i class="bi bi-person"></i></span>
           <input type="text" class="form-control bg-transparent border-0 text-white shadow-none" placeholder="Enter your name">
         </div>
@@ -388,7 +419,7 @@
 
       <div class="mb-3">
         <label class="form-label small text-uppercase fw-bold opacity-75">Mobile Number</label>
-        <div class="input-group bg-dark rounded border border-secondary">
+        <div class="input-group bg-dark rounded border border-secondary transition-img">
           <span class="input-group-text bg-transparent border-0 text-primary"><i class="bi bi-phone"></i></span>
           <input type="text" class="form-control bg-transparent border-0 text-white shadow-none" placeholder="+91 XXXXX XXXXX">
         </div>
@@ -396,17 +427,18 @@
 
       <div class="mb-4">
         <label class="form-label small text-uppercase fw-bold opacity-75">Select Workshop</label>
-        <div class="input-group bg-dark rounded border border-secondary">
+        <div class="input-group bg-dark rounded border border-secondary transition-img">
           <span class="input-group-text bg-transparent border-0 text-primary"><i class="bi bi-journal-bookmark"></i></span>
           <select class="form-select bg-transparent border-0 text-white shadow-none">
-            <option class="bg-dark">AI in Mathematical Modeling</option>
-            <option class="bg-dark">Python for Data Science</option>
-            <option class="bg-dark">XPS Data Analysis</option>
+            <option class="bg-dark" value="ai">AI in Mathematical Modeling</option>
+            <option class="bg-dark" value="python">Python for Data Science</option>
+            <option class="bg-dark" value="xps">XPS Data Analysis</option>
+            <option class="bg-dark" value="origin">OriginPro Graphing</option>
           </select>
         </div>
       </div>
 
-      <button class="btn btn-neon w-100 py-2 rounded-pill mb-3 fw-bold">Submit Enquiry</button>
+      <button class="btn btn-neon w-100 py-2 rounded-pill mb-3 fw-bold shadow">Submit Enquiry</button>
       <button class="btn btn-outline-danger w-100 rounded-pill border-0" onclick="closePopup('enquirePopup')">Close</button>
     </div>
   </div>
@@ -414,158 +446,152 @@
   <div id="registerPopup" class="popup-overlay">
     <div class="popup-box glass-card border-neon shadow-lg" style="max-width:600px;">
       <div class="text-center mb-4">
-        <span class="badge bg-success rounded-pill mb-2 px-3">Secure Enrollment</span>
+        <span class="badge bg-success rounded-pill mb-2 px-3 shadow-sm">Secure Enrollment</span>
         <h2 class="neon-text">Register & Pay</h2>
       </div>
 
-      <div class="row g-3">
-        <div class="col-md-6">
-          <label class="form-label small fw-bold">Full Name</label>
-          <input type="text" class="form-control bg-dark border-secondary text-white" placeholder="Name">
+      <div class="row g-3 mb-4">
+        <div class="col-md-6 text-start">
+          <label class="form-label small fw-bold opacity-75">Full Name</label>
+          <input type="text" class="form-control bg-dark border-secondary text-white rounded-3 shadow-none" placeholder="Name">
         </div>
-        <div class="col-md-6">
-          <label class="form-label small fw-bold">Mobile</label>
-          <input type="text" class="form-control bg-dark border-secondary text-white" placeholder="Number">
+        <div class="col-md-6 text-start">
+          <label class="form-label small fw-bold opacity-75">Mobile</label>
+          <input type="text" class="form-control bg-dark border-secondary text-white rounded-3 shadow-none" placeholder="Number">
         </div>
-      </div>
-
-      <div class="mt-3 mb-4">
-        <label class="form-label small fw-bold">Email Address</label>
-        <input type="email" class="form-control bg-dark border-secondary text-white" placeholder="Email">
-      </div>
-
-      <div class="payment-card rounded-4 p-3 mb-4 text-center border border-primary bg-dark-blue">
-        <h6 class="text-info mb-3"><i class="bi bi-qr-code-scan me-2"></i>Scan to Pay using UPI</h6>
-        
-        <div class="qr-container bg-white p-2 d-inline-block rounded-3 mb-3">
-          <img src="images/qr.png" alt="UPI QR" style="width:180px; height:180px;">
-        </div>
-
-        <div class="small opacity-75">
-          <p class="mb-1"><strong>UPI ID:</strong> novaacademy@upi</p>
-          <p class="mb-0 text-warning">Note: Please enter the UTR ID after payment.</p>
+        <div class="col-12 text-start">
+          <label class="form-label small fw-bold opacity-75">Email Address</label>
+          <input type="email" class="form-control bg-dark border-secondary text-white rounded-3 shadow-none" placeholder="Email Address">
         </div>
       </div>
 
-      <div class="mb-4">
-        <label class="form-label small fw-bold">UTR / Transaction ID</label>
-        <input type="text" class="form-control bg-dark border-primary text-white text-center fs-5" placeholder="Enter 12-digit UTR">
+      <div class="payment-area rounded-4 p-4 mb-4 border border-primary position-relative overflow-hidden" style="background: rgba(13, 110, 253, 0.05);">
+        <div class="position-absolute top-0 end-0 p-3 opacity-25">
+          <i class="bi bi-shield-lock-fill fs-1 text-primary"></i>
+        </div>
+
+        <h5 class="neon-text mb-4 text-center"><i class="bi bi-wallet2 me-2"></i>Secure UPI Payment</h5>
+
+        <div class="row align-items-center">
+          <div class="col-md-5 text-center mb-3 mb-md-0">
+            <div class="qr-wrapper bg-white p-2 d-inline-block rounded-3 shadow-lg border border-3 border-primary transition-img">
+              <img src="images/qr.png" alt="UPI QR Code" class="img-fluid" style="max-width:160px;">
+            </div>
+            <div class="mt-2 small text-secondary">Scan with any UPI App</div>
+          </div>
+
+          <div class="col-md-7 border-start border-secondary border-opacity-25 ps-md-4 text-start">
+            <div class="payment-details">
+              <div class="mb-2">
+                <label class="small text-uppercase opacity-50 d-block">Account Holder</label>
+                <span class="fw-bold">NOVA ACADEMY</span>
+              </div>
+              <div class="mb-2">
+                <label class="small text-uppercase opacity-50 d-block">UPI ID</label>
+                <span class="fw-bold text-info">novaacademy@upi <i class="bi bi-copy ms-1 cursor-pointer" onclick="alert('UPI ID Copied!')"></i></span>
+              </div>
+              <div class="mb-0">
+                <label class="small text-uppercase opacity-50 d-block">Bank Name</label>
+                <span class="fw-bold">State Bank of India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 p-2 bg-dark rounded border border-warning text-center">
+          <small class="text-warning">
+            <i class="bi bi-exclamation-circle me-1"></i>
+            Payment सफल होने के बाद 12-अंकों का <b>UTR नंबर</b> नीचे दर्ज करें।
+          </small>
+        </div>
       </div>
 
-      <button class="btn btn-success w-100 py-3 rounded-pill fw-bold shadow">
-        <i class="bi bi-shield-check me-2"></i>Submit Registration
+      <div class="mb-4 text-start">
+        <label class="form-label small fw-bold text-uppercase tracking-wider opacity-75">Transaction UTR / Ref. ID</label>
+        <div class="input-group input-group-lg border border-primary rounded-3 overflow-hidden shadow-sm">
+          <span class="input-group-text bg-dark border-0 text-primary"><i class="bi bi-hash"></i></span>
+          <input type="text" class="form-control bg-dark text-white border-0 shadow-none fs-5" placeholder="Enter 12-digit UTR">
+        </div>
+      </div>
+
+      <button class="btn btn-success w-100 py-3 rounded-pill fw-bold fs-5 shadow-lg mb-2">
+        <i class="bi bi-check-circle-fill me-2"></i>Complete Registration
       </button>
-      <button class="btn btn-link text-danger w-100 mt-2 text-decoration-none" onclick="closePopup('registerPopup')">Cancel Payment</button>
+      <button class="btn btn-link text-danger w-100 text-decoration-none small" onclick="closePopup('registerPopup')">
+        Go Back & Edit Details
+      </button>
     </div>
   </div>
 
-    <div class="payment-area rounded-4 p-4 mb-4 border border-primary position-relative overflow-hidden" style="background: rgba(13, 110, 253, 0.05);">
-  <div class="position-absolute top-0 end-0 p-3 opacity-25">
-    <i class="bi bi-shield-lock-fill fs-1 text-primary"></i>
-  </div>
-
-  <h5 class="neon-text mb-4 text-center"><i class="bi bi-wallet2 me-2"></i>Secure Payment Gateway</h5>
-
-  <div class="row align-items-center">
-    <div class="col-md-5 text-center mb-3 mb-md-0">
-      <div class="qr-wrapper bg-white p-2 d-inline-block rounded-3 shadow-lg border border-3 border-primary">
-        <img src="images/qr.png" alt="UPI QR Code" class="img-fluid" style="max-width:180px;">
-      </div>
-      <div class="mt-2 small text-secondary">Scan with any UPI App</div>
-      <div class="mt-2 opacity-75">
-        <small>GPay | PhonePe | Paytm</small>
-      </div>
-    </div>
-
-    <div class="col-md-7 border-start border-secondary ps-md-4">
-      <div class="payment-details">
-        <div class="mb-2">
-          <label class="small text-uppercase opacity-50 d-block">Account Holder</label>
-          <span class="fw-bold">NOVA ACADEMY</span>
-        </div>
-        <div class="mb-2">
-          <label class="small text-uppercase opacity-50 d-block">UPI ID</label>
-          <span class="fw-bold text-info">novaacademy@upi <i class="bi bi-copy ms-1 cursor-pointer" title="Copy ID"></i></span>
-        </div>
-        <div class="mb-0">
-          <label class="small text-uppercase opacity-50 d-block">Bank Name</label>
-          <span class="fw-bold">State Bank of India</span>
+  <div id="workshopInfo" class="popup-overlay">
+    <div class="popup-box glass-card border-neon shadow-lg text-start" style="max-width:700px;">
+      <div id="popupContent">
+        <h2 class="neon-text mb-3">Workshop Details</h2>
+        <div class="placeholder-glow">
+          <p>Loading workshop information...</p>
         </div>
       </div>
+      <button class="btn btn-outline-light w-100 rounded-pill mt-4" onclick="closePopup('workshopInfo')">Back to Workshops</button>
     </div>
   </div>
 
-  <div class="mt-4 p-2 bg-dark rounded border border-warning text-center">
-    <small class="text-warning">
-      <i class="bi bi-exclamation-circle me-1"></i>
-      Payment सफल होने के बाद 12-अंकों का <b>UTR नंबर</b> नीचे दर्ज करें।
-    </small>
-  </div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 
-<div class="mb-4">
-  <label class="form-label small fw-bold text-uppercase tracking-wider">Transaction UTR / Ref. ID</label>
-  <div class="input-group input-group-lg border border-primary rounded-3 overflow-hidden">
-    <span class="input-group-text bg-dark border-0 text-primary"><i class="bi bi-hash"></i></span>
-    <input type="text" class="form-control bg-dark text-white border-0 shadow-none fs-5" placeholder="Enter 12-digit UTR Number">
-  </div>
-</div>
-
-<button class="btn btn-success w-100 py-3 rounded-pill fw-bold fs-5 shadow-lg mb-2">
-  <i class="bi bi-check-circle-fill me-2"></i>Complete Registration
-</button>
-<button class="btn btn-link text-danger w-100 text-decoration-none small" onclick="closePopup('registerPopup')">
-  Go Back & Edit Details
-</button>
-<!-- Workshop Info popup (full-screen, scrollable) -->
-  <div class="popup-overlay" id="workshopInfo">
+</body>
+</html>
+<div class="popup-overlay" id="workshopInfo">
   <div class="popup-box glass-card border-neon shadow-lg" style="max-width: 900px; width: 95%;">
     
     <div class="row g-4">
       <div class="col-md-5">
         <div class="position-relative">
-          <img id="workshopImg" class="img-fluid rounded-4 border border-secondary shadow" src="XPSIMAGE.png" alt="Workshop">
-          <div class="mt-3 p-3 bg-dark-blue rounded-4 border border-primary border-opacity-25">
-            <h6 class="text-info mb-2 small fw-bold text-uppercase"><i class="bi bi-star-fill me-2"></i>Key Highlights</h6>
+          <img id="workshopImg" class="img-fluid rounded-4 border border-secondary shadow transition-img" src="XPSIMAGE.png" alt="Workshop">
+          
+          <div class="mt-3 p-3 bg-dark-blue rounded-4 border border-primary border-opacity-25 shadow-sm">
+            <h6 class="text-info mb-3 small fw-bold text-uppercase">
+              <i class="bi bi-star-fill me-2"></i>Key Highlights
+            </h6>
             <ul class="list-unstyled small opacity-75 mb-0">
-              <li class="mb-1"><i class="bi bi-check2-circle me-2 text-success"></i> Hands-on Practice</li>
-              <li class="mb-1"><i class="bi bi-check2-circle me-2 text-success"></i> Certificate of Completion</li>
-              <li><i class="bi bi-check2-circle me-2 text-success"></i> Live Q&A Sessions</li>
+              <li class="mb-2"><i class="bi bi-patch-check-fill me-2 text-primary"></i> Hands-on Practice</li>
+              <li class="mb-2"><i class="bi bi-patch-check-fill me-2 text-primary"></i> Certificate of Completion</li>
+              <li><i class="bi bi-patch-check-fill me-2 text-primary"></i> Live Q&A Sessions</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="col-md-7 d-flex flex-column">
+      <div class="col-md-7 d-flex flex-column text-start">
         <div class="d-flex justify-content-between align-items-start">
-          <h2 id="workshopTitle" class="neon-text mb-0"></h2>
-          <button class="btn-close btn-close-white" onclick="closeDetails()"></button>
+          <h2 id="workshopTitle" class="neon-text mb-0 fw-bold">Workshop Details</h2>
+          <button class="btn-close btn-close-white shadow-none" onclick="closeDetails()"></button>
         </div>
         
-        <hr class="border-secondary">
+        <hr class="border-secondary opacity-25">
         
         <div id="workshopDesc" class="custom-scrollbar pe-2" style="max-height: 300px; overflow-y: auto; white-space: pre-line; font-size: 0.95rem; line-height: 1.6;">
-          </div>
+          Select a workshop to see details...
+        </div>
 
         <div class="mt-auto pt-4">
-          <a id="popupWhatsappBtn" href="#" target="_blank" class="btn btn-outline-success w-100 mb-3 rounded-pill fw-bold">
+          <a id="popupWhatsappBtn" href="https://wa.me/919598183089" target="_blank" class="btn btn-outline-success w-100 mb-3 rounded-pill fw-bold border-2">
             <i class="bi bi-whatsapp me-2"></i> Talk to Expert on WhatsApp
           </a>
           
           <div class="row g-2">
             <div class="col-6">
-              <a id="syllabusBtn" class="btn btn-dark border-secondary w-100 rounded-pill" href="#" download>
-                <i class="bi bi-download me-2"></i> Syllabus
+              <a id="syllabusBtn" class="btn btn-dark border-secondary w-100 rounded-pill transition-img" href="#" download>
+                <i class="bi bi-cloud-arrow-down me-2"></i> Syllabus
               </a>
             </div>
             <div class="col-6">
-              <button class="btn btn-neon w-100 rounded-pill fw-bold" onclick="openPopup('enquirePopup')">
+              <button class="btn btn-neon w-100 rounded-pill fw-bold shadow-sm" onclick="openPopup('enquirePopup')">
                 Enquire Now
               </button>
             </div>
             <div class="col-12">
-              <button class="btn btn-success w-100 py-2 rounded-pill fw-bold shadow mt-1" onclick="openPopup('registerPopup')">
-                <i class="bi bi-lightning-charge-fill me-1"></i> Confirm Registration
+              <button class="btn btn-success w-100 py-3 rounded-pill fw-bold shadow-lg mt-2" onclick="openPopup('registerPopup')">
+                <i class="bi bi-lightning-charge-fill me-1"></i> Confirm Registration & Pay
               </button>
             </div>
           </div>
@@ -576,73 +602,67 @@
     <button class="btn btn-danger w-100 mt-4 d-md-none rounded-pill" onclick="closeDetails()">Back to Home</button>
   </div>
 </div>
-  <!-- counters, reviews, sticky whatsapp, etc. (kept) -->
-  <section id="counter-section" class="py-5 bg-dark border-top border-secondary position-relative overflow-hidden">
-    <div class="position-absolute top-50 start-50 translate-middle opacity-25" style="z-index: 0; filter: blur(100px); width: 300px; height: 300px; background: var(--neon); border-radius: 50%;"></div>
 
-    <div class="container position-relative" style="z-index: 1;">
-      <div class="row g-4 text-center">
-        
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <i class="bi bi-people fs-1 text-primary mb-2 d-block"></i>
-            <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="1500">0</h1>
-            <p class="text-uppercase small tracking-widest opacity-75 mt-2">Students Trained</p>
-          </div>
+<section id="counter-section" class="py-5 bg-dark border-top border-secondary position-relative overflow-hidden">
+  <div class="position-absolute top-50 start-50 translate-middle opacity-10" style="z-index: 0; filter: blur(100px); width: 400px; height: 400px; background: var(--neon); border-radius: 50%;"></div>
+
+  <div class="container position-relative" style="z-index: 1;">
+    <div class="row g-4 text-center">
+      
+      <div class="col-md-3 col-6">
+        <div class="p-3">
+          <i class="bi bi-mortarboard fs-1 text-primary mb-2 d-block"></i>
+          <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="1500">0</h1>
+          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Students Trained</p>
         </div>
+      </div>
 
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <i class="bi bi-journal-check fs-1 text-primary mb-2 d-block"></i>
-            <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="85">0</h1>
-            <p class="text-uppercase small tracking-widest opacity-75 mt-2">Workshops Done</p>
-          </div>
+      <div class="col-md-3 col-6">
+        <div class="p-3">
+          <i class="bi bi-journal-check fs-1 text-primary mb-2 d-block"></i>
+          <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="85">0</h1>
+          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Workshops Done</p>
         </div>
+      </div>
 
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <i class="bi bi-person-workspace fs-1 text-primary mb-2 d-block"></i>
-            <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="12">0</h1>
-            <p class="text-uppercase small tracking-widest opacity-75 mt-2">Expert Trainers</p>
-          </div>
+      <div class="col-md-3 col-6">
+        <div class="p-3">
+          <i class="bi bi-person-badge fs-1 text-primary mb-2 d-block"></i>
+          <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="12">0</h1>
+          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Expert Trainers</p>
         </div>
+      </div>
 
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <i class="bi bi-graph-up-arrow fs-1 text-primary mb-2 d-block"></i>
+      <div class="col-md-3 col-6">
+        <div class="p-3">
+          <div class="d-flex justify-content-center align-items-baseline">
             <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="98">0</h1>
-            <span class="display-4 fw-bold neon-text">%</span>
-            <p class="text-uppercase small tracking-widest opacity-75 mt-2">Success Rate</p>
+            <span class="display-6 fw-bold neon-text ms-1">%</span>
           </div>
+          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Success Rate</p>
         </div>
+      </div>
 
-      </div>
     </div>
-  </section>
-  <section class="py-5 bg-dark text-white text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3"><h1 class="counter" data-target="1500">0</h1><p>Students Trained</p></div>
-        <div class="col-md-3"><h1 class="counter" data-target="85">0</h1><p>Workshops Completed</p></div>
-        <div class="col-md-3"><h1 class="counter" data-target="12">0</h1><p>Expert Trainers</p></div>
-        <div class="col-md-3"><h1 class="counter" data-target="98">0%</h1><p>Success Rate</p></div>
-      </div>
-    </div>
-  </section> 
-  <!-- sticky enquire bar -->
-  <div class="position-fixed w-100 py-2 text-center" style="bottom:0; left:0; background:#001a66; color:var(--neon); font-size:20px; font-weight:600; box-shadow:0 0 15px var(--neon); z-index:9998;">
-    📢 Need Help? <a href="#contact" class="btn btn-neon ms-3 px-4 py-1">Enquire Now</a>
   </div>
+</section>
 
-  <!-- scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Floating WhatsApp Button -->
+<div class="sticky-bottom-bar position-fixed w-100 py-3 text-center d-flex align-items-center justify-content-center" 
+     style="bottom:0; left:0; background:rgba(2, 11, 51, 0.95); backdrop-filter: blur(10px); color:var(--neon); border-top: 1px solid var(--neon); z-index:9998; box-shadow: 0 -10px 25px rgba(58, 134, 255, 0.2);">
+  <span class="d-none d-md-inline">📢 <strong>Limited Slots!</strong> Enroll in Upcoming Workshops for 2026.</span>
+  <span class="d-inline d-md-none small fw-bold">📢 Enroll Now for 2026</span>
+  <a href="#contact" class="btn btn-neon ms-3 px-4 py-1 rounded-pill btn-sm">Enquire Now</a>
+</div>
+
 <a id="whatsappLink"
    href="https://wa.me/919598183089"
    target="_blank"
-   style="position:fixed;bottom:20px;right:20px;z-index:9999;">
-  <img src="images/whatsapp.png" width="55" alt="WhatsApp">
+   class="transition-img"
+   style="position:fixed; bottom:80px; right:20px; z-index:9999; filter: drop-shadow(0 0 10px rgba(37, 211, 102, 0.5));">
+  <img src="images/whatsapp.png" width="60" alt="WhatsApp">
 </a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
