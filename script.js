@@ -99,7 +99,22 @@ function openDetails(type) {
             title: "OriginPro Training",
             desc: "Learn to create publication-quality graphs, curve fitting, and advanced statistical analysis.",
             img: "images/w3.png"
-        }
+        },
+        'xrd': {
+  title: "XRD Data Analysis",
+  desc: "Rietveld refinement, phase identification & crystallography basics.",
+  img: "images/w4.png"
+},
+'chemdraw': {
+  title: "ChemDraw Hands-on",
+  desc: "Chemical drawing, reactions & publication-ready figures.",
+  img: "images/w5.png"
+},
+'dwsim': {
+  title: "DWSIM Chemical Simulation",
+  desc: "Process simulation including reactors & distillation columns.",
+  img: "images/w6.png"
+}
     };
 
     const selected = dataMap[type];
