@@ -87,7 +87,7 @@ function openDetails(type) {
         'xps': {
             title: "XPS Data Analysis",
             desc: "Master peak fitting, instrumentation, and real-world datasets for high-impact research. Includes hands-on training on CasaXPS.",
-            img: "w1.png"
+            img: "images/w1.png"
         },
         'electro': {
             title: "Electrochemical Analysis",
