@@ -72,28 +72,41 @@ body {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(58, 134, 255, 0.2) !important;
 }
 
-/* --- 6. POPUPS (No more messy forms!) --- */
+/* --- 6. POPUPS (Improved Scrollable & Layout) --- */
 .popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 4, 20, 0.85); /* Deep dark overlay */
-  backdrop-filter: blur(10px);
-  display: none; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  padding: 20px;
-  animation: fadeIn 0.4s ease forwards;
+    display: none; /* Hidden by default */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    overflow-y: auto; /* Enable outer scroll */
+    padding: 20px 10px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.4s ease forwards;
 }
 
 .popup-box {
-  background: #060d2e;
-  border: 1px solid var(--neon);
-  box-shadow: 0 0 50px rgba(58, 134, 255, 0.25);
-  border-radius: 24px;
-  padding: 35px;
-  overflow-x: hidden;
-  animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #060d2e;
+    border: 1px solid var(--neon);
+    border-radius: 24px;
+    padding: 30px;
+    width: 95%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    color: white;
+    box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Popup image size fix */
+#workshopImg {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 /* --- 7. INPUT FIELDS STYLING --- */
@@ -136,7 +149,8 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* --- Text Color Fixes --- */
+
+/* --- 9. TEXT COLOR & VISIBILITY FIXES --- */
 .navbar-nav .nav-link {
     color: #ffffff !important; /* Navbar text white */
     font-weight: 500;
@@ -144,45 +158,20 @@ body {
 
 .workshop-card p, 
 .instructor-card p, 
+.instructor-card span,
 #workshopDesc {
-    color: #ffffff !important; /* Card and Popup text white */
-    opacity: 0.9; /* Halka sa soft look ke liye */
+    color: #ffffff !important;
+    opacity: 1 !important; /* Ensures full visibility */
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* --- Improved Scrollable Popup --- */
-.popup-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 10000;
-    overflow-y: auto; /* Bahar ka scroll enable kiya */
-    padding: 20px 10px;
+/* Titles Highlight */
+.workshop-card h5, 
+.instructor-card h4 {
+    color: var(--neon) !important;
 }
 
-.popup-box {
-    background: #060d2e;
-    border: 1px solid var(--neon);
-    border-radius: 24px;
-    padding: 30px;
-    width: 95%;
-    max-width: 800px; /* Thoda bada kiya gaya */
-    margin: auto; /* Center alignment for scrollable content */
-    position: relative;
-    color: white;
-    box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
-}
-
-/* Popup image size fix */
-#workshopImg {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-/* QR Image Zoom Effect */
+/* --- 10. QR IMAGE ZOOM EFFECTS --- */
 .qr-image-container img {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: zoom-in;
@@ -190,11 +179,13 @@ body {
 }
 
 .qr-image-container img:hover {
-    transform: scale(1.5); /* 1.5 guna bada ho jayega */
+    transform: scale(1.5); /* Desktop hover zoom */
     box-shadow: 0 0 30px var(--neon);
     z-index: 10;
     position: relative;
 }
+
+/* Large QR View for dedicated inspection */
 .qr-large {
     position: fixed;
     top: 50%;
@@ -204,18 +195,16 @@ body {
     background: white;
     padding: 10px;
     border-radius: 10px;
-}
-/* Cards aur Trainer section ke text ko white karne ke liye */
-.workshop-card p, 
-.instructor-card p, 
-.instructor-card span,
-#workshopDesc {
-    color: #ffffff !important;
-    opacity: 1 !important; /* Gray effect hatane ke liye */
-    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Thodi depth ke liye */
+    box-shadow: 0 0 100px rgba(0,0,0,0.8);
 }
 
-/* Titles ko aur bright karne ke liye */
-.workshop-card h5, .instructor-card h4 {
-    color: var(--neon) !important;
+/* --- 11. RESPONSIVENESS ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  .popup-box {
+    padding: 20px;
+    width: 98%;
+  }
+  .mouse-glow {
+    display: none; /* Performance on mobile */
+  }
 }
