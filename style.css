@@ -1,10 +1,10 @@
 /* --- 1. THEME VARIABLES (Enhanced) --- */
 :root {
   --bg: #020b33;
-  --card-bg: rgba(6, 16, 70, 0.85); /* Semi-transparent for glass effect */
+  --card-bg: rgba(6, 16, 70, 0.85);
   --neon: #3a86ff;
   --accent: #0d6efd;
-  --success: #00f5a0; /* Neon green for registration */
+  --success: #00f5a0;
   --glow-color: rgba(58, 134, 255, 0.5);
   --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -17,8 +17,7 @@ body {
   margin: 0;
   padding-top: 80px;
   overflow-x: hidden;
-  /* High-Tech Grid Background */
-  background-image: 
+  background-image:
     linear-gradient(rgba(58, 134, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(58, 134, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -31,12 +30,12 @@ body {
   height: 600px;
   background: radial-gradient(circle, rgba(58, 134, 255, 0.15) 0%, transparent 70%);
   pointer-events: none;
-  z-index: -1; /* Always behind content */
+  z-index: -1;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease-out;
 }
 
-/* --- 4. NEON TEXT & DYNAMIC BUTTONS --- */
+/* --- 4. NEON TEXT & BUTTONS --- */
 .neon-text {
   color: #fff;
   text-shadow: 0 0 8px var(--neon), 0 0 15px var(--neon);
@@ -58,70 +57,91 @@ body {
   color: var(--bg);
 }
 
-/* --- 5. PREMIUM GLASS CARDS --- */
+/* --- 5. GLASS CARDS --- */
 .glass-card {
   background: var(--card-bg) !important;
   border: 1px solid rgba(58, 134, 255, 0.15) !important;
   backdrop-filter: blur(12px) saturate(180%);
   border-radius: 20px !important;
+  will-change: transform;
 }
 
 .glass-card:hover {
   border-color: var(--neon) !important;
   transform: translateY(-8px) scale(1.02) !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(58, 134, 255, 0.2) !important;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(58, 134, 255, 0.2) !important;
 }
 
-/* --- 6. POPUPS (No more messy forms!) --- */
+/* --- 6. POPUPS (MERGED & CLEAN) --- */
 .popup-overlay {
+  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 4, 20, 0.85); /* Deep dark overlay */
-  backdrop-filter: blur(10px);
-  display: none; /* Hidden by default */
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  overflow-y: auto;
+  padding: 20px 10px;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
-  padding: 20px;
   animation: fadeIn 0.4s ease forwards;
 }
 
 .popup-box {
   background: #060d2e;
   border: 1px solid var(--neon);
-  box-shadow: 0 0 50px rgba(58, 134, 255, 0.25);
   border-radius: 24px;
-  padding: 35px;
-  overflow-x: hidden;
+  padding: 30px;
+  width: 95%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  color: #fff;
+  box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
   animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* --- 7. INPUT FIELDS STYLING --- */
-.form-control, .form-select {
+/* Popup image fix */
+#workshopImg {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* --- 7. FORM CONTROLS --- */
+.form-control,
+.form-select {
   border: 1px solid rgba(58, 134, 255, 0.3) !important;
   transition: var(--transition) !important;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: var(--neon) !important;
   box-shadow: 0 0 15px rgba(58, 134, 255, 0.4) !important;
   background: rgba(58, 134, 255, 0.05) !important;
 }
 
 /* --- 8. ANIMATIONS & UTILITIES --- */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { 
-  from { transform: translateY(40px) scale(0.95); opacity: 0; } 
-  to { transform: translateY(0) scale(1); opacity: 1; } 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-.custom-scrollbar::-webkit-scrollbar-thumb { 
-  background: linear-gradient(transparent, var(--neon), transparent); 
-  border-radius: 10px; 
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, var(--neon), transparent);
+  border-radius: 10px;
 }
 
-/* Hover effect for all images */
 .transition-img {
   transition: var(--transition);
 }
@@ -130,55 +150,66 @@ body {
   transform: scale(1.05);
 }
 
-/* Counter Animation Polish */
+/* --- 9. COUNTERS --- */
 .counter {
   background: linear-gradient(45deg, #fff, var(--neon));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* --- Text Color Fixes --- */
+
+/* --- 10. TEXT VISIBILITY FIXES --- */
 .navbar-nav .nav-link {
-    color: #ffffff !important; /* Navbar text white */
-    font-weight: 500;
+  color: #ffffff !important;
+  font-weight: 500;
 }
 
-.workshop-card p, 
-.instructor-card p, 
+.workshop-card p,
+.instructor-card p,
+.instructor-card span,
 #workshopDesc {
-    color: #ffffff !important; /* Card and Popup text white */
-    opacity: 0.9; /* Halka sa soft look ke liye */
+  color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* --- Improved Scrollable Popup --- */
-.popup-overlay {
+.workshop-card h5,
+.instructor-card h4 {
+  color: var(--neon) !important;
+}
+
+/* --- 11. QR IMAGE ZOOM --- */
+.qr-image-container img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: zoom-in;
+  border: 2px solid var(--neon);
+}
+
+.qr-image-container img:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 30px var(--neon);
+  z-index: 10;
+  position: relative;
+}
+
+.qr-large {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2.5) !important;
+  z-index: 9999;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 100px rgba(0,0,0,0.8);
+}
+
+/* --- 12. RESPONSIVE FIXES --- */
+@media (max-width: 768px) {
+  .popup-box {
+    padding: 20px;
+    width: 98%;
+  }
+  .mouse-glow {
     display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 10000;
-    overflow-y: auto; /* Bahar ka scroll enable kiya */
-    padding: 20px 10px;
-}
-
-.popup-box {
-    background: #060d2e;
-    border: 1px solid var(--neon);
-    border-radius: 24px;
-    padding: 30px;
-    width: 95%;
-    max-width: 800px; /* Thoda bada kiya gaya */
-    margin: auto; /* Center alignment for scrollable content */
-    position: relative;
-    color: white;
-    box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
-}
-
-/* Popup image size fix */
-#workshopImg {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 15px;
+  }
 }
