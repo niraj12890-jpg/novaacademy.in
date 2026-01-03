@@ -213,3 +213,20 @@ body {
     display: none;
   }
 }
+.card,
+.card p,
+.card h4,
+.card h5,
+.card span,
+.card small {
+  color: #ffffff !important;
+}
+.card-body p {
+  color: #ffffff !important;
+  opacity: 0.9;
+}
+.glass-card p,
+.glass-card h4,
+.glass-card h5 {
+  color: #ffffff !important;
+}
