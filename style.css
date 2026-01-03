@@ -72,41 +72,28 @@ body {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(58, 134, 255, 0.2) !important;
 }
 
-/* --- 6. POPUPS (Improved Scrollable & Layout) --- */
+/* --- 6. POPUPS (No more messy forms!) --- */
 .popup-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 10000;
-    overflow-y: auto; /* Enable outer scroll */
-    padding: 20px 10px;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.4s ease forwards;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 4, 20, 0.85); /* Deep dark overlay */
+  backdrop-filter: blur(10px);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.4s ease forwards;
 }
 
 .popup-box {
-    background: #060d2e;
-    border: 1px solid var(--neon);
-    border-radius: 24px;
-    padding: 30px;
-    width: 95%;
-    max-width: 800px;
-    margin: auto;
-    position: relative;
-    color: white;
-    box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
-    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Popup image size fix */
-#workshopImg {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 15px;
+  background: #060d2e;
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 50px rgba(58, 134, 255, 0.25);
+  border-radius: 24px;
+  padding: 35px;
+  overflow-x: hidden;
+  animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* --- 7. INPUT FIELDS STYLING --- */
@@ -149,8 +136,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-/* --- 9. TEXT COLOR & VISIBILITY FIXES --- */
+/* --- Text Color Fixes --- */
 .navbar-nav .nav-link {
     color: #ffffff !important; /* Navbar text white */
     font-weight: 500;
@@ -158,82 +144,41 @@ body {
 
 .workshop-card p, 
 .instructor-card p, 
-.instructor-card span,
 #workshopDesc {
-    color: #ffffff !important;
-    opacity: 1 !important; /* Ensures full visibility */
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    color: #ffffff !important; /* Card and Popup text white */
+    opacity: 0.9; /* Halka sa soft look ke liye */
 }
 
-/* Titles Highlight */
-.workshop-card h5, 
-.instructor-card h4 {
-    color: var(--neon) !important;
-}
-
-/* --- 10. QR IMAGE ZOOM EFFECTS --- */
-.qr-image-container img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: zoom-in;
-    border: 2px solid var(--neon);
-}
-
-.qr-image-container img:hover {
-    transform: scale(1.5); /* Desktop hover zoom */
-    box-shadow: 0 0 30px var(--neon);
-    z-index: 10;
-    position: relative;
-}
-
-/* Large QR View for dedicated inspection */
-.qr-large {
+/* --- Improved Scrollable Popup --- */
+.popup-overlay {
+    display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(2.5) !important;
-    z-index: 9999;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 100px rgba(0,0,0,0.8);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    overflow-y: auto; /* Bahar ka scroll enable kiya */
+    padding: 20px 10px;
 }
 
-/* --- 11. RESPONSIVENESS ADJUSTMENTS --- */
-@media (max-width: 768px) {
-  .popup-box {
-    padding: 20px;
-    width: 98%;
-  }
-  .mouse-glow {
-    display: none; /* Performance on mobile */
-  }
-}
-/* Cards ke andar ke text ko pure white karne ke liye */
-.workshop-card .card-body p, 
-.workshop-card .card-body .text-white-50, 
-.workshop-card .card-body span,
-.workshop-card .card-body div {
-    color: #ffffff !important;
-    opacity: 1 !important;
+.popup-box {
+    background: #060d2e;
+    border: 1px solid var(--neon);
+    border-radius: 24px;
+    padding: 30px;
+    width: 95%;
+    max-width: 800px; /* Thoda bada kiya gaya */
+    margin: auto; /* Center alignment for scrollable content */
+    position: relative;
+    color: white;
+    box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
 }
 
-/* Specific workshop details text (Jo gray dikh raha hai) */
-.workshop-card p.small.text-white-50 {
-    color: #ffffff !important;
-    opacity: 0.9 !important;
-}
-
-/* Icons ke saath wala text bhi white rahe */
-.workshop-card .bi {
-    color: var(--neon) !important; /* Icons neon blue rahenge */
-} /* Gray text ko pure white karne ke liye */
-.workshop-card .text-light-50, 
-.workshop-card .text-secondary {
-    color: #ffffff !important;
-    opacity: 1 !important;
-}
-
-/* Icons ko neon color dene ke liye (optional but looks good) */
-.workshop-card .text-secondary i {
-    color: var(--neon) !important;
+/* Popup image size fix */
+#workshopImg {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
 }
