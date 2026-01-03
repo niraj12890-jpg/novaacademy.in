@@ -1,11 +1,8 @@
-// पूरा कोड इस 'DOMContentLoaded' के अंदर रखें ताकि HTML लोड होने के बाद ही JS चले
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. MOUSE GLOW TRACKER ---
+    // 1. Mouse Glow
     const glow = document.createElement('div');
     glow.className = 'mouse-glow';
     document.body.appendChild(glow);
-
     document.addEventListener('mousemove', (e) => {
         requestAnimationFrame(() => {
             glow.style.left = e.clientX + 'px';
@@ -13,95 +10,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 2. COUNTER ANIMATION ---
-    const animateCounters = () => {
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(c => {
-            const target = +c.getAttribute('data-target');
-            const speed = 100; // थोड़ा तेज किया
-            const update = () => {
-                const current = +c.innerText.replace('%', ''); // % साइन हैंडल करने के लिए
-                const inc = target / speed;
-                if (current < target) {
-                    c.innerText = Math.ceil(current + inc) + (c.innerText.includes('%') ? '%' : '');
-                    setTimeout(update, 10);
-                } else {
-                    c.innerText = target + (c.innerText.includes('%') ? '%' : '');
-                }
-            };
-            update();
-        });
-    };
-
-    const counterSection = document.querySelector('#counter-section');
-    if (counterSection) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                observer.unobserve(entries[0].target);
-            }
-        }, { threshold: 0.2 }); // 0.5 से कम किया ताकि मोबाइल पर जल्दी दिखे
-        observer.observe(counterSection);
-    }
-
-    // --- 3. ADVANCED SEARCH ---
+    // 2. Search Logic
     const searchInput = document.getElementById('searchInput');
     if(searchInput) {
         searchInput.addEventListener('input', (e) => {
             const val = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.workshop-card-item');
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(val) ? 'block' : 'none';
+            document.querySelectorAll('.workshop-card-item').forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(val) ? 'block' : 'none';
             });
         });
     }
+
+    // 3. Counter Animation
+    const counterSection = document.querySelector('#counter-section');
+    if (counterSection) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                document.querySelectorAll('.counter').forEach(c => {
+                    const target = +c.getAttribute('data-target');
+                    let count = 0;
+                    const update = () => {
+                        const inc = target / 100;
+                        if (count < target) {
+                            count += inc;
+                            c.innerText = Math.ceil(count) + (c.innerText.includes('%') ? '%' : '');
+                            setTimeout(update, 20);
+                        } else { c.innerText = target + (c.innerText.includes('%') ? '%' : ''); }
+                    };
+                    update();
+                });
+                observer.unobserve(counterSection);
+            }
+        }, { threshold: 0.2 });
+        observer.observe(counterSection);
+    }
 });
 
-// --- 4. GLOBAL FUNCTIONS (पॉपअप के लिए इन्हें बाहर रखना जरूरी है) ---
+// GLOBAL FUNCTIONS
 function openPopup(id) {
-    const popup = document.getElementById(id);
-    if(popup) {
-        popup.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
+    const p = document.getElementById(id);
+    if(p) { p.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
 }
 
 function closePopup(id) {
-    const popup = document.getElementById(id);
-    if(popup) {
-        popup.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
+    const p = document.getElementById(id);
+    if(p) { p.style.display = 'none'; document.body.style.overflow = 'auto'; }
 }
 
-function viewWorkshop(title, desc, imgPath) {
-    const titleEl = document.getElementById('workshopTitle');
-    const descEl = document.getElementById('workshopDesc');
-    const imgEl = document.getElementById('workshopImg');
+// HTML में जहाँ openDetails लिखा है, उसे इस फंक्शन से जोड़ें
+function openDetails(type) {
+    let title = "", desc = "", img = "";
     
-    if(titleEl && descEl && imgEl) {
-        titleEl.innerText = title;
-        descEl.innerText = desc;
-        imgEl.src = imgPath;
-        
-        const waBtn = document.getElementById('popupWhatsappBtn');
-        if(waBtn) waBtn.href = `https://wa.me/919598183089?text=Hi, I am interested in ${title} workshop.`;
-        
-        openPopup('workshopInfo');
-    }
+    if(type === 'xps') {
+        title = "XPS Data Analysis";
+        desc = "Master the fundamentals of X-ray Photoelectron Spectroscopy. Includes peak fitting, instrumentation, and real-world datasets.";
+        img = "w1.png";
+    } // यहाँ अन्य वर्कशॉप्स (electro, origin) के लिए 'else if' जोड़ें
+    
+    document.getElementById('workshopTitle').innerText = title;
+    document.getElementById('workshopDesc').innerText = desc;
+    document.getElementById('workshopImg').src = img;
+    openPopup('workshopDetailsPopup'); // सही ID का उपयोग करें
 }
 
-// Close on 'ESC' Key
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") {
-        document.querySelectorAll('.popup-overlay').forEach(p => p.style.display = 'none');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("UPI ID Copied: " + text);
-    });
+function closeDetails() {
+    closePopup('workshopDetailsPopup');
 }
