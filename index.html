@@ -523,146 +523,24 @@
     </div>
   </div>
 
-  <div id="workshopInfo" class="popup-overlay">
-    <div class="popup-box glass-card border-neon shadow-lg text-start" style="max-width:700px;">
-      <div id="popupContent">
-        <h2 class="neon-text mb-3">Workshop Details</h2>
-        <div class="placeholder-glow">
-          <p>Loading workshop information...</p>
-        </div>
-      </div>
-      <button class="btn btn-outline-light w-100 rounded-pill mt-4" onclick="closePopup('workshopInfo')">Back to Workshops</button>
-    </div>
-  </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
-
-</body>
-</html>
-<div class="popup-overlay" id="workshopInfo">
-  <div class="popup-box glass-card border-neon shadow-lg" style="max-width: 900px; width: 95%;">
-    
-    <div class="row g-4">
-      <div class="col-md-5">
-        <div class="position-relative">
-          <img id="workshopImg" class="img-fluid rounded-4 border border-secondary shadow transition-img" src="XPSIMAGE.png" alt="Workshop">
-          
-          <div class="mt-3 p-3 bg-dark-blue rounded-4 border border-primary border-opacity-25 shadow-sm">
-            <h6 class="text-info mb-3 small fw-bold text-uppercase">
-              <i class="bi bi-star-fill me-2"></i>Key Highlights
-            </h6>
-            <ul class="list-unstyled small opacity-75 mb-0">
-              <li class="mb-2"><i class="bi bi-patch-check-fill me-2 text-primary"></i> Hands-on Practice</li>
-              <li class="mb-2"><i class="bi bi-patch-check-fill me-2 text-primary"></i> Certificate of Completion</li>
-              <li><i class="bi bi-patch-check-fill me-2 text-primary"></i> Live Q&A Sessions</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-7 d-flex flex-column text-start">
-        <div class="d-flex justify-content-between align-items-start">
-          <h2 id="workshopTitle" class="neon-text mb-0 fw-bold">Workshop Details</h2>
-          <button class="btn-close btn-close-white shadow-none" onclick="closeDetails()"></button>
-        </div>
-        
-        <hr class="border-secondary opacity-25">
-        
-        <div id="workshopDesc" class="custom-scrollbar pe-2" style="max-height: 300px; overflow-y: auto; white-space: pre-line; font-size: 0.95rem; line-height: 1.6;">
-          Select a workshop to see details...
-        </div>
-
-        <div class="mt-auto pt-4">
-          <a id="popupWhatsappBtn" href="https://wa.me/919598183089" target="_blank" class="btn btn-outline-success w-100 mb-3 rounded-pill fw-bold border-2">
-            <i class="bi bi-whatsapp me-2"></i> Talk to Expert on WhatsApp
-          </a>
-          
-          <div class="row g-2">
-            <div class="col-6">
-              <a id="syllabusBtn" class="btn btn-dark border-secondary w-100 rounded-pill transition-img" href="#" download>
-                <i class="bi bi-cloud-arrow-down me-2"></i> Syllabus
-              </a>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-neon w-100 rounded-pill fw-bold shadow-sm" onclick="openPopup('enquirePopup')">
-                Enquire Now
-              </button>
-            </div>
-            <div class="col-12">
-              <button class="btn btn-success w-100 py-3 rounded-pill fw-bold shadow-lg mt-2" onclick="openPopup('registerPopup')">
-                <i class="bi bi-lightning-charge-fill me-1"></i> Confirm Registration & Pay
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <button class="btn btn-danger w-100 mt-4 d-md-none rounded-pill" onclick="closeDetails()">Back to Home</button>
-  </div>
-</div>
-
-<section id="counter-section" class="py-5 bg-dark border-top border-secondary position-relative overflow-hidden">
-  <div class="position-absolute top-50 start-50 translate-middle opacity-10" style="z-index: 0; filter: blur(100px); width: 400px; height: 400px; background: var(--neon); border-radius: 50%;"></div>
-
-  <div class="container position-relative" style="z-index: 1;">
-    <div class="row g-4 text-center">
+  <div id="workshopDetailsPopup" class="popup-overlay">
+  <div class="popup-box glass-card border-neon shadow-lg text-start" style="max-width:700px;">
+    <div id="popupContent">
+      <h2 id="workshopTitle" class="neon-text mb-3">Workshop Details</h2>
+      <img id="workshopImg" src="" class="img-fluid rounded mb-3" style="max-height:200px; display:block; margin:auto;">
+      <p id="workshopDesc" class="text-white opacity-75">Loading information...</p>
       
-      <div class="col-md-3 col-6">
-        <div class="p-3">
-          <i class="bi bi-mortarboard fs-1 text-primary mb-2 d-block"></i>
-          <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="1500">0</h1>
-          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Students Trained</p>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-6">
-        <div class="p-3">
-          <i class="bi bi-journal-check fs-1 text-primary mb-2 d-block"></i>
-          <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="85">0</h1>
-          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Workshops Done</p>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-6">
-        <div class="p-3">
-          <i class="bi bi-person-badge fs-1 text-primary mb-2 d-block"></i>
-          <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="12">0</h1>
-          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Expert Trainers</p>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-6">
-        <div class="p-3">
-          <div class="d-flex justify-content-center align-items-baseline">
-            <h1 class="counter display-4 fw-bold neon-text mb-0" data-target="98">0</h1>
-            <span class="display-6 fw-bold neon-text ms-1">%</span>
-          </div>
-          <p class="text-uppercase small tracking-widest opacity-75 mt-2">Success Rate</p>
-        </div>
-      </div>
-
+      <a id="popupWhatsappBtn" href="#" target="_blank" class="btn btn-outline-success w-100 rounded-pill mb-2">
+        <i class="bi bi-whatsapp me-2"></i>Talk to Expert
+      </a>
     </div>
+    <button class="btn btn-outline-light w-100 rounded-pill mt-3" onclick="closePopup('workshopDetailsPopup')">Back to Workshops</button>
   </div>
-</section>
-
-<div class="sticky-bottom-bar position-fixed w-100 py-3 text-center d-flex align-items-center justify-content-center" 
-     style="bottom:0; left:0; background:rgba(2, 11, 51, 0.95); backdrop-filter: blur(10px); color:var(--neon); border-top: 1px solid var(--neon); z-index:9998; box-shadow: 0 -10px 25px rgba(58, 134, 255, 0.2);">
-  <span class="d-none d-md-inline">📢 <strong>Limited Slots!</strong> Enroll in Upcoming Workshops for 2026.</span>
-  <span class="d-inline d-md-none small fw-bold">📢 Enroll Now for 2026</span>
-  <a href="#contact" class="btn btn-neon ms-3 px-4 py-1 rounded-pill btn-sm">Enquire Now</a>
 </div>
-
-<a id="whatsappLink"
-   href="https://wa.me/919598183089"
-   target="_blank"
-   class="transition-img"
-   style="position:fixed; bottom:80px; right:20px; z-index:9999; filter: drop-shadow(0 0 10px rgba(37, 211, 102, 0.5));">
-  <img src="images/whatsapp.png" width="60" alt="WhatsApp">
-</a>
+  </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
