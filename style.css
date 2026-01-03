@@ -1,131 +1,184 @@
-// पूरा कोड इस 'DOMContentLoaded' के अंदर है ताकि HTML लोड होने के बाद ही JS चले
-document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. MOUSE GLOW TRACKER ---
-    const glow = document.createElement('div');
-    glow.className = 'mouse-glow';
-    document.body.appendChild(glow);
-
-    document.addEventListener('mousemove', (e) => {
-        requestAnimationFrame(() => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-    });
-
-    // --- 2. COUNTER ANIMATION ---
-    const animateCounters = () => {
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(c => {
-            const target = +c.getAttribute('data-target');
-            const speed = 100; 
-            const update = () => {
-                const currentText = c.innerText.replace('%', '');
-                const current = parseFloat(currentText) || 0;
-                const inc = target / speed;
-                if (current < target) {
-                    c.innerText = Math.ceil(current + inc) + (c.innerText.includes('%') ? '%' : '');
-                    setTimeout(update, 10);
-                } else {
-                    c.innerText = target + (c.innerText.includes('%') ? '%' : '');
-                }
-            };
-            update();
-        });
-    };
-
-    const counterSection = document.querySelector('#counter-section');
-    if (counterSection) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                observer.unobserve(counterSection);
-            }
-        }, { threshold: 0.2 });
-        observer.observe(counterSection);
-    }
-
-    // --- 3. SEARCH LOGIC ---
-    const searchInput = document.getElementById('searchInput');
-    if(searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.workshop-card-item');
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(val) ? 'block' : 'none';
-            });
-        });
-    }
-}); // <--- यहाँ ब्रैकेट सही किया गया है
-
-// --- 4. GLOBAL FUNCTIONS (पॉपअप के लिए बाहर रखना ज़रूरी है) ---
-
-function openPopup(id) {
-    const popup = document.getElementById(id);
-    if(popup) {
-        popup.style.display = 'flex';
-        // Body scroll lock but popup can scroll
-        document.body.style.overflow = 'hidden'; 
-    }
+/* --- 1. THEME VARIABLES (Enhanced) --- */
+:root {
+  --bg: #020b33;
+  --card-bg: rgba(6, 16, 70, 0.85); /* Semi-transparent for glass effect */
+  --neon: #3a86ff;
+  --accent: #0d6efd;
+  --success: #00f5a0; /* Neon green for registration */
+  --glow-color: rgba(58, 134, 255, 0.5);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-function closePopup(id) {
-    const popup = document.getElementById(id);
-    if(popup) {
-        popup.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scroll
-    }
+/* --- 2. GLOBAL STYLES --- */
+body {
+  background-color: var(--bg);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding-top: 80px;
+  overflow-x: hidden;
+  /* High-Tech Grid Background */
+  background-image: 
+    linear-gradient(rgba(58, 134, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 134, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
-function openDetails(type) {
-    const titleEl = document.getElementById('workshopTitle');
-    const descEl = document.getElementById('workshopDesc');
-    const imgEl = document.getElementById('workshopImg');
-    
-    // वर्कशॉप डेटाबेस
-    const dataMap = {
-        'xps': {
-            title: "XPS Data Analysis",
-            desc: "Master peak fitting, instrumentation, and real-world datasets for high-impact research. Includes hands-on training on CasaXPS.",
-            img: "images/w1.png"
-        },
-        'electro': {
-            title: "Electrochemical Analysis",
-            desc: "Detailed study of CV, EIS, and GCD. Perfect for energy storage and sensor research.",
-            img: "images/w2.png"
-        },
-        'origin': {
-            title: "OriginPro Training",
-            desc: "Learn to create publication-quality graphs, curve fitting, and advanced statistical analysis.",
-            img: "images/w3.png"
-        }
-    };
+/* --- 3. FUTURISTIC MOUSE GLOW --- */
+.mouse-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(58, 134, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1; /* Always behind content */
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
 
-    const selected = dataMap[type];
+/* --- 4. NEON TEXT & DYNAMIC BUTTONS --- */
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 8px var(--neon), 0 0 15px var(--neon);
+  letter-spacing: 1px;
+}
 
-    if(selected && titleEl && descEl && imgEl) {
-        titleEl.innerText = selected.title;
-        descEl.innerText = selected.desc;
-        imgEl.src = selected.img;
-        
-        const waBtn = document.getElementById('popupWhatsappBtn');
-        if(waBtn) {
-            waBtn.href = `https://wa.me/919598183089?text=Hi, I am interested in ${selected.title} workshop.`;
-        }
-        
-        openPopup('workshopDetailsPopup'); // HTML में ID 'workshopDetailsPopup' होनी चाहिए
-    } else {
-        console.error("Popup elements or Data not found for type:", type);
-    }
-} // openDetails ends here
+.btn-neon {
+  background: var(--accent);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px var(--accent);
+  color: #fff;
+  transition: var(--transition);
+}
 
-// Keydown listener for ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") {
-        document.querySelectorAll('.popup-overlay').forEach(p => {
-            p.style.display = 'none';
-        });
-        document.body.style.overflow = 'auto';
-    }
-});
+.btn-neon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px var(--neon);
+  background: #fff;
+  color: var(--bg);
+}
+
+/* --- 5. PREMIUM GLASS CARDS --- */
+.glass-card {
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(58, 134, 255, 0.15) !important;
+  backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px !important;
+}
+
+.glass-card:hover {
+  border-color: var(--neon) !important;
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(58, 134, 255, 0.2) !important;
+}
+
+/* --- 6. POPUPS (No more messy forms!) --- */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 4, 20, 0.85); /* Deep dark overlay */
+  backdrop-filter: blur(10px);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.popup-box {
+  background: #060d2e;
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 50px rgba(58, 134, 255, 0.25);
+  border-radius: 24px;
+  padding: 35px;
+  overflow-x: hidden;
+  animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- 7. INPUT FIELDS STYLING --- */
+.form-control, .form-select {
+  border: 1px solid rgba(58, 134, 255, 0.3) !important;
+  transition: var(--transition) !important;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--neon) !important;
+  box-shadow: 0 0 15px rgba(58, 134, 255, 0.4) !important;
+  background: rgba(58, 134, 255, 0.05) !important;
+}
+
+/* --- 8. ANIMATIONS & UTILITIES --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { 
+  from { transform: translateY(40px) scale(0.95); opacity: 0; } 
+  to { transform: translateY(0) scale(1); opacity: 1; } 
+}
+
+.custom-scrollbar::-webkit-scrollbar { width: 5px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+  background: linear-gradient(transparent, var(--neon), transparent); 
+  border-radius: 10px; 
+}
+
+/* Hover effect for all images */
+.transition-img {
+  transition: var(--transition);
+}
+.transition-img:hover {
+  filter: brightness(1.1) contrast(1.1);
+  transform: scale(1.05);
+}
+
+/* Counter Animation Polish */
+.counter {
+  background: linear-gradient(45deg, #fff, var(--neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* --- Text Color Fixes --- */
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* Navbar text white */
+    font-weight: 500;
+}
+
+.workshop-card p, 
+.instructor-card p, 
+#workshopDesc {
+    color: #ffffff !important; /* Card and Popup text white */
+    opacity: 0.9; /* Halka sa soft look ke liye */
+}
+
+/* --- Improved Scrollable Popup --- */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    overflow-y: auto; /* Bahar ka scroll enable kiya */
+    padding: 20px 10px;
+}
+
+.popup-box {
+    background: #060d2e;
+    border: 1px solid var(--neon);
+    border-radius: 24px;
+    padding: 30px;
+    width: 95%;
+    max-width: 800px; /* Thoda bada kiya gaya */
+    margin: auto; /* Center alignment for scrollable content */
+    position: relative;
+    color: white;
+    box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
+}
+
+/* Popup image size fix */
+#workshopImg {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
