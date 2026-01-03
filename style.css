@@ -226,4 +226,14 @@ body {
 /* Icons ke saath wala text bhi white rahe */
 .workshop-card .bi {
     color: var(--neon) !important; /* Icons neon blue rahenge */
+} /* Gray text ko pure white karne ke liye */
+.workshop-card .text-light-50, 
+.workshop-card .text-secondary {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Icons ko neon color dene ke liye (optional but looks good) */
+.workshop-card .text-secondary i {
+    color: var(--neon) !important;
 }
