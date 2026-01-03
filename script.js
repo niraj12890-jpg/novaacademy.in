@@ -65,7 +65,7 @@ function closePopup(id) {
 const workshopData = {
     'xps': {
         title: 'XPS Data Analysis Workshop',
-        img: 'w1.png',
+        img: 'XPSIMAGE.png',
         desc: 'Unlock the power of X-ray Photoelectron Spectroscopy. \n\n• Learn Peak Fitting using CasaXPS.\n• Understand Chemical State Analysis.\n• Hands-on with real-world research datasets.\n• Expert guidance for publication-ready data.',
         whatsapp: 'https://wa.me/919598183089?text=I%20am%20interested%20in%20XPS%20Workshop'
     },
