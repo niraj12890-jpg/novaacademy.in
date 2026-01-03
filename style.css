@@ -208,3 +208,22 @@ body {
     display: none; /* Performance on mobile */
   }
 }
+/* Cards ke andar ke text ko pure white karne ke liye */
+.workshop-card .card-body p, 
+.workshop-card .card-body .text-white-50, 
+.workshop-card .card-body span,
+.workshop-card .card-body div {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Specific workshop details text (Jo gray dikh raha hai) */
+.workshop-card p.small.text-white-50 {
+    color: #ffffff !important;
+    opacity: 0.9 !important;
+}
+
+/* Icons ke saath wala text bhi white rahe */
+.workshop-card .bi {
+    color: var(--neon) !important; /* Icons neon blue rahenge */
+}
