@@ -65,7 +65,8 @@ function openPopup(id) {
     const popup = document.getElementById(id);
     if(popup) {
         popup.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // बैकग्राउंड स्क्रॉल बंद
+        // Body scroll lock but popup can scroll
+        document.body.style.overflow = 'hidden'; 
     }
 }
 
@@ -73,7 +74,7 @@ function closePopup(id) {
     const popup = document.getElementById(id);
     if(popup) {
         popup.style.display = 'none';
-        document.body.style.overflow = 'auto'; // स्क्रॉल चालू
+        document.body.style.overflow = 'auto'; // Restore scroll
     }
 }
 
