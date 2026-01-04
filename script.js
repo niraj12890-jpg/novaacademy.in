@@ -207,7 +207,7 @@ function submitRegistration() {
         utr: document.getElementById('utrInput').value
     };
 
-    fetch("https://script.google.com/macros/s/XXXX/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec", {
         method: "POST",
         body: JSON.stringify(data)
     })
@@ -246,7 +246,7 @@ function submitAndWhatsapp() {
     };
 
     // 1️⃣ SEND TO GOOGLE SHEET
-    fetch("https://script.google.com/macros/s/XXXX/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec", {
         method: "POST",
         body: JSON.stringify(data)
     })
