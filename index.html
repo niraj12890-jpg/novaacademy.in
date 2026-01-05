@@ -105,7 +105,7 @@
           <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xps')">View Details</button>
           <div class="d-flex gap-2">
             <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
-            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('XPS Data Analysis')">Register</button>
           </div>
         </div>
       </div>
@@ -457,20 +457,54 @@
         <span class="badge bg-success rounded-pill mb-2 px-3 shadow-sm">Secure Enrollment</span>
         <h2 class="neon-text">Register & Pay</h2>
       </div>
+<!-- SELECTED WORKSHOP (READ ONLY) -->
+<div class="mb-3">
+  <label class="text-info small fw-bold mb-1">Selected Workshop</label>
+  <input type="text" id="workshopDisplay" class="form-control bg-dark text-info border-0 shadow-none" readonly>
+</div>
 
-      <div class="row g-3 mb-4">
-        <div class="col-md-6 text-start">
-          <label class="form-label small fw-bold opacity-75">Full Name</label>
-          <input type="text" class="form-control bg-dark border-secondary text-white rounded-3 shadow-none" placeholder="Name">
-        </div>
-        <div class="col-md-6 text-start">
-          <label class="form-label small fw-bold opacity-75">Mobile</label>
-          <input type="text" class="form-control bg-dark border-secondary text-white rounded-3 shadow-none" placeholder="Number">
-        </div>
-        <div class="col-12 text-start">
-          <label class="form-label small fw-bold opacity-75">Email Address</label>
-          <input type="email" class="form-control bg-dark border-secondary text-white rounded-3 shadow-none" placeholder="Email Address">
-        </div>
+<!-- HIDDEN WORKSHOP (FOR SHEET) -->
+<input type="hidden" id="workshopInput">
+<!-- WORKSHOP PRICE (READ ONLY) -->
+<div class="mb-3">
+  <label class="text-success small fw-bold mb-1">Workshop Price</label>
+  <input type="text"
+         id="priceDisplay"
+         class="form-control bg-dark text-success border-0 fw-bold"
+         readonly>
+</div>
+
+<input type="hidden" id="priceInput">
+
+<div class="row g-3 mb-4">
+
+  <div class="col-md-6 text-start">
+    <label class="form-label small fw-bold opacity-75">Full Name</label>
+    <input type="text"
+           id="nameInput"
+           class="form-control bg-dark border-secondary text-white rounded-3 shadow-none"
+           placeholder="Name">
+  </div>
+
+  <div class="col-md-6 text-start">
+    <label class="form-label small fw-bold opacity-75">Mobile</label>
+    <input type="text"
+           id="mobileInput"
+           class="form-control bg-dark border-secondary text-white rounded-3 shadow-none"
+           placeholder="Number">
+  </div>
+
+  <div class="col-12 text-start">
+    <label class="form-label small fw-bold opacity-75">Email Address</label>
+    <input type="email"
+           id="emailInput"
+           class="form-control bg-dark border-secondary text-white rounded-3 shadow-none"
+           placeholder="Email Address">
+  </div>
+
+</div>
+        <!-- WORKSHOP (AUTO FROM CARD) -->
+<input type="hidden" id="workshopInput">
       </div>
 
       <div class="payment-area rounded-4 p-4 mb-4 border border-primary position-relative overflow-hidden" style="background: rgba(13, 110, 253, 0.05);">
@@ -483,7 +517,7 @@
         <div class="row align-items-center">
           <div class="col-md-5 text-center mb-3 mb-md-0">
             <div class="qr-wrapper bg-white p-2 d-inline-block rounded-3 shadow-lg border border-3 border-primary transition-img">
-              <img src="images/qr.png" alt="UPI QR Code" class="img-fluid" style="max-width:160px;">
+              <img src="images/qr.png" alt="UPI QR Code" class="img-fluid qr-zoom" style="max-width:160px; cursor:pointer;" onclick="openQrZoom(this.src)">
             </div>
             <div class="mt-2 small text-secondary">Scan with any UPI App</div>
           </div>
@@ -496,7 +530,8 @@
               </div>
               <div class="mb-2">
                 <label class="small text-uppercase opacity-50 d-block">UPI ID</label>
-                <span class="fw-bold text-info">novaacademy@upi <i class="bi bi-copy ms-1 cursor-pointer" onclick="alert('UPI ID Copied!')"></i></span>
+                <span class="fw-bold text-info upi-copy" onclick="copyUpiId('novaacademy@upi')">novaacademy@upi<i class="bi bi-copy ms-2"></i></span>
+
               </div>
               <div class="mb-0">
                 <label class="small text-uppercase opacity-50 d-block">Bank Name</label>
@@ -518,13 +553,11 @@
         <label class="form-label small fw-bold text-uppercase tracking-wider opacity-75">Transaction UTR / Ref. ID</label>
         <div class="input-group input-group-lg border border-primary rounded-3 overflow-hidden shadow-sm">
           <span class="input-group-text bg-dark border-0 text-primary"><i class="bi bi-hash"></i></span>
-          <input type="text" class="form-control bg-dark text-white border-0 shadow-none fs-5" placeholder="Enter 12-digit UTR">
+          <input type="text" id="utrInput" maxlength="12" class="form-control bg-dark text-white border-0 shadow-none fs-5" placeholder="Enter 12-digit UTR" oninput="validateUTR(this)">
         </div>
       </div>
-
-      <button class="btn btn-success w-100 py-3 rounded-pill fw-bold fs-5 shadow-lg mb-2">
-        <i class="bi bi-check-circle-fill me-2"></i>Complete Registration
-      </button>
+<button class="btn btn-success w-100 py-3 rounded-pill fw-bold fs-5 shadow-lg mb-3" onclick="submitAndWhatsapp()"> <i class="bi bi-lightning-charge-fill me-2"></i>
+  Complete Registration</button>      
       <button class="btn btn-link text-danger w-100 text-decoration-none small" onclick="closePopup('registerPopup')">
         Go Back & Edit Details
       </button>
@@ -537,18 +570,27 @@
       <h2 id="workshopTitle" class="neon-text mb-3">Workshop Details</h2>
       <img id="workshopImg" src="" class="img-fluid rounded mb-3" style="max-height:200px; display:block; margin:auto;">
       <p id="workshopDesc" class="text-white opacity-75">Loading information...</p>
-      
+      <!-- WORKSHOP PRICE -->
+<p class="fw-bold fs-5 text-success mt-3">
+  Price: <span id="workshopPrice"></span>
+</p>   
       <a id="popupWhatsappBtn" href="#" target="_blank" class="btn btn-outline-success w-100 rounded-pill mb-2">
         <i class="bi bi-whatsapp me-2"></i>Talk to Expert
       </a>
     </div>
     <button class="btn btn-outline-light w-100 rounded-pill mt-3" onclick="closePopup('workshopDetailsPopup')">Back to Workshops</button>
+    <button class="btn btn-neon w-100 mt-3 fw-bold" id="enrollBtn">Enroll Now</button>
+
   </div>
-</div>
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
-
+<!-- QR FULLSCREEN OVERLAY -->
+<div id="qrOverlay" class="qr-overlay" onclick="closeQrZoom()">
+  <img id="qrOverlayImg" src="" alt="QR Large View">
+</div>
+<!-- TOAST MESSAGE -->
+<div id="toast" class="toast-msg">Copied</div>
 </body>
 </html>
