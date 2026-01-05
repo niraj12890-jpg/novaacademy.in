@@ -216,20 +216,59 @@ body {
 .glass-card h5 {
   color: #ffffff !important;
 }
-/* Popup ko bada aur sundar banane ke liye */
+/* --- 10. POPUP MODALS (SUDHARA HUA) --- */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  display: none; /* JS control karega */
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
 .popup-box {
   width: 95% !important;
-  max-width: 800px !important; /* 1000px se 800px kar dein */
+  max-width: 600px !important; /* Width ko control kiya gaya hai */
   background: #060d2e;
   border: 1px solid var(--neon);
   border-radius: 24px;
-  padding: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
+  display: block; /* Flex ki jagah block taaki content niche-niche aaye */
+  max-height: 90vh; /* Mobile screen ke liye zaroori */
+  overflow-y: auto; /* Agar content bada ho to scroll bar aayega */
+  animation: modalIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Form Groups ko thik karne ke liye */
+.popup-box .mb-3, .popup-box .mb-4 {
+  width: 100% !important;
+  text-align: left;
+}
+
+.popup-box .form-control {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+
+/* Mobile par popup aur chota aur saaf dikhe */
+@media (max-width: 576px) {
+  .popup-box {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  .neon-text {
+    font-size: 1.5rem;
+  }
+}/* Form inputs ke beech gap ke liye */
+.popup-box .mb-3, .popup-box .mb-4 {
+  width: 100% !important;
+  text-align: left;
+}
 /* QR Code touch zoom */
 .qr-zoom {
   transition: transform 0.3s ease;
