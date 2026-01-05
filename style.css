@@ -219,7 +219,7 @@ body {
 /* Popup ko bada aur sundar banane ke liye */
 .popup-box {
   width: 95% !important;
-  max-width: 1000px !important; /* Width badha di gayi hai */
+  max-width: 800px !important; /* 1000px se 800px kar dein */
   background: #060d2e;
   border: 1px solid var(--neon);
   border-radius: 24px;
