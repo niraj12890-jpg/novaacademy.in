@@ -1,3 +1,5 @@
+let currentWorkshopKey = null;
+
 /* ===============================
    GLOBAL WORKSHOP DATA
 ================================ */
@@ -5,31 +7,37 @@ const WORKSHOP_DATA = {
   xps: {
     title: "XPS Data Analysis",
     desc: "Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets.",
+    price: "₹2,999",
     img: "images/w1.png"
   },
   electro: {
     title: "Electrochemical Analysis",
     desc: "EIS, CV, LSV, GCD and Nyquist plot based training.",
+    price: "₹2,999",
     img: "images/w2.png"
   },
   origin: {
     title: "OriginPro Training",
     desc: "Publication quality graphing, curve fitting and statistics.",
+    price: "₹2,999",
     img: "images/w3.png"
   },
   xrd: {
     title: "XRD Data Analysis",
     desc: "Rietveld refinement, peak indexing and structure analysis.",
+    price: "₹2,999",
     img: "images/w4.png"
   },
   chemdraw: {
     title: "ChemDraw Hands-on",
     desc: "Professional chemical drawing and reaction schemes.",
+    price: "₹2,999", // [REPLACEMENT] Pehle yahan price missing thi
     img: "images/w5.png"
   },
   dwsim: {
     title: "DWSIM Simulation",
     desc: "Chemical process simulation with reactors and distillation.",
+    price: "₹2,999",
     img: "images/w6.png"
   }
 };
@@ -118,9 +126,10 @@ function closePopup(id) {
 function openDetails(type) {
   const data = WORKSHOP_DATA[type];
   if (!data) return;
-
+  currentWorkshopKey = type;
   document.getElementById("workshopTitle").innerText = data.title;
   document.getElementById("workshopDesc").innerText = data.desc;
+  document.getElementById("workshopPrice").innerText = data.price;
   document.getElementById("workshopImg").src = data.img;
 
   openPopup("workshopDetailsPopup");
@@ -129,8 +138,18 @@ function openDetails(type) {
 /* ===============================
    REGISTER FLOW
 ================================ */
-function openRegister(workshopName) {
-  selectedWorkshop = workshopName;
+function openRegister(workshopKey) {
+  const data = WORKSHOP_DATA[workshopKey];
+  if (!data) return;
+
+  selectedWorkshop = data.title;
+
+  document.getElementById("workshopDisplay").value = data.title;
+  document.getElementById("workshopInput").value = data.title;
+
+  document.getElementById("priceDisplay").value = data.price;
+  document.getElementById("priceInput").value = data.price;
+
   openPopup("registerPopup");
 }
 
@@ -171,10 +190,9 @@ function closeQrZoom() {
    SINGLE SMART SUBMIT
 ================================ */
 function submitAndWhatsapp() {
-
-  const name = document.querySelector('#registerPopup input[placeholder="Name"]').value.trim();
-  const mobile = document.querySelector('#registerPopup input[placeholder="Number"]').value.trim();
-  const email = document.querySelector('#registerPopup input[type="email"]').value.trim();
+  const name = document.getElementById("nameInput").value.trim();
+  const mobile = document.getElementById("mobileInput").value.trim();
+  const email = document.getElementById("emailInput").value.trim();
   const utr = document.getElementById("utrInput").value;
 
   if (!name || !mobile || !email || utr.length !== 12) {
@@ -182,24 +200,43 @@ function submitAndWhatsapp() {
     return;
   }
 
-  const data = { name, mobile, email, workshop: selectedWorkshop, utr };
+  const workshop = document.getElementById("workshopInput").value;
+  const price = document.getElementById("priceInput").value;
+  
+  const data = { name, mobile, email, workshop, price, utr };
+
+  // Button ko disable karein loading ke liye
+  const submitBtn = document.querySelector(".btn-success");
+  submitBtn.innerText = "Processing...";
+  submitBtn.disabled = true;
 
   fetch("https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec", {
     method: "POST",
+    mode: "no-cors", // CORS issues se bachne ke liye
     body: JSON.stringify(data)
   })
-  .then(r => r.json())
   .then(() => {
-    const msg =
-`Hello Nova Academy,%0A
-Workshop: *${selectedWorkshop}*%0A
-Name: ${name}%0A
-Mobile: ${mobile}%0A
-UTR: ${utr}`;
-
+    // Note: no-cors mode mein response read nahi ho sakta, 
+    // isliye hum sidhe WhatsApp par bhej rahe hain
+    const msg = `Hello Nova Academy,%0A%0AWorkshop: *${selectedWorkshop}*%0AName: ${name}%0AMobile: ${mobile}%0AUTR: ${utr}`;
+    
     window.open(`https://wa.me/919598183089?text=${msg}`, "_blank");
-    showToast("Registration Completed ✔");
+    showToast("Registration Sent ✔");
     closePopup("registerPopup");
+    submitBtn.innerText = "Complete Registration";
+    submitBtn.disabled = false;
   })
-  .catch(() => alert("कुछ त्रुटि हुई, पुनः प्रयास करें"));
+  .catch((err) => {
+    console.error(err);
+    alert("कुछ त्रुटi हुई, पुनः प्रयास करें");
+    submitBtn.innerText = "Complete Registration";
+    submitBtn.disabled = false;
+  });
 }
+
+document.getElementById("enrollBtn")?.addEventListener("click", () => {
+  closePopup("workshopDetailsPopup");
+  if (currentWorkshopKey) {
+    openRegister(currentWorkshopKey);
+  }
+});
