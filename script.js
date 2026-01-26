@@ -1,7 +1,7 @@
 /* ============================================================
    1. CONFIGURATION: Google Sheet URL & Admin Contact
    ============================================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGDvI7rEHYqzbLplXq36yiZcE_7P7qyE8N0Wddc73QoMzt3uV5L399vW7-XDATC6cI/exec";
 const ADMIN_MOBILE = "919598183089";
 
 const WORKSHOP_DATA = {
