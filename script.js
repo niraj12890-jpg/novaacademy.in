@@ -87,14 +87,34 @@ function openDetails(type) {
 /* ===============================
    REGISTER FLOW
 ================================ */
+/* --- UTR Verification Logic --- */
+function validateUTR(input) {
+  const utrValue = input.value.trim();
+  const tickElement = document.getElementById('utrTick');
+  
+  // UTR आमतौर पर 12 अंकों का होता है
+  if (utrValue.length === 12) {
+    input.classList.add('utr-valid');
+    tickElement.style.display = 'block'; // ग्रीन टिक दिखाओ
+  } else {
+    input.classList.remove('utr-valid');
+    tickElement.style.display = 'none'; // टिक छुपाओ
+  }
+}
+
+// openRegister फंक्शन को अपडेट करें ताकि इसमें validation जुड़ सके
 function openRegister(key) {
   const data = WORKSHOP_DATA[key];
   if (!data) return;
 
-  selectedWorkshop = data.title;
-
+  document.getElementById("workshopDisplay").value = data.title;
   document.getElementById("workshopInput").value = data.title;
-  document.getElementById("priceInput").value = data.price;
+  document.getElementById("priceDisplay").innerText = data.price;
+  
+  // फॉर्म साफ़ करें
+  document.getElementById("utrInput").value = "";
+  document.getElementById("utrTick").style.display = "none";
+  document.getElementById("utrInput").classList.remove('utr-valid');
 
   openPopup("registerPopup");
 }
