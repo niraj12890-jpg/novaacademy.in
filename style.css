@@ -308,4 +308,45 @@ body {
   background: #fff;
   padding: 15px;
   border-radius: 20px;
-  box-shado
+  box-shadow: 0 0 60px rgba(58, 134, 255, 0.6);
+  animation: qrZoomIn 0.35s ease;
+}
+
+@keyframes qrZoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== TOAST MESSAGE ===== */
+.toast-msg {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, var(--neon), var(--accent));
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 0 25px rgba(58, 134, 255, 0.6);
+  opacity: 0;
+  z-index: 30000;
+  transition: all 0.35s ease;
+  pointer-events: none;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== UTR VALIDATION GLOW ===== */
+.utr-valid {
+  border: 2px solid #00f5a0 !important;
+  box-shadow: 0 0 15px rgba(0, 245, 160, 0.8) !important;
+}
+
+.utr-invalid {
+  border: 2px solid #ff4d4d !important;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.8) !important;
+}
