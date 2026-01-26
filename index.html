@@ -531,8 +531,10 @@
       <label class="form-label small fw-bold text-uppercase opacity-75">Transaction UTR / Ref. ID</label>
       <div class="input-group input-group-lg border border-primary rounded-3 overflow-hidden shadow-sm">
         <span class="input-group-text bg-dark border-0 text-primary"><i class="bi bi-hash"></i></span>
-        <input type="text" id="utrInput" maxlength="12" class="form-control bg-dark text-white border-0 shadow-none fs-5" placeholder="Enter 12-digit UTR" oninput="validateUTR(this)">
-      </div>
+        <div class="utr-field-container">
+  <input type="text" id="utrInput" class="form-control text-center" placeholder="Enter 12-digit UTR" maxlength="12" oninput="validateUTR(this)">
+  <i class="bi bi-check-circle-fill utr-verified-tick" id="utrTick"></i>
+</div>      </div>
     </div>
 
     <button class="btn btn-success w-100 py-3 rounded-pill fw-bold fs-5 shadow-lg mb-3" onclick="submitAndWhatsapp()">
