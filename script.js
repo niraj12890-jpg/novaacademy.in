@@ -1,112 +1,201 @@
 /* ============================================================
-   1. CONFIGURATION: Google Sheet URL & Admin Contact
+   WEB DATA ENTRY TOOLS 2026 - CORE JAVASCRIPT
+   Project: Nova Academy | Version: 2.0
    ============================================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGDvI7rEHYqzbLplXq36yiZcE_7P7qyE8N0Wddc73QoMzt3uV5L399vW7-XDATC6cI/exec";
-const ADMIN_MOBILE = "919598183089";
 
+let currentWorkshopKey = null;
+let selectedWorkshopTitle = "";
+
+/* --- 1. GLOBAL WORKSHOP DATA --- */
 const WORKSHOP_DATA = {
-  xps: { title: "XPS Data Analysis", price: "₹ 2,999" },
-  electro: { title: "Electrochemical Analysis", price: "₹ 2,999" },
-  origin: { title: "OriginPro Training", price: "₹ 2,999" },
-  xrd: { title: "XRD Data Analysis", price: "₹ 2,999" },
-  chemdraw: { title: "ChemDraw Hands-on", price: "₹ 2,999" },
-  dwsim: { title: "DWSIM Simulation", price: "₹ 2,999" }
+    xps: { title: "XPS Data Analysis", desc: "Comprehensive XPS fundamentals & peak fitting.", price: "₹2,999", img: "images/w1.png" },
+    electro: { title: "Electrochemical Analysis", desc: "EIS, CV, LSV, GCD and Nyquist plots.", price: "₹2,999", img: "images/w2.png" },
+    origin: { title: "OriginPro Training", desc: "Publication quality graphing & statistics.", price: "₹2,999", img: "images/w3.png" },
+    xrd: { title: "XRD Data Analysis", desc: "Rietveld refinement & structure analysis.", price: "₹2,999", img: "images/w4.png" },
+    chemdraw: { title: "ChemDraw Hands-on", desc: "Professional chemical drawing schemes.", price: "₹2,999", img: "images/w5.png" },
+    dwsim: { title: "DWSIM Simulation", desc: "Chemical process simulation & reactors.", price: "₹2,999", img: "images/w6.png" }
 };
 
-/* ============================================================
-   2. POPUP HANDLERS: Opening & Closing Logic
-   ============================================================ */
-function handleFormTrigger(key, type) {
-  const ws = WORKSHOP_DATA[key];
-  if (type === 'enquire') {
-    document.getElementById('enq_workshop').value = ws.title;
-    openPopup('enquirePopup');
-  } else {
-    // Registration Form Setup
-    document.getElementById('reg_workshop').value = ws.title;
-    document.getElementById('reg_fees').value = ws.price;
-    document.getElementById('reg_ws_name').innerText = ws.title;
-    document.getElementById('reg_ws_fee').innerText = ws.price;
-    openPopup('registerPopup');
-  }
+/* --- 2. INITIALIZATION --- */
+document.addEventListener("DOMContentLoaded", () => {
+    initMouseGlow();
+    initCounters();
+    initSearch();
+});
+
+// Futuristic Mouse Glow Effect
+function initMouseGlow() {
+    const glow = document.createElement("div");
+    glow.className = "mouse-glow";
+    document.body.appendChild(glow);
+    document.addEventListener("mousemove", e => {
+        requestAnimationFrame(() => {
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+        });
+    });
 }
 
+// Search Functionality
+function initSearch() {
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", e => {
+            const val = e.target.value.toLowerCase();
+            document.querySelectorAll(".workshop-card-item").forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(val) ? "" : "none";
+            });
+        });
+    }
+}
+
+// Counters Animation
+function initCounters() {
+    const counters = document.querySelectorAll(".counter");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = +el.dataset.target;
+                let count = 0;
+                const update = () => {
+                    const step = target / 50;
+                    if (count < target) {
+                        count += step;
+                        el.innerText = Math.ceil(count) + "+";
+                        setTimeout(update, 20);
+                    } else { el.innerText = target + "+"; }
+                };
+                update();
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+}
+
+/* --- 3. POPUP CONTROLS --- */
 function openPopup(id) {
-  document.getElementById(id).style.display = 'flex';
-  document.body.style.overflow = 'hidden'; // Disable scroll
+    const el = document.getElementById(id);
+    if (el) {
+        el.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
 }
 
 function closePopup(id) {
-  document.getElementById(id).style.display = 'none';
-  document.body.style.overflow = 'auto'; // Enable scroll
+    const el = document.getElementById(id);
+    if (el) {
+        el.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
 }
 
-/* ============================================================
-   3. DATA SUBMISSION: Google Sheet + WhatsApp Message
-   ============================================================ */
-async function handleFormSubmit(e, formId) {
-  e.preventDefault();
-  const form = document.getElementById(formId);
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
-  const submitBtn = form.querySelector('button[type="submit"]');
+/* --- 4. WORKSHOP & REGISTRATION FLOW --- */
+function openDetails(type) {
+    const data = WORKSHOP_DATA[type];
+    if (!data) return;
+    currentWorkshopKey = type;
+    document.getElementById("workshopTitle").innerText = data.title;
+    document.getElementById("workshopDesc").innerText = data.desc;
+    document.getElementById("workshopPrice").innerText = data.price;
+    document.getElementById("workshopImg").src = data.img;
+    openPopup("workshopDetailsPopup");
+}
 
-  // Loading UI
-  submitBtn.disabled = true;
-  const originalBtnText = submitBtn.innerHTML;
-  submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Submitting...`;
+function openRegister(key) {
+    const data = WORKSHOP_DATA[key] || WORKSHOP_DATA[currentWorkshopKey];
+    if (!data) return;
+    selectedWorkshopTitle = data.title;
+    document.getElementById("workshopDisplay").value = data.title;
+    document.getElementById("workshopInput").value = data.title;
+    document.getElementById("priceDisplay").value = data.price;
+    document.getElementById("priceInput").value = data.price;
+    openPopup("registerPopup");
+}
 
-  try {
-    // A. Send Data to Google Sheet (Auto-Header logic in Apps Script)
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify(data)
-    });
+/* --- 5. PAYMENT & VALIDATION --- */
+function validateUTR(input) {
+    input.value = input.value.replace(/\D/g, "");
+    const isValid = input.value.length === 12;
+    input.classList.toggle("utr-valid", isValid);
+    input.classList.toggle("utr-invalid", !isValid);
+}
 
-    // B. Build WhatsApp Message for Admin
-    let waMsg = `*🚀 New ${data.formType.toUpperCase()} Alert!*%0A%0A`;
-    for (const [key, value] of Object.entries(data)) {
-      if (key !== 'formType') {
-        waMsg += `*${key.replace('_', ' ').toUpperCase()}:* ${value}%0A`;
-      }
+function copyUpiId(id) {
+    navigator.clipboard.writeText(id).then(() => showToast("UPI ID Copied!"));
+}
+
+/* --- 6. DATA SUBMISSION (SMART LOGIC) --- */
+async function submitAndWhatsapp() {
+    const form = document.getElementById("registrationForm");
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Collecting Data
+    const formData = {
+        name: document.getElementById("nameInput").value.trim(),
+        mobile: document.getElementById("mobileInput").value.trim(),
+        email: document.getElementById("emailInput").value.trim(),
+        workshop: document.getElementById("workshopInput").value,
+        price: document.getElementById("priceInput").value,
+        utr: document.getElementById("utrInput").value
+    };
+
+    // Basic Validation
+    if (!formData.name || !formData.mobile || formData.utr.length !== 12) {
+        alert("Please fill all details correctly. 12-digit UTR is mandatory.");
+        return;
     }
 
-    // C. Open WhatsApp & Success Actions
-    window.open(`https://wa.me/${ADMIN_MOBILE}?text=${waMsg}`, '_blank');
-    
-    showToast("Success! Admin Notified.");
-    form.reset();
-    closePopup(formId.replace('Form', 'Popup'));
+    submitBtn.innerText = "Processing...";
+    submitBtn.disabled = true;
 
-  } catch (error) {
-    console.error("Submission Error:", error);
-    alert("Submission failed. Check your internet connection.");
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalBtnText;
-  }
+    try {
+        // Sending to Google Sheets (Web App URL)
+        await fetch("YOUR_GOOGLE_SCRIPT_URL", {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(formData)
+        });
+
+        // WhatsApp Redirection
+        const msg = `*NEW REGISTRATION - NOVA ACADEMY*%0A%0A` +
+                    `*Workshop:* ${formData.workshop}%0A` +
+                    `*Name:* ${formData.name}%0A` +
+                    `*Mobile:* ${formData.mobile}%0A` +
+                    `*UTR No:* ${formData.utr}%0A%0A` +
+                    `_Sent via Data Brahmastra 2026_`;
+
+        window.open(`https://wa.me/919598183089?text=${msg}`, "_blank");
+        showToast("Registration Successful! ✔");
+        closePopup("registerPopup");
+    } catch (err) {
+        alert("Submission failed. Please try again.");
+    } finally {
+        submitBtn.innerText = "Complete Registration";
+        submitBtn.disabled = false;
+    }
 }
 
-// Attach listeners to forms
-document.getElementById('enquiryForm').onsubmit = (e) => handleFormSubmit(e, 'enquiryForm');
-document.getElementById('registerForm').onsubmit = (e) => handleFormSubmit(e, 'registerForm');
-
-/* ============================================================
-   4. UTILS: Toast & Search Functionality
-   ============================================================ */
+/* --- 7. UTILITIES --- */
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.innerText = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 4000);
+    const toast = document.getElementById("toast");
+    toast.innerText = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-// Search Workshops in Grid
-document.getElementById('searchInput')?.addEventListener('keyup', function() {
-  const term = this.value.toLowerCase();
-  document.querySelectorAll('.workshop-card-item').forEach(card => {
-    const title = card.querySelector('h4').innerText.toLowerCase();
-    card.style.display = title.includes(term) ? "block" : "none";
-  });
+function openQrZoom(src) {
+    document.getElementById("qrOverlayImg").src = src;
+    document.getElementById("qrOverlay").style.display = "flex";
+}
+
+function closeQrZoom() {
+    document.getElementById("qrOverlay").style.display = "none";
+}
+
+// Event Listeners
+document.getElementById("enrollBtn")?.addEventListener("click", () => {
+    closePopup("workshopDetailsPopup");
+    openRegister(currentWorkshopKey);
 });
