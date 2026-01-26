@@ -1,1 +1,154 @@
 
+<section class="container py-5" id="workshops">
+  <div class="text-center mb-5">
+    <h2 class="neon-text display-5 fw-bold">Upcoming Online Workshops</h2>
+    <p class="opacity-75">Advanced Research Tools & Technical Skills Training</p>
+  </div>
+
+  <div class="row g-4" id="workshopGrid">
+    
+    <div class="col-md-4 workshop-card-item" id="workshop-xps">
+      <div class="card h-100 border-0 shadow-sm glass-card">
+        <div class="position-relative overflow-hidden">
+          <img class="card-img-top transition-img" src="images/w1.png" alt="XPS Workshop" loading="lazy">
+          <div class="badge bg-primary position-absolute top-0 end-0 m-3 shadow">Most Popular</div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h4 class="fw-bold mb-2">XPS Data Analysis</h4>
+          <p class="text-light-50 small mb-3">Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets.</p>
+          
+          <div class="workshop-meta mb-3 mt-auto">
+            <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
+            <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Live Online</div>
+            <div class="fs-5 fw-bold text-info mt-2">₹ 2,999</div>
+          </div>
+
+          <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xps')">View Details</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('xps')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 workshop-card-item" id="workshop-electro">
+      <div class="card h-100 border-0 shadow-sm glass-card">
+        <div class="position-relative overflow-hidden">
+          <img class="card-img-top transition-img" src="images/w2.png" alt="Electrochemical" loading="lazy">
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h4 class="fw-bold mb-2">Electrochemical Analysis</h4>
+          <p class="text-light-50 small mb-3">EIS, CV, LSV, GCD & Nyquist plots for batteries and catalysis research.</p>
+          
+          <div class="workshop-meta mb-3 mt-auto">
+            <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1-2 Weeks</div>
+            <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online</div>
+            <div class="fs-5 fw-bold text-info mt-2">Live Sessions</div>
+          </div>
+
+          <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('electro')">View Details</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 workshop-card-item" id="workshop-origin">
+      <div class="card h-100 border-0 shadow-sm glass-card">
+        <div class="position-relative overflow-hidden">
+          <img class="card-img-top transition-img" src="images/w3.png" alt="OriginPro" loading="lazy">
+          <div class="badge bg-danger position-absolute top-0 end-0 m-3 shadow">Fast Selling</div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h4 class="fw-bold mb-2">OriginPro Graphing</h4>
+          <p class="text-light-50 small mb-3">Peak analysis, curve fitting & publication-ready high-quality graphs.</p>
+          
+          <div class="workshop-meta mb-3 mt-auto">
+            <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
+            <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Live Workshop</div>
+          </div>
+
+          <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('origin')">View Details</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 workshop-card-item" id="workshop-xrd">
+      <div class="card h-100 border-0 shadow-sm glass-card">
+        <div class="position-relative overflow-hidden">
+          <img class="card-img-top transition-img" src="images/w4.png" alt="XRD Workshop" loading="lazy">
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h4 class="fw-bold mb-2">XRD Data Analysis</h4>
+          <p class="text-light-50 small mb-3">Rietveld refinement, peak indexing & crystal structure analysis.</p>
+          
+          <div class="workshop-meta mb-3 mt-auto">
+            <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
+            <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online Live</div>
+          </div>
+
+          <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xrd')">View Details</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 workshop-card-item" id="workshop-chemdraw">
+      <div class="card h-100 border-0 shadow-sm glass-card">
+        <div class="position-relative overflow-hidden">
+          <img class="card-img-top transition-img" src="images/w5.png" alt="ChemDraw" loading="lazy">
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h4 class="fw-bold mb-2">ChemDraw Hands-on</h4>
+          <p class="text-light-50 small mb-3">Draw chemical structures, complex reactions & HD export for papers.</p>
+          
+          <div class="workshop-meta mb-3 mt-auto">
+            <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
+            <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online Live</div>
+          </div>
+
+          <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('chemdraw')">View Details</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 workshop-card-item" id="workshop-dwsim">
+      <div class="card h-100 border-0 shadow-sm glass-card">
+        <div class="position-relative overflow-hidden">
+          <img class="card-img-top transition-img" src="images/w6.png" alt="DWSIM Simulation" loading="lazy">
+          <div class="badge bg-info position-absolute top-0 end-0 m-3 shadow">Highly Technical</div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h4 class="fw-bold mb-2">DWSIM Chemical Simulation</h4>
+          <p class="text-light-50 small mb-3">Process simulation: reactors, distillation & flowsheets.</p>
+          
+          <div class="workshop-meta mb-3 mt-auto">
+            <div class="small text-secondary mb-1"><i class="bi bi-clock-history me-2"></i>Duration: 1 Week</div>
+            <div class="small text-secondary mb-1"><i class="bi bi-laptop me-2"></i>Mode: Online Live</div>
+          </div>
+
+          <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('dwsim')">View Details</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
+            <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openPopup('registerPopup')">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
