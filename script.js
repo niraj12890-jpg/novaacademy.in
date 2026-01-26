@@ -1,77 +1,34 @@
 let currentWorkshopKey = null;
+let selectedWorkshop = "";
 
 /* ===============================
    GLOBAL WORKSHOP DATA
 ================================ */
 const WORKSHOP_DATA = {
-  xps: {
-    title: "XPS Data Analysis",
-    desc: "Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets.",
-    price: "₹2,999",
-    img: "images/w1.png"
-  },
-  electro: {
-    title: "Electrochemical Analysis",
-    desc: "EIS, CV, LSV, GCD and Nyquist plot based training.",
-    price: "₹2,999",
-    img: "images/w2.png"
-  },
-  origin: {
-    title: "OriginPro Training",
-    desc: "Publication quality graphing, curve fitting and statistics.",
-    price: "₹2,999",
-    img: "images/w3.png"
-  },
-  xrd: {
-    title: "XRD Data Analysis",
-    desc: "Rietveld refinement, peak indexing and structure analysis.",
-    price: "₹2,999",
-    img: "images/w4.png"
-  },
-  chemdraw: {
-    title: "ChemDraw Hands-on",
-    desc: "Professional chemical drawing and reaction schemes.",
-    price: "₹2,999",
-    img: "images/w5.png"
-  },
-  dwsim: {
-    title: "DWSIM Simulation",
-    desc: "Chemical process simulation with reactors and distillation.",
-    price: "₹2,999",
-    img: "images/w6.png"
-  }
+  xps: { title: "XPS Data Analysis", desc: "Comprehensive XPS fundamentals, instrumentation & peak fitting.", price: "₹2,999", img: "images/w1.png" },
+  electro: { title: "Electrochemical Analysis", desc: "EIS, CV, LSV, GCD and Nyquist plot based training.", price: "₹2,999", img: "images/w2.png" },
+  origin: { title: "OriginPro Training", desc: "Publication quality graphing, curve fitting and statistics.", price: "₹2,999", img: "images/w3.png" },
+  xrd: { title: "XRD Data Analysis", desc: "Rietveld refinement and structure analysis.", price: "₹2,999", img: "images/w4.png" },
+  chemdraw: { title: "ChemDraw Hands-on", desc: "Professional chemical drawing and reactions.", price: "₹2,999", img: "images/w5.png" },
+  dwsim: { title: "DWSIM Simulation", desc: "Chemical process simulation training.", price: "₹2,999", img: "images/w6.png" }
 };
-
-let selectedWorkshop = "";
 
 /* ===============================
    DOM READY
 ================================ */
 document.addEventListener("DOMContentLoaded", () => {
 
-  const enrollBtn = document.getElementById("enrollBtn");
-  if (enrollBtn) {
-    enrollBtn.addEventListener("click", () => {
-      closePopup("workshopDetailsPopup");
-      if (currentWorkshopKey) {
-        openRegister(currentWorkshopKey);
-      }
-    });
-  }
-
-  /* ---- Mouse Glow ---- */
+  /* Mouse Glow */
   const glow = document.createElement("div");
   glow.className = "mouse-glow";
   document.body.appendChild(glow);
 
   document.addEventListener("mousemove", e => {
-    requestAnimationFrame(() => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
   });
 
-  /* ---- Search ---- */
+  /* Search */
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.addEventListener("input", e => {
@@ -82,32 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---- Counters ---- */
-  const counters = document.querySelectorAll(".counter");
-  if (counters.length) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = +el.dataset.target;
-        let count = 0;
-        const step = target / 50;
-
-        const update = () => {
-          if (count < target) {
-            count += step;
-            el.innerText = Math.ceil(count) + "+";
-            setTimeout(update, 20);
-          } else {
-            el.innerText = target + "+";
-          }
-        };
-        update();
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(c => observer.observe(c));
+  /* Enroll Button */
+  const enrollBtn = document.getElementById("enrollBtn");
+  if (enrollBtn) {
+    enrollBtn.addEventListener("click", () => {
+      closePopup("workshopDetailsPopup");
+      if (currentWorkshopKey) openRegister(currentWorkshopKey);
+    });
   }
 });
 
@@ -136,6 +74,7 @@ function closePopup(id) {
 function openDetails(type) {
   const data = WORKSHOP_DATA[type];
   if (!data) return;
+
   currentWorkshopKey = type;
   document.getElementById("workshopTitle").innerText = data.title;
   document.getElementById("workshopDesc").innerText = data.desc;
@@ -148,15 +87,13 @@ function openDetails(type) {
 /* ===============================
    REGISTER FLOW
 ================================ */
-function openRegister(workshopKey) {
-  const data = WORKSHOP_DATA[workshopKey];
+function openRegister(key) {
+  const data = WORKSHOP_DATA[key];
   if (!data) return;
 
   selectedWorkshop = data.title;
 
-  document.getElementById("workshopDisplay").value = data.title;
   document.getElementById("workshopInput").value = data.title;
-  document.getElementById("priceDisplay").value = data.price;
   document.getElementById("priceInput").value = data.price;
 
   openPopup("registerPopup");
@@ -187,16 +124,14 @@ function showToast(msg) {
 function openQrZoom(src) {
   document.getElementById("qrOverlayImg").src = src;
   document.getElementById("qrOverlay").style.display = "flex";
-  document.body.style.overflow = "hidden";
 }
 
 function closeQrZoom() {
   document.getElementById("qrOverlay").style.display = "none";
-  document.body.style.overflow = "auto";
 }
 
 /* ===============================
-   SINGLE SMART SUBMIT
+   SUBMIT
 ================================ */
 function submitAndWhatsapp() {
   const name = document.getElementById("nameInput").value.trim();
@@ -210,48 +145,10 @@ function submitAndWhatsapp() {
   }
 
   const workshop = document.getElementById("workshopInput").value;
-  const price = document.getElementById("priceInput").value;
+  const msg = `Hello Nova Academy,%0AWorkshop: ${workshop}%0AName: ${name}%0AMobile: ${mobile}%0AUTR: ${utr}`;
 
-  const data = { name, mobile, email, workshop, price, utr };
-
-  const submitBtn = document.getElementById("submitBtn");
-  submitBtn.innerText = "Processing...";
-  submitBtn.disabled = true;
-
-  const msg = `Hello Nova Academy,%0A%0AWorkshop: *${selectedWorkshop}*%0AName: ${name}%0AMobile: ${mobile}%0AUTR: ${utr}`;
   window.open(`https://wa.me/919598183089?text=${msg}`, "_blank");
 
   showToast("Registration Sent ✔");
   closePopup("registerPopup");
-
-  submitBtn.innerText = "Complete Registration";
-  submitBtn.disabled = false;
 }
-
-/* ======================================================
-   BELOW PART IS DUPLICATE CODE – COMMENTED (NOT DELETED)
-   So no line is lost, but browser error is removed
-====================================================== */
-
-/*
-
-let selectedWorkshop = "";
-
-document.addEventListener("DOMContentLoaded", () => {
-  ... (आपका पूरा duplicate block यहाँ था)
-});
-
-function openPopup(id) { ... }
-function closePopup(id) { ... }
-function openDetails(type) { ... }
-function openRegister(workshopKey) { ... }
-function validateUTR(input) { ... }
-function showToast(msg) { ... }
-function openQrZoom(src) { ... }
-function closeQrZoom() { ... }
-function submitAndWhatsapp() { ... }
-
-document.getElementById("enrollBtn")?.addEventListener("click", () => { ... });
-
-*/
-
