@@ -1,462 +1,377 @@
 /* ============================================
-   NOVA ACADEMY - PRODUCTION READY JAVASCRIPT
+   NOVA ACADEMY - PRODUCTION READY CSS
    Clean, Optimized, No Duplicates
    ============================================ */
 
-/* ===============================
-   GLOBAL VARIABLES
-================================ */
-let currentWorkshopKey = null;
-let selectedWorkshop = "";
+/* --- 1. THEME VARIABLES --- */
+:root {
+  --bg: #020b33;
+  --card-bg: rgba(6, 16, 70, 0.85);
+  --neon: #3a86ff;
+  --accent: #0d6efd;
+  --success: #00f5a0;
+  --glow-color: rgba(58, 134, 255, 0.5);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 
-/* ===============================
-   GLOBAL WORKSHOP DATA
-================================ */
-const WORKSHOP_DATA = {
-  xps: {
-    title: "XPS Data Analysis",
-    desc: "Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets.",
-    price: "₹2,999",
-    priceValue: 2999,
-    img: "images/w1.png"
-  },
-  electro: {
-    title: "Electrochemical Analysis",
-    desc: "EIS, CV, LSV, GCD and Nyquist plot based training.",
-    price: "Live Sessions",
-    priceValue: 2999,
-    img: "images/w2.png"
-  },
-  origin: {
-    title: "OriginPro Graphing",
-    desc: "Publication quality graphing, curve fitting and statistics.",
-    price: "₹2,499",
-    priceValue: 2499,
-    img: "images/w3.png"
-  },
-  xrd: {
-    title: "XRD Data Analysis",
-    desc: "Rietveld refinement, peak indexing and structure analysis.",
-    price: "₹2,799",
-    priceValue: 2799,
-    img: "images/w4.png"
-  },
-  chemdraw: {
-    title: "ChemDraw Hands-on",
-    desc: "Professional chemical drawing and reaction schemes.",
-    price: "₹1,999",
-    priceValue: 1999,
-    img: "images/w5.png"
-  },
-  dwsim: {
-    title: "DWSIM Chemical Simulation",
-    desc: "Chemical process simulation with reactors and distillation.",
-    price: "₹3,499",
-    priceValue: 3499,
-    img: "images/w6.png"
+/* --- 2. GLOBAL STYLES --- */
+body {
+  background-color: var(--bg);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding-top: 80px;
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(rgba(58, 134, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 134, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* --- 3. FUTURISTIC MOUSE GLOW --- */
+.mouse-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(58, 134, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+/* --- 4. NEON TEXT & BUTTONS --- */
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 8px var(--neon), 0 0 15px var(--neon);
+  letter-spacing: 1px;
+}
+
+.btn-neon {
+  background: var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px var(--accent);
+  color: #fff;
+  transition: var(--transition);
+}
+
+.btn-neon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px var(--neon);
+  background: #fff;
+  color: var(--bg);
+}
+
+/* --- 5. GLASS CARDS --- */
+.glass-card {
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(58, 134, 255, 0.15) !important;
+  backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px !important;
+  will-change: transform;
+}
+
+.glass-card:hover {
+  border-color: var(--neon) !important;
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(58, 134, 255, 0.2) !important;
+}
+
+/* Glass Card Text Color */
+.glass-card p,
+.glass-card h4,
+.glass-card h5 {
+  color: #ffffff !important;
+}
+
+/* --- 6. POPUP MODALS --- */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.popup-box {
+  width: 95% !important;
+  max-width: 600px !important;
+  background: #060d2e;
+  border: 1px solid var(--neon);
+  border-radius: 24px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
+  display: block;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Popup Form Groups */
+.popup-box .mb-3,
+.popup-box .mb-4 {
+  width: 100% !important;
+  text-align: left;
+}
+
+.popup-box .form-control {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+
+/* Popup Workshop Image */
+#workshopImg {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* --- 7. FORM CONTROLS --- */
+.form-control,
+.form-select {
+  border: 1px solid rgba(58, 134, 255, 0.3) !important;
+  transition: var(--transition) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--neon) !important;
+  box-shadow: 0 0 15px rgba(58, 134, 255, 0.4) !important;
+  background: rgba(58, 134, 255, 0.05) !important;
+}
+
+/* --- 8. ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-};
-
-/* ===============================
-   DOM READY
-================================ */
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* ---- Mouse Glow Effect ---- */
-  const glow = document.createElement("div");
-  glow.className = "mouse-glow";
-  document.body.appendChild(glow);
-
-  document.addEventListener("mousemove", e => {
-    requestAnimationFrame(() => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-  });
-
-  /* ---- Search Functionality ---- */
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) {
-    searchInput.addEventListener("input", e => {
-      const val = e.target.value.toLowerCase();
-      document.querySelectorAll(".workshop-card-item").forEach(card => {
-        card.style.display = card.innerText.toLowerCase().includes(val) ? "" : "none";
-      });
-    });
-  }
-
-  /* ---- Counter Animation ---- */
-  const counters = document.querySelectorAll(".counter");
-  if (counters.length) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = +el.dataset.target;
-        let count = 0;
-        const step = target / 50;
-
-        const update = () => {
-          if (count < target) {
-            count += step;
-            el.innerText = Math.ceil(count) + "+";
-            setTimeout(update, 20);
-          } else {
-            el.innerText = target + "+";
-          }
-        };
-        update();
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(c => observer.observe(c));
-  }
-
-  /* ---- Enroll Button Event Listener ---- */
-  const enrollBtn = document.getElementById("enrollBtn");
-  if (enrollBtn) {
-    enrollBtn.addEventListener("click", () => {
-      closePopup("workshopDetailsPopup");
-      if (currentWorkshopKey) {
-        openRegister(currentWorkshopKey);
-      }
-    });
-  }
-});
-
-/* ===============================
-   POPUP CONTROLS
-================================ */
-function openPopup(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.style.display = "flex";
-    document.body.style.overflow = "hidden";
+  to {
+    opacity: 1;
   }
 }
 
-function closePopup(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.style.display = "none";
-    document.body.style.overflow = "auto";
+@keyframes slideUp {
+  from {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
   }
 }
 
-/* ===============================
-   WORKSHOP DETAILS
-================================ */
-function openDetails(type) {
-  const data = WORKSHOP_DATA[type];
-  if (!data) {
-    console.error("Workshop data not found for:", type);
-    return;
+@keyframes modalIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  currentWorkshopKey = type;
-  
-  const titleEl = document.getElementById("workshopTitle");
-  const descEl = document.getElementById("workshopDesc");
-  const priceEl = document.getElementById("workshopPrice");
-  const imgEl = document.getElementById("workshopImg");
-  
-  if (titleEl) titleEl.innerText = data.title;
-  if (descEl) descEl.innerText = data.desc;
-  if (priceEl) priceEl.innerText = data.price;
-  if (imgEl) imgEl.src = data.img;
-
-  openPopup("workshopDetailsPopup");
-}
-
-/* ===============================
-   REGISTER FLOW
-================================ */
-function openRegister(workshopKey) {
-  const data = WORKSHOP_DATA[workshopKey];
-  if (!data) {
-    console.error("Workshop data not found for:", workshopKey);
-    return;
-  }
-
-  selectedWorkshop = data.title;
-
-  const workshopDisplayEl = document.getElementById("workshopDisplay");
-  const workshopInputEl = document.getElementById("workshopInput");
-  const priceDisplayEl = document.getElementById("priceDisplay");
-  const priceInputEl = document.getElementById("priceInput");
-  
-  if (workshopDisplayEl) workshopDisplayEl.value = data.title;
-  if (workshopInputEl) workshopInputEl.value = data.title;
-  if (priceDisplayEl) priceDisplayEl.value = data.price;
-  if (priceInputEl) priceInputEl.value = data.price;
-
-  openPopup("registerPopup");
-}
-
-/* ===============================
-   UTR VALIDATION
-================================ */
-function validateUTR(input) {
-  // Remove all non-numeric characters
-  input.value = input.value.replace(/\D/g, "");
-  
-  // Add/remove validation classes
-  input.classList.toggle("utr-valid", input.value.length === 12);
-  input.classList.toggle("utr-invalid", input.value.length > 0 && input.value.length !== 12);
-}
-
-/* ===============================
-   TOAST NOTIFICATION
-================================ */
-function showToast(msg) {
-  let toast = document.getElementById("toast");
-  
-  // Create toast if doesn't exist
-  if (!toast) {
-    toast = document.createElement("div");
-    toast.id = "toast";
-    toast.className = "toast-msg";
-    document.body.appendChild(toast);
-  }
-  
-  toast.innerText = msg;
-  toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 3000);
-}
-
-/* ===============================
-   QR CODE ZOOM
-================================ */
-function openQrZoom(src) {
-  let overlay = document.getElementById("qrOverlay");
-  
-  // Create QR overlay if doesn't exist
-  if (!overlay) {
-    overlay = document.createElement("div");
-    overlay.id = "qrOverlay";
-    overlay.className = "qr-overlay";
-    overlay.onclick = closeQrZoom;
-    
-    const img = document.createElement("img");
-    img.id = "qrOverlayImg";
-    overlay.appendChild(img);
-    document.body.appendChild(overlay);
-  }
-  
-  const img = document.getElementById("qrOverlayImg");
-  if (img) img.src = src;
-  
-  overlay.style.display = "flex";
-  document.body.style.overflow = "hidden";
-}
-
-function closeQrZoom() {
-  const overlay = document.getElementById("qrOverlay");
-  if (overlay) {
-    overlay.style.display = "none";
-    document.body.style.overflow = "auto";
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-/* ===============================
-   UPI ID COPY
-================================ */
-function copyUpiId(upiId) {
-  navigator.clipboard.writeText(upiId).then(() => {
-    showToast("UPI ID Copied! ✓");
-  }).catch(err => {
-    console.error("Copy failed:", err);
-    showToast("Failed to copy");
-  });
-}
-
-/* ===============================
-   ENQUIRY FORM SUBMISSION
-================================ */
-function submitEnquiry(event) {
-  event.preventDefault();
-  
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = {
-    type: 'enquiry',
-    timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-    name: formData.get('name'),
-    email: formData.get('email'),
-    mobile: formData.get('mobile'),
-    institute: formData.get('institute'),
-    department: formData.get('department') || 'N/A',
-    designation: formData.get('designation') || 'N/A',
-    level: formData.get('level'),
-    workshop: formData.get('workshop')
-  };
-
-  // Validation
-  if (!data.name || !data.email || !data.mobile || !data.level || !data.workshop) {
-    alert("कृपया सभी आवश्यक (*) फील्ड भरें");
-    return;
+@keyframes qrZoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
   }
-
-  // Show loading
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Submitting...';
-  submitBtn.disabled = true;
-
-  // Google Sheets URL - REPLACE WITH YOUR URL
-  const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec";
-
-  // Send to Google Sheets
-  fetch(GOOGLE_SHEET_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data)
-  })
-  .then(() => {
-    // Send WhatsApp message to admin (without WhatsApp Business API)
-    const adminPhone = "919598183089"; // Admin number
-    const message = `🔔 *New Enquiry Received*%0A%0A` +
-      `👤 Name: ${data.name}%0A` +
-      `📧 Email: ${data.email}%0A` +
-      `📱 Mobile: ${data.mobile}%0A` +
-      `🏢 Institute: ${data.institute}%0A` +
-      `🔬 Department: ${data.department}%0A` +
-      `💼 Designation: ${data.designation}%0A` +
-      `🎓 Level: ${data.level}%0A` +
-      `📚 Workshop: ${data.workshop}%0A%0A` +
-      `⏰ Time: ${data.timestamp}`;
-
-    // Open WhatsApp in new tab
-    window.open(`https://wa.me/${adminPhone}?text=${message}`, '_blank');
-
-    showToast("✅ Enquiry Submitted Successfully!");
-    form.reset();
-    setTimeout(() => closePopup('enquirePopup'), 1500);
-  })
-  .catch(err => {
-    console.error("Submission error:", err);
-    alert("कुछ त्रुटि हुई, पुनः प्रयास करें");
-  })
-  .finally(() => {
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-  });
-}
-
-/* ===============================
-   REGISTRATION FORM SUBMISSION
-================================ */
-function submitAndWhatsapp(event) {
-  event.preventDefault();
-  
-  const form = event.target;
-  const formData = new FormData(form);
-  
-  const data = {
-    type: 'registration',
-    timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-    name: formData.get('name'),
-    email: formData.get('email'),
-    mobile: formData.get('mobile'),
-    institute: formData.get('institute'),
-    department: formData.get('department') || 'N/A',
-    designation: formData.get('designation') || 'N/A',
-    level: formData.get('level'),
-    workshop: formData.get('workshop'),
-    price: formData.get('price'),
-    utr: formData.get('utr')
-  };
-
-  // Validation
-  if (!data.name || !data.email || !data.mobile || !data.institute || !data.level || !data.utr) {
-    alert("कृपया सभी आवश्यक (*) फील्ड भरें");
-    return;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
+}
 
-  if (data.utr.length !== 12) {
-    alert("कृपया 12 अंकों का सही UTR नंबर दर्ज करें");
-    return;
+/* --- 9. CUSTOM SCROLLBAR --- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, var(--neon), transparent);
+  border-radius: 10px;
+}
+
+/* --- 10. TRANSITION & HOVER EFFECTS --- */
+.transition-img {
+  transition: var(--transition);
+}
+
+.transition-img:hover {
+  filter: brightness(1.1) contrast(1.1);
+  transform: scale(1.05);
+}
+
+/* --- 11. COUNTER STYLES --- */
+.counter {
+  background: linear-gradient(to right, #ffffff, var(--neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* --- 12. NAVBAR --- */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+/* --- 13. CARDS TEXT VISIBILITY --- */
+.card,
+.card p,
+.card h4,
+.card h5,
+.card span,
+.card small {
+  color: #ffffff !important;
+}
+
+.card-body p {
+  color: #ffffff !important;
+  opacity: 0.9;
+}
+
+.workshop-card p,
+.workshop-card h5,
+.instructor-card p,
+.instructor-card h4,
+.instructor-card span,
+#workshopDesc {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.workshop-card h5,
+.instructor-card h4 {
+  color: var(--neon) !important;
+}
+
+/* --- 14. QR CODE FEATURES --- */
+/* QR Image Zoom on Hover */
+.qr-image-container img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: zoom-in;
+  border: 2px solid var(--neon);
+}
+
+.qr-image-container img:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 30px var(--neon);
+  z-index: 10;
+  position: relative;
+}
+
+/* QR Touch Zoom for Mobile */
+.qr-zoom {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.qr-zoom:active {
+  transform: scale(2.5);
+  z-index: 999;
+}
+
+/* QR Large View */
+.qr-large {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2.5) !important;
+  z-index: 9999;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
+}
+
+/* QR Fullscreen Overlay */
+.qr-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  cursor: zoom-out;
+}
+
+.qr-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 60px rgba(58, 134, 255, 0.6);
+  animation: qrZoomIn 0.35s ease;
+}
+
+/* --- 15. TOAST MESSAGE --- */
+.toast-msg {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, var(--neon), var(--accent));
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 0 25px rgba(58, 134, 255, 0.6);
+  opacity: 0;
+  z-index: 30000;
+  transition: all 0.35s ease;
+  pointer-events: none;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --- 16. UTR VALIDATION --- */
+.utr-valid {
+  border: 2px solid #00f5a0 !important;
+  box-shadow: 0 0 15px rgba(0, 245, 160, 0.8) !important;
+}
+
+.utr-invalid {
+  border: 2px solid #ff4d4d !important;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.8) !important;
+}
+
+/* --- 17. RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  .popup-box {
+    padding: 20px;
+    width: 98%;
   }
-
-  // Show loading
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Processing...';
-  submitBtn.disabled = true;
-
-  // Google Sheets URL - REPLACE WITH YOUR URL
-  const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec";
-
-  // Send to Google Sheets
-  fetch(GOOGLE_SHEET_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data)
-  })
-  .then(() => {
-    // Send WhatsApp message to admin (without WhatsApp Business API)
-    const adminPhone = "919598183089"; // Admin number
-    const message = `💰 *New Registration Received*%0A%0A` +
-      `👤 Name: ${data.name}%0A` +
-      `📧 Email: ${data.email}%0A` +
-      `📱 Mobile: ${data.mobile}%0A` +
-      `🏢 Institute: ${data.institute}%0A` +
-      `🔬 Department: ${data.department}%0A` +
-      `💼 Designation: ${data.designation}%0A` +
-      `🎓 Level: ${data.level}%0A` +
-      `📚 Workshop: ${data.workshop}%0A` +
-      `💵 Price: ${data.price}%0A` +
-      `🔢 UTR: ${data.utr}%0A%0A` +
-      `⏰ Time: ${data.timestamp}`;
-
-    // Open WhatsApp in new tab
-    window.open(`https://wa.me/${adminPhone}?text=${message}`, '_blank');
-
-    showToast("✅ Registration Successful!");
-    form.reset();
-    setTimeout(() => closePopup('registerPopup'), 2000);
-  })
-  .catch(err => {
-    console.error("Submission error:", err);
-    alert("कुछ त्रुटि हुई, पुनः प्रयास करें");
-  })
-  .finally(() => {
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-  });
+  
+  .mouse-glow {
+    display: none;
+  }
 }
 
-/* ===============================
-   TRAINER PROFILE (OPTIONAL)
-================================ */
-function openTrainerProfile(trainerId) {
-  // Future implementation for trainer profiles
-  console.log("Opening trainer profile:", trainerId);
-  showToast("Trainer profile coming soon!");
+@media (max-width: 576px) {
+  .popup-box {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  .neon-text {
+    font-size: 1.5rem;
+  }
 }
-
-/* ===============================
-   SMOOTH SCROLL (OPTIONAL)
-================================ */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href !== '#' && href !== 'javascript:void(0)') {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    }
-  });
-});
