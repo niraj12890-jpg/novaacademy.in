@@ -389,7 +389,7 @@ function submitAndWhatsapp(event) {
   submitBtn.disabled = true;
 
   // Google Sheets URL - REPLACE WITH YOUR URL
-  const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz6mKX2CczllDEFjz0YtpTYBH_i6zRjVNtv_zkUqXlout9K0q4zFE6gGBPwHbF8T05Zlw/exec";
+  const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbw3cbCmypdM_iy4gHYYcC1Lc1Ce_PA0mraSzYKKWld3htZH_5zOw7SbhYM4cFVsZDe6/exec";
 
   // Send to Google Sheets
   fetch(GOOGLE_SHEET_URL, {
