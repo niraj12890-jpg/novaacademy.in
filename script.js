@@ -145,6 +145,27 @@ function closePopup(id) {
 }
 
 /* ===============================
+   OPEN ENQUIRY WITH WORKSHOP
+================================ */
+function openEnquiryWithWorkshop(workshopKey) {
+  const data = WORKSHOP_DATA[workshopKey];
+  if (!data) {
+    console.error("Workshop data not found for:", workshopKey);
+    openPopup('enquirePopup');
+    return;
+  }
+  
+  // Set workshop in dropdown
+  const workshopSelect = document.getElementById('enq_workshop');
+  if (workshopSelect) {
+    workshopSelect.value = data.title;
+  }
+  
+  // Open enquiry popup
+  openPopup('enquirePopup');
+}
+
+/* ===============================
    WORKSHOP DETAILS
 ================================ */
 function openDetails(type) {
