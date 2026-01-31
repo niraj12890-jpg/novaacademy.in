@@ -15,7 +15,10 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top py-2">
     <div class="container-fluid px-lg-5">
-      <a class="navbar-brand fw-bold neon-text fs-3" href="#">NOVA ACADEMY</a>
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+        <img src="images/logo.png" alt="Nova Academy Logo" height="40" class="me-2">
+        <span class="neon-text fs-3">NOVA ACADEMY</span>
+      </a>
       
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
@@ -109,7 +112,7 @@
 
             <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xps')">View Details</button>
             <div class="d-flex gap-2">
-              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openEnquiryWithWorkshop('xps')">Enquire</button>
               <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('xps')">Register</button>
             </div>
           </div>
@@ -134,7 +137,7 @@
 
             <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('electro')">View Details</button>
             <div class="d-flex gap-2">
-              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openEnquiryWithWorkshop('electro')">Enquire</button>
               <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('electro')">Register</button>
             </div>
           </div>
@@ -160,7 +163,7 @@
 
             <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('origin')">View Details</button>
             <div class="d-flex gap-2">
-              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openEnquiryWithWorkshop('origin')">Enquire</button>
               <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('origin')">Register</button>
             </div>
           </div>
@@ -185,7 +188,7 @@
 
             <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('xrd')">View Details</button>
             <div class="d-flex gap-2">
-              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire</button>
+              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openEnquiryWithWorkshop('xrd')">Enquire</button>
               <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('xrd')">Register</button>
             </div>
           </div>
@@ -210,7 +213,7 @@
 
             <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('chemdraw')">View Details</button>
             <div class="d-flex gap-2">
-              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openEnquiryWithWorkshop('chemdraw')">Enquire Now</button>
               <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('chemdraw')">Register Now</button>
             </div>
           </div>
@@ -236,7 +239,7 @@
 
             <button class="btn btn-outline-primary w-100 mb-2 rounded-pill" onclick="openDetails('dwsim')">View Details</button>
             <div class="d-flex gap-2">
-              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openPopup('enquirePopup')">Enquire Now</button>
+              <button class="btn btn-neon flex-fill rounded-pill py-2" onclick="openEnquiryWithWorkshop('dwsim')">Enquire Now</button>
               <button class="btn btn-success flex-fill rounded-pill py-2" onclick="openRegister('dwsim')">Register Now</button>
             </div>
           </div>
@@ -439,7 +442,12 @@
 
   <!-- POPUP: Enquiry Form (Hidden by default) -->
   <div id="enquirePopup" class="popup-overlay">
-    <div class="popup-box glass-card border-neon shadow-lg" style="max-width:600px;">
+    <div class="popup-box glass-card border-neon shadow-lg" style="max-width:700px; max-height:90vh; overflow-y:auto;">
+      
+      <!-- Close Button -->
+      <button class="popup-close-btn" onclick="closePopup('enquirePopup')" title="Close">
+        <i class="bi bi-x-lg"></i>
+      </button>
       
       <div class="text-center mb-4">
         <span class="badge bg-primary rounded-pill mb-2 px-3 shadow-sm">Quick Enquiry</span>
@@ -535,14 +543,17 @@
           </div>
         </div>
       </form>
-
-      <button class="btn btn-outline-danger w-100 rounded-pill border-0 mt-3" onclick="closePopup('enquirePopup')">Close</button>
     </div>
   </div>
 
   <!-- POPUP: Register & Pay Form (Hidden by default) -->
   <div id="registerPopup" class="popup-overlay">
-    <div class="popup-box glass-card border-neon shadow-lg" style="max-width:700px;">
+    <div class="popup-box glass-card border-neon shadow-lg" style="max-width:800px; max-height:90vh; overflow-y:auto;">
+      
+      <!-- Close Button -->
+      <button class="popup-close-btn" onclick="closePopup('registerPopup')" title="Close">
+        <i class="bi bi-x-lg"></i>
+      </button>
       
       <div class="text-center mb-4">
         <span class="badge bg-success rounded-pill mb-2 px-3 shadow-sm">Secure Enrollment</span>
@@ -659,10 +670,6 @@
           <i class="bi bi-lightning-charge-fill me-2"></i>Complete Registration
         </button>
       </form>
-      
-      <button class="btn btn-link text-danger w-100 text-decoration-none small" onclick="closePopup('registerPopup')">
-        Go Back & Edit Details
-      </button>
     </div>
   </div>
 
