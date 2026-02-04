@@ -353,7 +353,7 @@ function submitEnquiry(event) {
   })
   .then(() => {
     // Send WhatsApp message to admin (without WhatsApp Business API)
-    const adminPhone = "919598183089"; // Admin number
+    const adminPhone = "917984786902"; // Admin number
     const message = `🔔 *New Enquiry Received*%0A%0A` +
       `👤 Name: ${data.name}%0A` +
       `📧 Email: ${data.email}%0A` +
@@ -437,7 +437,7 @@ function submitAndWhatsapp(event) {
   })
   .then(() => {
     // Send WhatsApp message to admin (without WhatsApp Business API)
-    const adminPhone = "919598183089"; // Admin number
+    const adminPhone = "917984786902"; // Admin number
     const message = `💰 *New Registration Received*%0A%0A` +
       `👤 Name: ${data.name}%0A` +
       `📧 Email: ${data.email}%0A` +
