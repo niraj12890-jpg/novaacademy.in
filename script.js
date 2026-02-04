@@ -13,12 +13,26 @@ let selectedWorkshop = "";
    GLOBAL WORKSHOP DATA
 ================================ */
 const WORKSHOP_DATA = {
-  xps: {
-    title: "XPS Data Analysis",
-    desc: "Comprehensive XPS fundamentals, instrumentation & peak fitting with hands-on datasets.",
+ xps: {
+    title: "One-Week Online Workshop on XPS Data Analysis",
+    desc: `
+      <strong>About the Workshop:</strong><br>
+      This Online Workshop on X-ray Photoelectron Spectroscopy (XPS) Data Analysis is designed to offer a comprehensive understanding and practical exposure to one of the most powerful surface analytical techniques in materials science.<br><br>
+      
+      <strong>What you will learn:</strong>
+      <ul style="text-align: left; padding-left: 20px; margin-top: 10px;">
+        <li>The basic physics of photoemission</li>
+        <li>Key components of an XPS instrument</li>
+        <li>Survey and high-resolution scan analysis</li>
+        <li>Peak fitting and background correction</li>
+        <li>Elemental identification and chemical state analysis</li>
+      </ul>
+      <br>
+      Each module combines theoretical explanations with live practical demonstrations and hands-on experience with real XPS datasets.
+    `,
     price: "₹2,999",
     priceValue: 2999,
-    img: "images/w1.png"
+    img: "images/w1.png" // यहाँ आप अपनी बनाई हुई इमेज का पाथ डालें
   },
   electro: {
     title: "Electrochemical Analysis",
