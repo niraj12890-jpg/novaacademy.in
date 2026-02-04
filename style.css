@@ -104,7 +104,7 @@ body {
 .popup-box {
   width: 95% !important;
   max-width: 600px !important;
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid var(--neon);
   border-radius: 24px;
   padding: 30px;
@@ -114,6 +114,108 @@ body {
   max-height: 90vh;
   overflow-y: auto;
   animation: modalIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Popup box content should be dark text on white background */
+.popup-box h2,
+.popup-box h3,
+.popup-box h4,
+.popup-box h5,
+.popup-box p,
+.popup-box label,
+.popup-box span,
+.popup-box .form-label {
+  color: #212529 !important;
+}
+
+/* Specific styling for workshop details popup */
+.popup-box #workshopTitle {
+  color: var(--neon) !important;
+  text-shadow: none !important;
+}
+
+.popup-box #workshopDesc {
+  color: #495057 !important;
+  opacity: 0.9 !important;
+}
+
+.popup-box #workshopPrice {
+  color: #198754 !important;
+}
+
+/* Form inputs in popup should have light background */
+.popup-box .form-control,
+.popup-box .form-select {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+}
+
+.popup-box .form-control:focus,
+.popup-box .form-select:focus {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: var(--neon) !important;
+  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25) !important;
+}
+
+.popup-box .form-control::placeholder {
+  color: #6c757d !important;
+  opacity: 0.7;
+}
+
+/* Payment area in registration popup */
+.popup-box .payment-area {
+  background: rgba(13, 110, 253, 0.08) !important;
+}
+
+/* Keep neon text effect only for specific headings */
+.popup-box .neon-text {
+  color: var(--neon) !important;
+  text-shadow: 0 0 8px rgba(58, 134, 255, 0.3) !important;
+}
+
+/* Make option dropdowns readable */
+.popup-box option {
+  background: #ffffff !important;
+  color: #212529 !important;
+}
+
+/* Small text and info elements */
+.popup-box .small,
+.popup-box .text-secondary {
+  color: #6c757d !important;
+}
+
+.popup-box .text-info {
+  color: #0dcaf0 !important;
+}
+
+.popup-box .text-success {
+  color: #198754 !important;
+}
+
+.popup-box .text-warning {
+  color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+/* Payment details text */
+.popup-box .payment-details span {
+  color: #212529 !important;
+}
+
+.popup-box .payment-details .text-info {
+  color: #0dcaf0 !important;
+}
+
+.popup-box .upi-copy {
+  cursor: pointer;
+  color: #0dcaf0 !important;
+}
+
+.popup-box .upi-copy:hover {
+  opacity: 0.8;
 }
 
 /* Popup Form Groups */
