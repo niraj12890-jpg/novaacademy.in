@@ -104,7 +104,7 @@ body {
 .popup-box {
   width: 95% !important;
   max-width: 600px !important;
-  background: #060d2e;
+  background: #ffffff;
   border: 1px solid var(--neon);
   border-radius: 24px;
   padding: 30px;
