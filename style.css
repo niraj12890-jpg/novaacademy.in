@@ -104,26 +104,16 @@ body {
 .popup-box {
   width: 95% !important;
   max-width: 600px !important;
-  /* बैकग्राउंड को सफेद किया गया */
-  background: #ffffff; 
-  /* बॉर्डर को आपके ब्लू वेरिएबल (Neon) में रखा गया */
-  border: 2px solid var(--neon); 
+  background: #060d2e;
+  border: 1px solid var(--neon);
   border-radius: 24px;
   padding: 30px;
   position: relative;
-  /* शैडो को थोड़ा हल्का किया गया ताकि सफेद पर अच्छा लगे */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 0 50px rgba(58, 134, 255, 0.3);
   display: block;
   max-height: 90vh;
   overflow-y: auto;
   animation: modalIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* अगर आपके पास टेक्स्ट है, तो उसे डार्क करना होगा ताकि सफेद पर दिखे */
-.popup-box h2, 
-.popup-box p, 
-.popup-box label {
-  color: #333 !important;
 }
 
 /* Popup Form Groups */
@@ -133,14 +123,14 @@ body {
   text-align: left;
 }
 
-/* Close Button - इसे सफेद बैकग्राउंड के हिसाब से एडजस्ट किया */
+/* Close Button in Top Right Corner */
 .popup-close-btn {
   position: absolute;
   top: 15px;
   right: 15px;
   width: 40px;
   height: 40px;
-  background: #f8d7da; /* हल्का लाल बैकग्राउंड */
+  background: rgba(220, 53, 69, 0.2);
   border: 2px solid #dc3545;
   border-radius: 50%;
   color: #dc3545;
@@ -153,14 +143,24 @@ body {
   z-index: 10;
   padding: 0;
 }
+
+.popup-close-btn:hover {
+  background: #dc3545;
+  color: white;
+  transform: rotate(90deg);
+  box-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+}
+
+.popup-close-btn:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+
 .popup-box .form-control {
   width: 100% !important;
   margin-bottom: 10px;
-  /* इनपुट फील्ड्स को भी सफेद पर साफ दिखाने के लिए बॉर्डर */
-  border: 1px solid #ced4da;
-  background-color: #fff;
-  color: #333;
 }
+
 /* Popup Workshop Image */
 #workshopImg {
   width: 100%;
