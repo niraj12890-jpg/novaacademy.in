@@ -197,7 +197,7 @@ function openDetails(type) {
   const imgEl = document.getElementById("workshopImg");
   
   if (titleEl) titleEl.innerText = data.title;
-  if (descEl) descEl.innerText = data.desc;
+  if (descEl) descEl.innerHTML = data.desc;
   if (priceEl) priceEl.innerText = data.price;
   if (imgEl) imgEl.src = data.img;
 
