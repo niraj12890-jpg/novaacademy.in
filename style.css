@@ -100,3 +100,19 @@ body {
   .popup-box { padding: 15px; max-width: 98%; }
   .mouse-glow { display: none; }
 }
+/* पॉपअप के बटनों को सफेद थीम के लिए फिक्स करना */
+.popup-box .btn-outline-dark {
+    color: #333 !important;
+    border-color: #333 !important;
+}
+
+.popup-box .btn-outline-dark:hover {
+    background-color: #333 !important;
+    color: #fff !important;
+}
+
+/* अगर प्राइस (Price) भी नहीं दिख रहा, तो उसे यहाँ से ठीक करें */
+#workshopPrice {
+    color: #198754 !important; /* गहरा हरा रंग */
+    font-weight: bold;
+}
