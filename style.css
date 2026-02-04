@@ -1,920 +1,102 @@
 /* ============================================
-   NOVA ACADEMY - ULTRA MODERN & BEAUTIFUL CSS
-   Clean, Optimized, Premium Design
+   NOVA ACADEMY - OPTIMIZED CSS 2026
    ============================================ */
 
-/* --- 1. THEME VARIABLES --- */
 :root {
   --bg: #020b33;
-  --card-bg: rgba(6, 16, 70, 0.85);
   --neon: #3a86ff;
   --accent: #0d6efd;
   --success: #00f5a0;
-  --glow-color: rgba(58, 134, 255, 0.5);
-  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --white: #ffffff;
+  --transition: all 0.3s ease;
 }
 
-/* --- 2. GLOBAL STYLES --- */
+/* 1. Global Reset & Body */
 body {
-  background-color: var(--bg);
-  color: #fff;
+  background: var(--bg);
+  color: var(--white);
   font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding-top: 80px;
   overflow-x: hidden;
-  background-image:
-    linear-gradient(rgba(58, 134, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(58, 134, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  padding-top: 80px;
 }
 
-/* --- 3. FUTURISTIC MOUSE GLOW --- */
+/* 2. Optimized Mouse Glow (No Blur on Hover) */
 .mouse-glow {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(58, 134, 255, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease-out;
+  position: fixed; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(58, 134, 255, 0.15), transparent 70%);
+  pointer-events: none; transform: translate(-50%, -50%); z-index: -1;
 }
 
-/* --- 4. NEON TEXT & BUTTONS --- */
-.neon-text {
-  color: #fff;
-  text-shadow: 0 0 8px var(--neon), 0 0 15px var(--neon);
-  letter-spacing: 1px;
+/* 3. Utility Classes (Shared styles to reduce code) */
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.neon-text { color: var(--neon); text-shadow: 0 0 15px rgba(58, 134, 255, 0.5); }
+
+/* 4. Optimized Popups (White Theme) */
+.popup-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8); display: none; z-index: 9999;
 }
 
+.popup-box {
+  background: var(--white) !important;
+  color: #000 !important;
+  border: 3px solid var(--neon);
+  border-radius: 24px;
+  padding: 25px;
+  width: 95%;
+  max-width: 650px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  animation: modalIn 0.3s ease-out;
+}
+
+/* Remove Blur & Hover Issues */
+.workshop-card-item:hover {
+  transform: translateY(-8px);
+  filter: none !important;
+}
+
+/* 5. Inputs & Forms */
+.form-control, .form-select {
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+/* 6. Buttons (Clean & Professional) */
 .btn-neon {
-  background: var(--accent);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 15px var(--accent);
-  color: #fff;
+  background: var(--neon);
+  color: white;
+  border-radius: 50px;
+  padding: 12px 25px;
+  border: none;
+  font-weight: 600;
   transition: var(--transition);
 }
 
 .btn-neon:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px var(--neon);
-  background: #fff;
-  color: var(--bg);
+  background: var(--accent);
+  box-shadow: 0 0 20px var(--neon);
 }
 
-/* --- 5. GLASS CARDS --- */
-.glass-card {
-  background: var(--card-bg) !important;
-  border: 1px solid rgba(58, 134, 255, 0.15) !important;
-  backdrop-filter: blur(12px) saturate(180%);
-  border-radius: 20px !important;
-  will-change: transform;
-}
-
-.glass-card:hover {
-  border-color: var(--neon) !important;
-  transform: translateY(-8px) scale(1.02) !important;
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(58, 134, 255, 0.2) !important;
-}
-
-.glass-card p,
-.glass-card h4,
-.glass-card h5 {
-  color: #ffffff !important;
-}
-
-/* --- 6. ULTRA MODERN BEAUTIFUL POPUP MODALS --- */
-.popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(20px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  padding: 15px;
-  overflow-y: auto;
-  animation: fadeIn 0.3s ease forwards;
-}
-
-.popup-box {
-  width: 96% !important;
-  max-width: 950px !important;
-  max-height: 96vh !important;
-  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%) !important;
-  border: 3px solid var(--neon);
-  border-radius: 35px;
-  padding: 35px 30px 30px 30px;
-  position: relative;
-  box-shadow: 
-    0 30px 80px rgba(58, 134, 255, 0.5),
-    0 0 120px rgba(58, 134, 255, 0.3),
-    inset 0 2px 0 rgba(255, 255, 255, 1);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  animation: modalSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Popup Scrollable Content Area */
-.popup-box > * {
-  flex-shrink: 0;
-}
-
-.popup-box > form,
-.popup-box > div:not(.popup-close-btn):not(.badge) {
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: calc(96vh - 100px);
-  padding-right: 10px;
-}
-
-/* Custom Scrollbar for Popup */
-.popup-box::-webkit-scrollbar,
-.popup-box > *::-webkit-scrollbar {
-  width: 10px;
-}
-
-.popup-box::-webkit-scrollbar-track,
-.popup-box > *::-webkit-scrollbar-track {
-  background: rgba(58, 134, 255, 0.08);
-  border-radius: 10px;
-  margin: 10px 0;
-}
-
-.popup-box::-webkit-scrollbar-thumb,
-.popup-box > *::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--neon), var(--accent));
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-.popup-box::-webkit-scrollbar-thumb:hover,
-.popup-box > *::-webkit-scrollbar-thumb:hover {
-  background: var(--neon);
-  background-clip: padding-box;
-}
-
-/* Popup Headings - Modern & Bright */
-.popup-box h2 {
-  background: linear-gradient(135deg, var(--neon) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800 !important;
-  font-size: 2.2rem !important;
-  margin-bottom: 20px !important;
-  letter-spacing: -1px;
-  line-height: 1.2;
-}
-
-.popup-box h3,
-.popup-box h4,
-.popup-box h5 {
-  color: #1a1a1a !important;
-  font-weight: 700 !important;
-  opacity: 1 !important;
-}
-
-.popup-box p,
-.popup-box label,
-.popup-box span {
-  color: #2c3e50 !important;
-  font-weight: 500 !important;
-  opacity: 1 !important;
-}
-
-/* Badge Styling */
-.popup-box .badge {
-  font-size: 0.85rem !important;
-  padding: 10px 24px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.8px !important;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2) !important;
-  border-radius: 50px !important;
-  margin-bottom: 15px !important;
-}
-
-/* Workshop Details Popup */
-.popup-box #workshopTitle {
-  background: linear-gradient(135deg, var(--neon), var(--accent), #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 900 !important;
-  font-size: 2.3rem !important;
-  margin-bottom: 25px !important;
-  line-height: 1.1 !important;
-}
-
-.popup-box #workshopDesc {
-  color: #374151 !important;
-  font-weight: 500 !important;
-  line-height: 1.8 !important;
-  font-size: 1.05rem !important;
-  opacity: 1 !important;
-}
-
-.popup-box #workshopPrice {
-  color: #059669 !important;
-  font-weight: 900 !important;
-  font-size: 2rem !important;
-}
-
-.popup-box #workshopImg {
-  border-radius: 25px !important;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2) !important;
-  margin-bottom: 25px !important;
-}
-
-/* Form Row Spacing */
-.popup-box .row.g-3 {
-  row-gap: 20px !important;
-}
-
-/* Form Labels - Modern & Clear */
-.popup-box .form-label {
-  color: #64748b !important;
-  font-weight: 700 !important;
-  font-size: 0.85rem !important;
-  margin-bottom: 10px !important;
-  letter-spacing: 0.5px !important;
-  text-transform: uppercase !important;
-  display: block !important;
-}
-
-/* Beautiful Modern Input Groups with Icons */
-.popup-box .input-group {
-  background: #ffffff !important;
-  border: 2px solid #e2e8f0 !important;
-  border-radius: 18px !important;
-  overflow: hidden !important;
-  box-shadow: 0 3px 12px rgba(58, 134, 255, 0.1) !important;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  height: 56px !important;
-}
-
-.popup-box .input-group:focus-within {
-  border-color: var(--neon) !important;
-  box-shadow: 
-    0 0 0 5px rgba(58, 134, 255, 0.12),
-    0 8px 25px rgba(58, 134, 255, 0.25) !important;
-  transform: translateY(-3px) !important;
-}
-
-.popup-box .input-group-text {
-  background: linear-gradient(135deg, #eff6ff, #dbeafe) !important;
-  border: none !important;
-  color: var(--neon) !important;
-  font-size: 1.2rem !important;
-  padding: 0 18px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.popup-box .input-group .form-control,
-.popup-box .input-group .form-select {
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  color: #1a1a1a !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  padding: 16px 18px !important;
-  height: auto !important;
-}
-
-.popup-box .input-group .form-control:focus,
-.popup-box .input-group .form-select:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-
-.popup-box .input-group .form-control::placeholder {
-  color: #94a3b8 !important;
-  font-weight: 500 !important;
-}
-
-/* Standalone Form Inputs (without icons) */
-.popup-box .form-control:not(.input-group .form-control),
-.popup-box .form-select:not(.input-group .form-select) {
-  background: #ffffff !important;
-  border: 2px solid #e2e8f0 !important;
-  border-radius: 18px !important;
-  padding: 16px 20px !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  color: #1a1a1a !important;
-  box-shadow: 0 3px 12px rgba(58, 134, 255, 0.1) !important;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  height: 56px !important;
-}
-
-.popup-box .form-control:not(.input-group .form-control):focus,
-.popup-box .form-select:not(.input-group .form-select):focus {
-  border-color: var(--neon) !important;
-  box-shadow: 
-    0 0 0 5px rgba(58, 134, 255, 0.12),
-    0 8px 25px rgba(58, 134, 255, 0.25) !important;
-  transform: translateY(-3px) !important;
-  outline: none !important;
-}
-
-/* Workshop & Price Display Fields */
-.popup-box #workshopDisplay {
-  background: linear-gradient(135deg, #eff6ff, #dbeafe) !important;
-  border: 3px solid var(--neon) !important;
-  color: #1e40af !important;
-  font-weight: 800 !important;
-  font-size: 1.15rem !important;
-  padding: 18px 22px !important;
-  border-radius: 18px !important;
-  box-shadow: 
-    0 6px 20px rgba(58, 134, 255, 0.25),
-    inset 0 2px 0 rgba(255, 255, 255, 0.5) !important;
-  height: auto !important;
-}
-
-.popup-box #priceDisplay {
-  background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important;
-  border: 3px solid #10b981 !important;
-  color: #065f46 !important;
-  font-weight: 800 !important;
-  font-size: 1.15rem !important;
-  padding: 18px 22px !important;
-  border-radius: 18px !important;
-  box-shadow: 
-    0 6px 20px rgba(16, 185, 129, 0.25),
-    inset 0 2px 0 rgba(255, 255, 255, 0.5) !important;
-  height: auto !important;
-}
-
-/* Payment Area - Premium Design */
-.popup-box .payment-area {
-  background: linear-gradient(145deg, #eff6ff 0%, #dbeafe 50%, #e0e7ff 100%) !important;
-  border: 3px solid var(--neon) !important;
-  border-radius: 28px !important;
-  padding: 35px 30px !important;
-  margin: 25px 0 !important;
-  box-shadow: 
-    0 15px 50px rgba(58, 134, 255, 0.2),
-    inset 0 2px 0 rgba(255, 255, 255, 0.9) !important;
-  position: relative;
-  overflow: hidden;
-}
-
-.popup-box .payment-area h5 {
-  background: linear-gradient(135deg, var(--neon), var(--accent), #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 900 !important;
-  font-size: 1.5rem !important;
-  margin-bottom: 30px !important;
-  text-align: center !important;
-}
-
-/* QR Code Container - Eye-catching */
-.popup-box .qr-wrapper {
-  background: #ffffff !important;
-  padding: 18px !important;
-  border-radius: 25px !important;
-  border: 4px solid var(--neon) !important;
-  box-shadow: 
-    0 15px 45px rgba(58, 134, 255, 0.35),
-    0 0 60px rgba(58, 134, 255, 0.25),
-    inset 0 2px 0 rgba(255, 255, 255, 1) !important;
-  display: inline-block !important;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-}
-
-.popup-box .qr-wrapper:hover {
-  transform: scale(1.08) rotate(2deg) !important;
-  box-shadow: 
-    0 20px 60px rgba(58, 134, 255, 0.5),
-    0 0 80px rgba(58, 134, 255, 0.4),
-    inset 0 2px 0 rgba(255, 255, 255, 1) !important;
-}
-
-.popup-box .qr-wrapper img {
-  display: block !important;
-  border-radius: 15px !important;
-}
-
-/* Payment Details Typography */
-.popup-box .payment-details {
-  line-height: 1.8;
-}
-
-.popup-box .payment-details label {
-  color: #64748b !important;
-  font-weight: 700 !important;
-  font-size: 0.75rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1.2px !important;
-  margin-bottom: 6px !important;
-  display: block !important;
-}
-
-.popup-box .payment-details span {
-  color: #1a1a1a !important;
-  font-weight: 800 !important;
-  font-size: 1.15rem !important;
-  display: block !important;
-}
-
-.popup-box .payment-details .text-info,
-.popup-box .upi-copy {
-  background: linear-gradient(135deg, var(--neon), #0ea5e9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 900 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  text-decoration: none !important;
-}
-
-.popup-box .upi-copy:hover {
-  transform: scale(1.05) !important;
-  filter: brightness(1.2) !important;
-}
-
-.popup-box .upi-copy i {
-  transition: transform 0.3s ease !important;
-}
-
-.popup-box .upi-copy:hover i {
-  transform: rotate(15deg) scale(1.2) !important;
-}
-
-/* Info Text Styles */
-.popup-box .small {
-  color: #64748b !important;
-  font-weight: 500 !important;
-  font-size: 0.9rem !important;
-}
-
-.popup-box .text-secondary {
-  color: #64748b !important;
-  font-weight: 600 !important;
-}
-
-.popup-box .text-info {
-  color: #0ea5e9 !important;
-  font-weight: 700 !important;
-}
-
-.popup-box .text-success {
-  color: #10b981 !important;
-  font-weight: 800 !important;
-}
-
-.popup-box .text-warning {
-  background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
-  color: #78350f !important;
-  font-weight: 700 !important;
-  padding: 14px 22px !important;
-  border-radius: 15px !important;
-  border: 2px solid #f59e0b !important;
-  display: block !important;
-  text-align: center !important;
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25) !important;
-}
-
-/* Dropdown Options */
-.popup-box option {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
-  font-weight: 600 !important;
-  padding: 12px !important;
-}
-
-/* Modern Button Styles */
-.popup-box .btn {
-  padding: 16px 35px !important;
-  font-weight: 800 !important;
-  font-size: 1.05rem !important;
-  border-radius: 50px !important;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  border: none !important;
-  letter-spacing: 0.8px !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
-  text-transform: uppercase !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.popup-box .btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.popup-box .btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.popup-box .btn-neon {
-  background: linear-gradient(135deg, var(--neon), var(--accent)) !important;
-  color: #ffffff !important;
-  box-shadow: 
-    0 8px 30px rgba(58, 134, 255, 0.45),
-    0 0 40px rgba(58, 134, 255, 0.25) !important;
-  position: relative !important;
-}
-
-.popup-box .btn-neon:hover {
-  transform: translateY(-4px) scale(1.03) !important;
-  box-shadow: 
-    0 15px 45px rgba(58, 134, 255, 0.6),
-    0 0 60px rgba(58, 134, 255, 0.4) !important;
-}
-
-.popup-box .btn-success {
-  background: linear-gradient(135deg, #10b981, #059669) !important;
-  color: #ffffff !important;
-  box-shadow: 
-    0 8px 30px rgba(16, 185, 129, 0.45),
-    0 0 40px rgba(16, 185, 129, 0.25) !important;
-}
-
-.popup-box .btn-success:hover {
-  transform: translateY(-4px) scale(1.03) !important;
-  box-shadow: 
-    0 15px 45px rgba(16, 185, 129, 0.6),
-    0 0 60px rgba(16, 185, 129, 0.4) !important;
-}
-
-.popup-box .btn-outline-light,
-.popup-box .btn-outline-primary,
-.popup-box .btn-outline-success {
-  background: #ffffff !important;
-  border: 3px solid #e2e8f0 !important;
-  color: #475569 !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
-}
-
-.popup-box .btn-outline-light:hover,
-.popup-box .btn-outline-primary:hover,
-.popup-box .btn-outline-success:hover {
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0) !important;
-  border-color: var(--neon) !important;
-  color: var(--neon) !important;
-  transform: translateY(-3px) scale(1.02) !important;
-  box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3) !important;
-}
-
-/* Close Button - Top Right Corner */
+/* 7. Close Button Customization */
 .popup-close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.2)) !important;
-  border: 2px solid #ef4444 !important;
-  border-radius: 50%;
-  color: #dc2626 !important;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 100;
-  padding: 0;
-  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  position: absolute; top: 15px; right: 15px;
+  width: 35px; height: 35px; border-radius: 50%;
+  background: #f8d7da; border: 1px solid #dc3545; color: #dc3545;
 }
 
-.popup-close-btn:hover {
-  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
-  color: white !important;
-  transform: rotate(90deg) scale(1.1) !important;
-  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5) !important;
-}
-
-.popup-close-btn:active {
-  transform: rotate(90deg) scale(0.95) !important;
-}
-
-/* --- 7. FORM CONTROLS (OUTSIDE POPUP) --- */
-.form-control,
-.form-select {
-  border: 1px solid rgba(58, 134, 255, 0.3) !important;
-  transition: var(--transition) !important;
-}
-
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--neon) !important;
-  box-shadow: 0 0 15px rgba(58, 134, 255, 0.4) !important;
-  background: rgba(58, 134, 255, 0.05) !important;
-}
-
-/* --- 8. ANIMATIONS --- */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modalSlideUp {
-  from {
-    transform: translateY(60px) scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(40px) scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
+/* 8. Animations */
 @keyframes modalIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes qrZoomIn {
-  from {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* --- 9. CUSTOM SCROLLBAR --- */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(transparent, var(--neon), transparent);
-  border-radius: 10px;
-}
-
-/* --- 10. TRANSITION & HOVER EFFECTS --- */
-.transition-img {
-  transition: var(--transition);
-}
-
-.transition-img:hover {
-  filter: brightness(1.1) contrast(1.1);
-  transform: scale(1.05);
-}
-
-/* --- 11. COUNTER STYLES --- */
-.counter {
-  background: linear-gradient(to right, #ffffff, var(--neon));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-}
-
-/* --- 12. NAVBAR --- */
-.navbar-nav .nav-link {
-  color: #ffffff !important;
-  font-weight: 500;
-}
-
-/* --- 13. CARDS TEXT VISIBILITY --- */
-.card,
-.card p,
-.card h4,
-.card h5,
-.card span,
-.card small {
-  color: #ffffff !important;
-}
-
-.card-body p {
-  color: #ffffff !important;
-  opacity: 0.9;
-}
-
-.workshop-card p,
-.workshop-card h5,
-.instructor-card p,
-.instructor-card h4,
-.instructor-card span,
-#workshopDesc {
-  color: #ffffff !important;
-  opacity: 1 !important;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.workshop-card h5,
-.instructor-card h4 {
-  color: var(--neon) !important;
-}
-
-/* --- 14. QR CODE FEATURES --- */
-.qr-image-container img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: zoom-in;
-  border: 2px solid var(--neon);
-}
-
-.qr-image-container img:hover {
-  transform: scale(1.5);
-  box-shadow: 0 0 30px var(--neon);
-  z-index: 10;
-  position: relative;
-}
-
-.qr-zoom {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.qr-zoom:active {
-  transform: scale(2.5);
-  z-index: 999;
-}
-
-.qr-large {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2.5) !important;
-  z-index: 9999;
-  background: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
-}
-
-.qr-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 20000;
-  cursor: zoom-out;
-  backdrop-filter: blur(10px);
-}
-
-.qr-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  background: #fff;
-  padding: 20px;
-  border-radius: 25px;
-  box-shadow: 
-    0 0 80px rgba(58, 134, 255, 0.6),
-    0 30px 100px rgba(0, 0, 0, 0.5);
-  animation: qrZoomIn 0.35s ease;
-}
-
-/* --- 15. TOAST MESSAGE --- */
-.toast-msg {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: linear-gradient(135deg, var(--neon), var(--accent));
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 50px;
-  font-weight: 700;
-  box-shadow: 0 0 30px rgba(58, 134, 255, 0.7);
-  opacity: 0;
-  z-index: 30000;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none;
-  font-size: 1.05rem;
-}
-
-.toast-msg.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* --- 16. UTR VALIDATION --- */
-.utr-valid {
-  border: 3px solid #10b981 !important;
-  box-shadow: 
-    0 0 0 5px rgba(16, 185, 129, 0.12),
-    0 8px 25px rgba(16, 185, 129, 0.3) !important;
-  background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important;
-}
-
-.utr-invalid {
-  border: 3px solid #ef4444 !important;
-  box-shadow: 
-    0 0 0 5px rgba(239, 68, 68, 0.12),
-    0 8px 25px rgba(239, 68, 68, 0.3) !important;
-  background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
-}
-
-/* --- 17. RESPONSIVE DESIGN --- */
+/* 9. Responsive */
 @media (max-width: 768px) {
-  .popup-box {
-    padding: 30px 20px 25px 20px;
-    border-radius: 28px;
-    max-width: 98%;
-  }
-  
-  .popup-box h2 {
-    font-size: 1.8rem !important;
-  }
-  
-  .popup-box #workshopTitle {
-    font-size: 1.9rem !important;
-  }
-  
-  .popup-box .payment-area {
-    padding: 25px 20px !important;
-  }
-  
-  .popup-box .btn {
-    padding: 14px 28px !important;
-    font-size: 0.95rem !important;
-  }
-  
-  .mouse-glow {
-    display: none;
-  }
-}
-
-@media (max-width: 576px) {
-  .popup-box {
-    padding: 25px 18px 20px 18px;
-    border-radius: 25px;
-  }
-  
-  .popup-box h2 {
-    font-size: 1.6rem !important;
-  }
-  
-  .popup-box #workshopTitle {
-    font-size: 1.7rem !important;
-  }
-  
-  .popup-close-btn {
-    width: 40px;
-    height: 40px;
-    top: 15px;
-    right: 15px;
-    font-size: 18px;
-  }
-  
-  .neon-text {
-    font-size: 1.5rem;
-  }
-}
-
-/* Success Button Centering */
-.btn-success {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-#workshopDesc ul {
-    list-style-type: disc !important;
-    padding-left: 20px !important;
-    margin-top: 10px !important;
-    text-align: left !important;
-}
-#workshopDesc li {
-    margin-bottom: 8px;
-    color: #333; /* सफेद पॉपअप पर काला टेक्स्ट */
+  .popup-box { padding: 15px; max-width: 98%; }
+  .mouse-glow { display: none; }
 }
