@@ -908,3 +908,13 @@ body {
     align-items: center;
     text-align: center;
 }
+#workshopDesc ul {
+    list-style-type: disc !important;
+    padding-left: 20px !important;
+    margin-top: 10px !important;
+    text-align: left !important;
+}
+#workshopDesc li {
+    margin-bottom: 8px;
+    color: #333; /* सफेद पॉपअप पर काला टेक्स्ट */
+}
