@@ -408,3 +408,10 @@ body {
     font-size: 1.5rem;
   }
 }
+/* आपकी External CSS फाइल में */
+.btn-success {
+    display: flex;
+    justify-content: center; /* हॉरिजॉन्टल सेंटर के लिए */
+    align-items: center;    /* वर्टिकल सेंटर के लिए */
+    text-align: center;
+}
