@@ -125,43 +125,50 @@ body {
 .popup-box label,
 .popup-box span,
 .popup-box .form-label {
-  color: #212529 !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
 }
 
 /* Specific styling for workshop details popup */
 .popup-box #workshopTitle {
   color: var(--neon) !important;
   text-shadow: none !important;
+  font-weight: 700 !important;
 }
 
 .popup-box #workshopDesc {
-  color: #495057 !important;
-  opacity: 0.9 !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
 }
 
 .popup-box #workshopPrice {
   color: #198754 !important;
+  font-weight: 700 !important;
 }
 
 /* Form inputs in popup should have light background */
 .popup-box .form-control,
 .popup-box .form-select {
   background: #f8f9fa !important;
-  color: #212529 !important;
-  border: 1px solid #dee2e6 !important;
+  color: #000000 !important;
+  border: 1px solid #ced4da !important;
+  font-weight: 500 !important;
 }
 
 .popup-box .form-control:focus,
 .popup-box .form-select:focus {
   background: #ffffff !important;
-  color: #212529 !important;
+  color: #000000 !important;
   border-color: var(--neon) !important;
   box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25) !important;
 }
 
 .popup-box .form-control::placeholder {
   color: #6c757d !important;
-  opacity: 0.7;
+  opacity: 1 !important;
+  font-weight: 400 !important;
 }
 
 /* Payment area in registration popup */
@@ -184,38 +191,62 @@ body {
 /* Small text and info elements */
 .popup-box .small,
 .popup-box .text-secondary {
-  color: #6c757d !important;
+  color: #495057 !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
 }
 
 .popup-box .text-info {
   color: #0dcaf0 !important;
+  font-weight: 600 !important;
 }
 
 .popup-box .text-success {
   color: #198754 !important;
+  font-weight: 600 !important;
 }
 
 .popup-box .text-warning {
-  color: #ffc107 !important;
-  color: #212529 !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+  background-color: #ffc107 !important;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 /* Payment details text */
 .popup-box .payment-details span {
-  color: #212529 !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
 }
 
 .popup-box .payment-details .text-info {
-  color: #0dcaf0 !important;
+  color: #0d6efd !important;
+  font-weight: 700 !important;
+}
+
+.popup-box .payment-details label {
+  color: #495057 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
 }
 
 .popup-box .upi-copy {
   cursor: pointer;
-  color: #0dcaf0 !important;
+  color: #0d6efd !important;
+  font-weight: 700 !important;
 }
 
 .popup-box .upi-copy:hover {
   opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Make option dropdowns readable */
+.popup-box option {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
 }
 
 /* Popup Form Groups */
