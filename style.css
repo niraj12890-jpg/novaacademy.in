@@ -167,3 +167,6 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff !important;
+}
