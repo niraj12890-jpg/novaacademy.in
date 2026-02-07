@@ -29,8 +29,10 @@ body {
 
 /* 3. Utility Classes (Shared styles to reduce code) */
 .flex-center { display: flex; align-items: center; justify-content: center; }
-.neon-text { color: var(--neon); text-shadow: 0 0 15px rgba(58, 134, 255, 0.5); }
-
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
 /* 4. Optimized Popups (White Theme) */
 .popup-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
